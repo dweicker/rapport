@@ -28,10 +28,15 @@
 \begin{document}
 
 \maketitle					% To create front cover page
-\thispagestyle{empty}		% To suppress header and footer on the back of the cover page
+%\thispagestyle{empty}		% To suppress header and footer on the back of the cover page
+\newpage\null\thispagestyle{empty}\newpage % Blank page
 
+\pagestyle{fancy}
 
-\input{Results/results.tex}
+\pagenumbering{arabic}
+
+\input{Results/intro.tex}
+\input{Results/multigrid.tex}
 
 
 

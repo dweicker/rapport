@@ -1,0 +1,28 @@
+\section{Multigrid}
+In this section, we will test the coarse part of the preconditioner : the multigrid solver. This will be done in two steps. First, we will verify a well known property of the multigrid solvers : the h-independent convergence. We will also compare the number and iterations needed while varying key parameters of the model. Those tests will be performed on various meshes : conforming or not conforming, with elements that are not distorted, slightly distorted or strongly distorted. Second, we will use the multigrid solver as a preconditioner for the conjugate gradients (called the coarse preconditioner). We will increase the degree of the polynomial interpolation and see how the coarse precontioner performs for both conforming and non conforming meshes and for different forcing terms.
+
+\subsection{H-independent convergence}
+Let us first verify that our geometric multigrid solver has the required property and that the same number of iterations is needed to obtain a given accuracy, however small the elements. We will use the model problem throughout this section with the same right hand side. We can note that for the three supra meshes given, the domain  is : $\Omega = [-1;1]^2$. We will solve : 
+
+\begin{align}
+\nabla^2 u &= -\frac{\pi^2}{2}cos(\frac{\pi}{2}x)cos(\frac{\pi}{2}y) &\text{on $\Omega$} \\
+u &= 0  &\text{on $\Gamma$}
+\end{align}
+
+It is easy to see that for the given domain, we have an analytic solution : 
+$$u(x,y) = cos(\frac{\pi}{2}x)cos(\frac{\pi}{2}y))$$
+
+Figure \ref{multi_simple_sol} shows an example of the numerical solution computed by the geometric multigrid solver. We can see that even with $p=1$, we have a good approximation. This is because the forcing term is not at all oscillatory. 
+
+%ADD FIGURE FOR MULTI_SIMPLE_SOL
+
+Let us now explain how we define the error. We will look at the absolute difference between the value of the approximation and the value of the analytic solution at the global nodes and take the maximum. Formally, we have that the error after iteration $k$, $e_k$ is :
+
+$$e_k = \max_i |u(x_i,y_i) - u_i^k|$$
+
+Where $u_i^k$ is the value of our approximation at the global node $i$ after iteration $k$. Since $u_i^0 = 0$ for all $i$, it is clear that $e_0 = 1$.
+
+Let us start with the regular grid with no hanging nodes and show how the error decreases with the number of iterations for the V-cycle on hand and the W-cycle on the other hand. Figure \ref{multi_vw_regular} shows the results. 
+
+%ADD PLOT FOR MULTI_VW_REGULAR
+

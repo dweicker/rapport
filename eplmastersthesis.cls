@@ -7,6 +7,18 @@
 % Usefull packages
 \usepackage[utf8x]{inputenc}
 \usepackage[english]{babel}
+\usepackage{amsmath}
+
+
+% Header
+\usepackage{fancyhdr}
+\fancyhf{}
+\rhead{\leftmark}
+\cfoot{\thepage}
+
+
+
+
 
 \RequirePackage{microtype} % Improves typography
 \RequirePackage[T1]{fontenc}
