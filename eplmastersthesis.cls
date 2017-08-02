@@ -8,6 +8,7 @@
 \usepackage[utf8x]{inputenc}
 \usepackage[english]{babel}
 \usepackage{amsmath}
+\usepackage{subcaption}
 
 
 % Header
