@@ -14,12 +14,12 @@ Let us before all present a type of numerical solution that can be obtained usin
 Let us first verify that our geometric multigrid solver has the required property and that the same number of iterations is needed to obtain a given accuracy, however small the elements. We will use the model problem throughout this section with the same right hand side. For all the tests below, the domain  will be : $\Omega = [-1;1]^2$. We will solve : 
 
 \begin{align}
-\nabla^2 u &= -\frac{\pi^2}{2}cos(\frac{\pi}{2}x)cos(\frac{\pi}{2}y) &\text{on $\Omega$} \\
+\nabla^2 u &= -\frac{\pi^2}{2}\cos(\frac{\pi}{2}x)\cos(\frac{\pi}{2}y) &\text{on $\Omega$} \\
 u &= 0  &\text{on $\Gamma$}
 \end{align}
 
 It is easy to see that for the given domain, we have an analytic solution : 
-$$u(x,y) = cos(\frac{\pi}{2}x)cos(\frac{\pi}{2}y))$$ 
+$$u(x,y) = \cos(\frac{\pi}{2}x)\cos(\frac{\pi}{2}y))$$ 
 
 
 Let us now explain how we define the error. We will look at the absolute difference between the value of the approximation and the value of the analytic solution at the global nodes and take the maximum. Formally, we have that the error after iteration $k$, $e_k$ is :
