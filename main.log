@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014) (preloaded format=pdflatex 2014.10.4)  5 AUG 2017 17:45
+This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014) (preloaded format=pdflatex 2014.10.4)  5 AUG 2017 20:48
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -772,9 +772,38 @@ File: Results/two_irreg_iter-eps-converted-to.pdf Graphic file (type pdf)
 Package pdftex.def Info: Results/two_irreg_iter-eps-converted-to.pdf used on in
 put line 73.
 (pdftex.def)             Requested size: 449.68674pt x 222.73546pt.
- [14 <./Results/two_irreg_iter-eps-converted-to.pdf>])
+ [14 <./Results/two_irreg_iter-eps-converted-to.pdf>]
+Package epstopdf Info: Source file: <Results/two_hang_plot.eps>
+(epstopdf)                    date: 2017-08-05 20:47:56
+(epstopdf)                    size: 21236031 bytes
+(epstopdf)             Output file: <Results/two_hang_plot-eps-converted-to.pdf
+>
+(epstopdf)             Command: <repstopdf --outfile=Results/two_hang_plot-eps-
+converted-to.pdf Results/two_hang_plot.eps>
+(epstopdf)             \includegraphics on input line 102.
+runsystem(repstopdf --outfile=Results/two_hang_plot-eps-converted-to.pdf Result
+s/two_hang_plot.eps)...executed safely (allowed).
+
+Package epstopdf Info: Result file: <Results/two_hang_plot-eps-converted-to.pdf
+>
+(epstopdf)                    date: 2017-08-05 20:48:07
+(epstopdf)                    size: 148416 bytes.
+
+<Results/two_hang_plot-eps-converted-to.pdf, id=183, 1284.8pt x 637.38126pt>
+File: Results/two_hang_plot-eps-converted-to.pdf Graphic file (type pdf)
+
+<use Results/two_hang_plot-eps-converted-to.pdf>
+Package pdftex.def Info: Results/two_hang_plot-eps-converted-to.pdf used on inp
+ut line 102.
+(pdftex.def)             Requested size: 449.68674pt x 223.08678pt.
+
+
+LaTeX Warning: Reference `two_hang_plot' on page 15 undefined on input line 107
+.
+
+)
 No file main.bbl.
-[15]
+[15 <./Results/two_hang_plot-eps-converted-to.pdf>]
 *geometry* verbose mode - [ newgeometry ] result:
 * driver: pdftex
 * paper: <default>
@@ -816,34 +845,41 @@ Overfull \hbox (1.90796pt too wide) in paragraph at lines 51--52
 
 [16
 
-] (./main.aux) ) 
+] (./main.aux)
+
+LaTeX Warning: There were undefined references.
+
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
+ ) 
 Here is how much of TeX's memory you used:
- 7048 strings out of 493117
- 110278 string characters out of 6135433
- 231923 words of memory out of 5000000
- 10198 multiletter control sequences out of 15000+600000
- 98592 words of font info for 134 fonts, out of 8000000 for 9000
+ 7059 strings out of 493117
+ 110554 string characters out of 6135433
+ 231934 words of memory out of 5000000
+ 10204 multiletter control sequences out of 15000+600000
+ 98758 words of font info for 136 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  49i,13n,45p,1047b,522s stack positions out of 5000i,500n,10000p,200000b,80000s
-{/usr/local/texlive/2014/texmf-dist/fonts/enc/dvips/lm/lm-mathe
-x.enc}{/usr/local/texlive/2014/texmf-dist/fonts/enc/dvips/lm/lm-ec.enc}{/usr/lo
-cal/texlive/2014/texmf-dist/fonts/enc/dvips/lm/lm-mathsy.enc}{/usr/local/texliv
-e/2014/texmf-dist/fonts/enc/dvips/lm/lm-mathit.enc}{/usr/local/texlive/2014/tex
-mf-dist/fonts/enc/dvips/lm/lm-rm.enc}{/usr/local/texlive/2014/texmf-dist/fonts/
-enc/dvips/base/8r.enc}</usr/local/texlive/2014/texmf-dist/fonts/type1/public/lm
-/lmbx10.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/public/lm/lmbx12.pf
-b></usr/local/texlive/2014/texmf-dist/fonts/type1/public/lm/lmex10.pfb></usr/lo
-cal/texlive/2014/texmf-dist/fonts/type1/public/lm/lmmi10.pfb></usr/local/texliv
-e/2014/texmf-dist/fonts/type1/public/lm/lmmi8.pfb></usr/local/texlive/2014/texm
-f-dist/fonts/type1/public/lm/lmr10.pfb></usr/local/texlive/2014/texmf-dist/font
-s/type1/public/lm/lmr8.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/publ
-ic/lm/lmsy10.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/public/lm/lmsy
-8.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/urw/helvetic/uhvb8a.pfb><
-/usr/local/texlive/2014/texmf-dist/fonts/type1/urw/helvetic/uhvr8a.pfb>
-Output written on main.pdf (18 pages, 871734 bytes).
+{/usr/local/texlive/2014/texmf-dist/fonts/enc/dvips/lm/lm-mathex.enc}{/usr/lo
+cal/texlive/2014/texmf-dist/fonts/enc/dvips/lm/lm-ec.enc}{/usr/local/texlive/20
+14/texmf-dist/fonts/enc/dvips/lm/lm-mathsy.enc}{/usr/local/texlive/2014/texmf-d
+ist/fonts/enc/dvips/lm/lm-mathit.enc}{/usr/local/texlive/2014/texmf-dist/fonts/
+enc/dvips/lm/lm-rm.enc}{/usr/local/texlive/2014/texmf-dist/fonts/enc/dvips/base
+/8r.enc}</usr/local/texlive/2014/texmf-dist/fonts/type1/public/lm/lmbx10.pfb></
+usr/local/texlive/2014/texmf-dist/fonts/type1/public/lm/lmbx12.pfb></usr/local/
+texlive/2014/texmf-dist/fonts/type1/public/lm/lmex10.pfb></usr/local/texlive/20
+14/texmf-dist/fonts/type1/public/lm/lmmi10.pfb></usr/local/texlive/2014/texmf-d
+ist/fonts/type1/public/lm/lmmi8.pfb></usr/local/texlive/2014/texmf-dist/fonts/t
+ype1/public/lm/lmr10.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/public
+/lm/lmr8.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/public/lm/lmsy10.p
+fb></usr/local/texlive/2014/texmf-dist/fonts/type1/public/lm/lmsy8.pfb></usr/lo
+cal/texlive/2014/texmf-dist/fonts/type1/urw/helvetic/uhvb8a.pfb></usr/local/tex
+live/2014/texmf-dist/fonts/type1/urw/helvetic/uhvr8a.pfb>
+Output written on main.pdf (18 pages, 1019347 bytes).
 PDF statistics:
- 233 PDF objects out of 1000 (max. 8388607)
- 112 compressed objects within 2 object streams
+ 258 PDF objects out of 1000 (max. 8388607)
+ 114 compressed objects within 2 object streams
  0 named destinations out of 1000 (max. 500000)
- 25169 words of extra memory for PDF output out of 29859 (max. 10000000)
+ 25174 words of extra memory for PDF output out of 29859 (max. 10000000)
 

@@ -83,4 +83,25 @@ We can also node that when the more we distort the quadrants the more iterations
 
 \subsection{Influence of hanging nodes}
 
-Bma
+Let us now move on to the cases when we have hanging nodes. As in the part with only the fine preconditioner, we will look at a problem where the solution has a jump so that we create hanging nodes when we use a recursive refine function in p4est. In addition to the hyperbolic tangent already presented in the previous subsection, we will include a high frequency sine wave to see how the grid adapts to capture it and how the two scale preconditioner performs in its presence. 
+
+The problem we will solve is : 
+
+\begin{align}
+\nabla^2 u =& -2\tanh(12x)\tanh(12y)\left[ 12^2(1-\tanh(12x)^2) + 12^2(1-\tanh(12y)^2)\right] \nonumber \\
+ &-  10\pi^2\sin(10\pi x)\sin(10\pi y) &\text{on $\Omega$} \label{eq:two_hang}\\
+u =&   \tanh(12x)\tanh(12y) + \frac{1}{20}\sin(10\pi x)\sin(10\pi y)&\text{on $\Gamma$}
+\end{align}
+
+Where $\Omega = [-1;1]^2$ and $\Gamma$ is the boundary. This problem has an analytic solution that is given by : 
+
+$$u(x,y) = \tanh(12x)\tanh(12y) + \frac{1}{20}\sin(10\pi x)\sin(10\pi y)$$
+
+\begin{figure}
+\centering
+\includegraphics[scale=0.35]{Results/two_hang_plot.eps}
+\caption{Numerical solution to problem \ref{eq:two_hang} using an interpolation of order $p=2$ on a non conforming mesh and obtained with PCG with the two scale preconditioner.}
+\label{two_hang_plot}
+\end{figure}
+
+Figure \ref{two_hang_plot} shows an example of the numerical solution computed on a non conforming mesh with PCG and the two scale preconditioner. 
