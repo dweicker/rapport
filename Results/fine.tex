@@ -8,7 +8,7 @@ As in the previous section, we will perform the tests in two parts : first, we w
 Let us first present the problem we will use throughout this section. The forcing term will be chosen more oscillatory than in the previous part since we use interpolations of higher degree. As before, the domain is : $\Omega = [-1;1]^2$ and $\Gamma$ is the boundary. The problem is : 
 
 \begin{align}
-\nabla^2 u &= -8\sin(2\pi x)\sin(2\pi y) &\text{on $\Omega$} \label{eq:prob2}\\
+\nabla^2 u &= -8\pi^2\sin(2\pi x)\sin(2\pi y) &\text{on $\Omega$} \label{eq:prob2}\\
 u &= 0  &\text{on $\Gamma$}
 \end{align}
 
@@ -32,7 +32,7 @@ e^2 & = \max_i |u^2_i - u(x_i,y_i)| = 1.01 \: 10^{-9}
 
 We can see that with the same number of degrees of freedom, an approximation using $p=2$ is much more accurate. This is because the solution is really smooth and is better approximated using a higher order interpolation than a bilinear interpolation on smaller quadrants. This is one example of the reasons we want to use higher order interpolations. 
 
-\subsubsection{Regular mesh}
+\subsubsection{Regular meshes}
 
 Let us now move on to the comparison for different degrees of the number of iteration needed to reach a given accuracy as a function of the number of quadrants. We will take our regular mesh and uniformly refine it. Then, for $p=2,4,6,8$, we will see how many iterations are needed to reach a given error on the norm of the residual. Let us denote $r_k$ the residual after iteration $k$ of the preconditioned conjugate gradients. Of course, since our initial guess is zero, we have that $r_0 = b$ (since we are solving the linear system $Au = b$). For the following tests, our stopping criterion is given by :
 

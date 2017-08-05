@@ -39,7 +39,7 @@
 \newlabel{fine_reg_table}{{1.4}{7}}
 \@writefile{lof}{\contentsline {figure}{\numberline {1.5}{\ignorespaces Number of iterations of PCG with only the fine preconditioner for different degree $p$ of interpolation as a function of the number of quadrants in a regular mesh.\relax }}{7}}
 \newlabel{fine_reg_iter}{{1.5}{7}}
-\@writefile{toc}{\contentsline {subsubsection}{Regular mesh}{7}}
+\@writefile{toc}{\contentsline {subsubsection}{Regular meshes}{7}}
 \newlabel{fine_mesh_deform_1}{{1.6a}{8}}
 \newlabel{sub@fine_mesh_deform_1}{{a}{8}}
 \newlabel{fine_mesh_deform_2}{{1.6b}{8}}
@@ -56,8 +56,21 @@
 \@writefile{lof}{\contentsline {figure}{\numberline {1.8}{\ignorespaces Number of iterations needed to reach a given norm on the residual for a degree of interpolation $p=2$ and for meshes obtained with different tolerances.\relax }}{10}}
 \newlabel{fine_hang_plot}{{1.8}{10}}
 \@writefile{toc}{\contentsline {subsubsection}{Increasing the relative number of hanging nodes}{10}}
-\bibdata{sample.bib}
 \@writefile{lof}{\contentsline {figure}{\numberline {1.9}{\ignorespaces Number of iterations needed to reach the tolerance of the norm of the residual as a function of the degree of the interpolation used for a mesh obtained using $tol=0.02$ in the recursive refine function.\relax }}{11}}
 \newlabel{fine_hang_deg}{{1.9}{11}}
 \@writefile{toc}{\contentsline {subsubsection}{Increasing the degree of the interpolation}{11}}
+\@writefile{lof}{\contentsline {figure}{\numberline {1.10}{\ignorespaces Numerical solution to problem \ref  {eq:prob_two} using an interpolation of order $p=2$ and $1.0\tmspace  +\medmuskip {.2222em}10^{6}$ degrees of freedom on a regular mesh with no hanging nodes. This numerical solution has been obtained by the PCG with the two scale preconditioner.\relax }}{12}}
+\newlabel{two_simple_sol}{{1.10}{12}}
 \@writefile{toc}{\contentsline {section}{\numberline {1.3}Two scale preconditioner}{12}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {1.3.1}No hanging nodes}{12}}
+\newlabel{eq:prob_two}{{1.7}{12}}
+\@writefile{lot}{\contentsline {table}{\numberline {1.6}{\ignorespaces Number of degrees of freedom for a regular mesh with different number of quadrants and for different degrees of interpolation.\relax }}{13}}
+\newlabel{two_table_reg}{{1.6}{13}}
+\@writefile{lof}{\contentsline {figure}{\numberline {1.11}{\ignorespaces Number of iterations of PCG with the two scale preconditioner for degree $p$ of interpolation needed to reach the given tolerance of the norm of the residual as a function of the number of quadrants in a regular mesh.\relax }}{13}}
+\newlabel{two_reg_iter}{{1.11}{13}}
+\@writefile{toc}{\contentsline {subsubsection}{Regular meshes}{13}}
+\@writefile{lof}{\contentsline {figure}{\numberline {1.12}{\ignorespaces Number of iterations of PCG with the two scale preconditioner for an interpolation degree $p=2$ needed to reach the given tolerance on the norm of the residual as a function of the number of quadrants for meshes with quadrants more and more distorted.\relax }}{14}}
+\newlabel{two_irreg_iter}{{1.12}{14}}
+\@writefile{toc}{\contentsline {subsubsection}{Meshes with distorted elements}{14}}
+\bibdata{sample.bib}
+\@writefile{toc}{\contentsline {subsection}{\numberline {1.3.2}Influence of hanging nodes}{15}}
