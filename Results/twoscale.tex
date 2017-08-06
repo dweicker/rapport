@@ -108,3 +108,52 @@ Figure \ref{two_hang_plot} shows an example of the numerical solution computed o
 
 \subsubsection{Increasing the relative number of hanging nodes}
 
+Let us now look at the influence of increasing the number of hanging nodes in the mesh. To achieve this, we will use the same rule in the recursive refinement of the quadrants as in the previous section, given by relation \ref{hang_rel}. We will also tighten the parameter $tol$ used in order to have more quadrants than in the case when we only had the fine preconditioner. 
+
+\begin{table}
+\centering
+\begin{tabular}{c|ccccccc}
+Parameter $tol$ & 0.01 & 0.008 & 0.006 & 0.004 & 0.002 & 0.001 & 0.0005\\
+\hline
+Number of hanging nodes & 6080 & 8064 & 11008 & 14272 & 23200 & 33696 & 70112\\
+Number of global nodes & 19921 & 25545 & 32265 & 49265 & 120201 & 208137 & 445425\\
+$hang$ & 30.52\% & 31.57\% & 34.12\% & 28.97\% & 19.30\% & 16.19\% & 15.74\%
+\end{tabular}
+\caption{Statistics about the different meshes used for the tests regarding the influence of hanging nodes on the number of iterations as well as the ratio $hang$ defined by equation \ref{hang_frac}. The number of global and hanging nodes are for an interpolation degree $p=2$.}
+\label{two_hang_table}
+\end{table}
+
+Table \ref{two_hang_table} shows some statistics about the different meshes used for the tests regarding the influence of hanging nodes on the number of iterations. The number of global and hanging nodes are for an interpolation of degree $p=2$ and the ratio $hang$ is given in equation \ref{hang_frac}.
+
+We can see that, as expected, when we decrease the parameter $tol$, we have more hanging nodes. We can also see that, at first, tightening the parameter $tol$ increase the ratio $hang$ and we have more hanging nodes relatively to global nodes. Then, however, even tough the number of hanging nodes still grows, the number of global nodes grows faster and therefore the ratio $hang$ decreases. This can be explained by the fact that if the parameter $tol$ is very low then we start to refine all part more equally (even the ones where the function does not vary a lot) and the relative number of hanging nodes drops. 
+
+\begin{figure}
+\centering
+\includegraphics[scale=0.35]{Results/two_hang_iter.eps}
+\caption{Number of iterations of PCG with the two scale preconditioner with a degree of interpolation $p=2$ on meshes with hanging nodes defined by the parameter $tol$.}
+\label{two_hang_iter}
+\end{figure}
+
+
+Figure \ref{two_hang_iter} shows the number of iterations needed to reach the given tolerance with an interpolation degree $p=2$ on the different meshes presented in table \ref{two_hang_table}. We can see that the number of iterations stays roughly the same (it is either 30 or 31) for all meshes, however the number of hanging nodes and the value of the ratio $hang$. So we can conclude that the coarse preconditioner once again guaranties the h-independent convergence and that the number of hanging nodes does not have a great influence on the number of iterations. 
+
+We also have to note that, for the same problem, if we use a conforming mesh, the number of iterations needed drops to 16. So even if the number of hanging nodes (absolute or relative) does not greatly influence the number of iterations, just adding one non conforming quadrant does a lot to decrease the performance of the preconditioner. We can point the fact that, as mentioned earlier, when we have hanging quadrants, we do not handle every possibilities to compute the residuals in the overlaps. We can thus see how that affects the number of iterations. 
+
+
+\subsubsection{Increasing the degree of the interpolation}
+
+\begin{figure}
+\centering
+\includegraphics[scale=0.35]{Results/two_hang_deg.eps}
+\caption{Number of iterations of PCG with the two scale preconditioner as a function of the degree of the interpolation used for a mesh obtained with $tol = 0.001$ in the recursive refine function.}
+\label{two_hang_deg}
+\end{figure}
+
+Let us now move on to look at what happens when we increase the degree of the interpolation. We will use the mesh defined by $tol = 0.001$ and look at the number of iterations needed to reach the given tolerance for $p=2,4,6,8$. Figure \ref{two_hang_deg} shows the results. 
+
+We can see that as we increase the degree of the interpolation, the number of iterations increases. It goes from 31 for $p=2$ to 85 iterations when $p=8$. We can see that it is quite a lot. But we also have to note that going from degree 2 to degree 8, we have also gone from $2.1\:10^5$ degrees of freedom to $3.4\:10^6$.
+
+As in the case when we only had the fine preconditioner, several factors can be put forward to explain the increase in the number of iterations. First, when we increase the degree, the size of the overlap decreases and therefore the fine preconditioner is less effective. As mentioned in \textcolor{red}{Ref here!}, a fixed sized overlap would fix the issue. 
+
+Second, we can say that the number of hanging nodes in the overlaps increases with the degree of the interpolation. Since we do not treat all possibilities when handling hanging quadrants, the error made is more important when we have a lot of nodes in the overlap.
+

@@ -125,7 +125,10 @@ u &= \tanh(nx)\tanh(my)  &\text{on $\Gamma$}
  
  As explained before, we will use a recursive refine function when we build the forest. Since we know the analytic solution, we can cheat a little and use it for the refinement process. We will ask that the absolute value of the difference between the value of $u$ in the center of the quadrant and the mean of the values of $u$ at the four corners of the quadrant is less than a fixed tolerance multiplied by the maximum value of the function. So, if the four corners have coordinates $(x_i , y_i)$ for $i=0,1,2,3$, and that $u_{max} = max_{x,y \in \Omega} \left| u \right|$, we impose the following rule :
  
-  $$\left| u(\frac{1}{4}\sum_{i=0}^3 x_i , \frac{1}{4}\sum_{i=0}^3 y_i) - \frac{1}{4}\sum_{i=0}^3 u(x_i,y_i) < u_{max} tol\right|$$ 
+\begin{align}  
+  \left| u(\frac{1}{4}\sum_{i=0}^3 x_i , \frac{1}{4}\sum_{i=0}^3 y_i) - \frac{1}{4}\sum_{i=0}^3 u(x_i,y_i) < u_{max} tol\right|
+  \label{hang_rel}
+\end{align}
   
 Where $tol$ is a fixed tolerance. Intuitively, the tighter the tolerance, the more refined the grid needs to be and the more hanging nodes we will have thanks to the jump in the hyperbolic tangent function. 
 
@@ -133,7 +136,10 @@ Where $tol$ is a fixed tolerance. Intuitively, the tighter the tolerance, the mo
 
 To have a rather steep jump, we chose $n=m=12$ for the different tests that follow. We varied the tolerance to have more or less hanging nodes. We also needed a way to quantify the presence of hanging nodes. Let us define $hang$, the ratio of the number of hanging nodes over the number of global nodes. 
 
-$$ hang = \frac{\#\text{hanging nodes}}{\#\text{global nodes}}$$
+\begin{align}
+ hang = \frac{\#\text{hanging nodes}}{\#\text{global nodes}}
+ \label{hang_frac}
+ \end{align}
 
 \begin{table}
 \centering
