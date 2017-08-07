@@ -4,7 +4,7 @@ Let us finally move on to the two-scale preconditioner. We showed in the previou
 
 As in the previous section, the tests will be performed in two parts : first, we will analyse the performances of the two-scale preconditioner when there are no hanging nodes (but for both regular and distorted meshes) and then we will look at what happens when the forest of quadtrees is refined recursively and therefore the mesh is not conforming anymore. 
 
-\textcolor{red}{Ajouter si on fait le truc avec les erreurs et le temps}
+In the last subsection, we will also motivate the choice of using higher order degrees of interpolation. We will indeed look at the best degree to obtain a given accuracy in the solution, i.e. the degree for which we have the solution to a given problem on a given mesh in the shortest amount of time and that is accurate enough. 
 
 \subsection{No hanging nodes}
 
@@ -79,7 +79,6 @@ For an interpolation of degree $p=2$, we looked at the number of iterations need
 
 We can also node that when the more we distort the quadrants the more iterations we need to reach the given tolerance. This is to be expected since we developed the fine preconditioner to work optimally on quadrants aligned with the axis. This means that the more a quadrant is distorted the less accurate is the fine preconditioner part and therefore the more iterations we need. However, even with the most distorted mesh, the number of iterations stays acceptable and as explained in the previous section, the gain of not having to solve exactly on every quadrant is huge. We also have to say that the meshes presented here have an intrinsic structure since they are generated using the progression tool in GMSH. Therefore, the errors we make with our approximation are always in the same direction and the number of iterations needed increases. We might not have such an increase with a random mesh containing quadrants with the same quality measure. 
 
-\textcolor{red}{Ajouter ici un mesh random si espace dispo}
 
 \subsection{Influence of hanging nodes}
 
@@ -156,4 +155,40 @@ We can see that as we increase the degree of the interpolation, the number of it
 As in the case when we only had the fine preconditioner, several factors can be put forward to explain the increase in the number of iterations. First, when we increase the degree, the size of the overlap decreases and therefore the fine preconditioner is less effective. As mentioned in \textcolor{red}{Ref here!}, a fixed sized overlap would fix the issue. 
 
 Second, we can say that the number of hanging nodes in the overlaps increases with the degree of the interpolation. Since we do not treat all possibilities when handling hanging quadrants, the error made is more important when we have a lot of nodes in the overlap.
+
+
+\subsection{Most efficient degree to obtain a given accuracy}
+
+In this subsection, we will look at the best degree of interpolation $p$ to obtain a given accuracy. We will use the problem defined by \ref{eq:prob_two} and the distorted mesh using the progression tool of GMSH with $a=1.2$ that we will uniformly refine. We will also tighten the tolerance on the norm of the residual since we want the error to come from the interpolation and not from the fact that we only solve the linear system approximately. We will impose that : 
+
+$$ \frac{||r_k||_2}{||r_0||_2} < 10^{-12} $$
+
+Afterwards, we will compute the error committed by the discretization in the $L^2$-norm. Let us define $e^p$, the error made by using an interpolation of degree $p$, $u^p$ the solution of the discretized problem using a degree $p$, $U^p_i$ the numerical solution at the global node $i$ of the linear system that arises and $m_i$ the mass matrix associated with the integration. Then we have :  
+
+\begin{align}
+e^p &= \left( \int_\Omega (u-u^p)^2dxdy \right)^\frac{1}{2}\\
+ &\approx \left( \sum_i (u(x_i,y_i)-U_i^p)^2 m_i \right)^\frac{1}{2}
+\end{align}
+
+We can note that if we refine uniformly the mesh, then $e^p$ will decrease but it will also cost us more. And for a given mesh, we have that $e^p$ decreases as $p$ increases (but it also costs us to increase the degree). So the question that arises is when is it more interesting to refine the mesh uniformly and when is it better to increase the degree of the interpolation to get the accuracy we want.
+
+We will select degree $p$ to be the best for an accuracy of $10^{-a}$ if and only if there is a mesh such that $e^p<10^{-a}$ on this mesh and the time needed to obtain the numerical solution is smaller than for any degree on any other mesh and the same accuracy. 
+
+\begin{figure}
+\centering
+\includegraphics[scale=0.35]{Results/two_acc.eps}
+\caption{Best degree of interpolation to solve problem \ref{eq:prob_two} on a distorted mesh as a function of the accuracy we want on the $L^2$-norm.}
+\label{two_acc}
+\end{figure}
+
+Figure \ref{two_acc} shows the results. We can see that when the wanted accuracy is rather low (for $10^{-7}$) then it is quicker to use an order of interpolation $p=2$ because the number of iterations needed to solve the linear system is smaller than for a higher order interpolation. Moreover, the number of degrees of freedom to obtain such an accuracy is not so high as to make one iteration very long. 
+
+On the other hand, when we want a better accuracy ($10^{-10}$, $10^{-11}$) then it is cheaper to use higher order interpolation such as $p=8$. This can be explained by the fact that, even though the number of iterations of PCG is higher (as mentioned earlier in this section), the number of degrees of freedom to obtain the wanted accuracy is much lower for $p=8$ than for the other degrees. Therefore, one iteration takes much less time and $p=8$ becomes more efficient. 
+
+In between the two ($10^{-8}$, $10^{-9}$), we can see that the best degree is $p=4$ where we have a trade-off between the number of iterations needed to solve the system and the number of degrees of freedom.
+
+The quantitative results presented here depend of course of the implementation, the problem to solve and the mesh used. However, we can note that the qualitative result stays true : the more accurate we want to be, the more interesting it becomes to use higher degree in the interpolation because then the number of DOF does not grow as large as it would with lower order polynomials. 
+
+
+
 

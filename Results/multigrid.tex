@@ -14,7 +14,7 @@ Let us before all present a type of numerical solution that can be obtained usin
 Let us first verify that our geometric multigrid solver has the required property and that the same number of iterations is needed to obtain a given accuracy, however small the elements. We will use the model problem throughout this section with the same right hand side. For all the tests below, the domain  will be : $\Omega = [-1;1]^2$. We will solve : 
 
 \begin{align}
-\nabla^2 u &= -\frac{\pi^2}{2}\cos(\frac{\pi}{2}x)\cos(\frac{\pi}{2}y) &\text{on $\Omega$} \\
+\nabla^2 u &= -\frac{\pi^2}{2}\cos(\frac{\pi}{2}x)\cos(\frac{\pi}{2}y) &\text{on $\Omega$} \label{eq:prob1} \\
 u &= 0  &\text{on $\Gamma$}
 \end{align}
 
