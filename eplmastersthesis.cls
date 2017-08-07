@@ -10,6 +10,11 @@
 \usepackage{amsmath}
 \usepackage{subcaption}
 
+% Bibliography
+\usepackage{hyperref}
+\usepackage{cite} % Mets les ref dans l'ordre d'apparence mais perturbe un peu la mise en page de tableoffigure/table
+\bibliographystyle{unsrt}
+
 
 % Header
 \usepackage{fancyhdr}

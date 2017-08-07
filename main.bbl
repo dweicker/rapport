@@ -1,0 +1,19 @@
+\begin{thebibliography}{1}
+
+\bibitem{lapack}
+{LAPACK} - {L}inear {A}lgebra {PACK}age.
+\newblock \url{http://www.netlib.org/lapack/}.
+\newblock Accessed: 2017-04.
+
+\bibitem{overlap_constant}
+Luca~F Pavarino.
+\newblock {{A}dditive {S}chwarz methods for the p-version finite element
+  method}.
+\newblock {\em Numerische Mathematik}, 66(1):493--515, Dec 1993.
+
+\bibitem{gmsh}
+{GMSH}.
+\newblock \url{http://gmsh.info/}.
+\newblock Accessed: 2017-04.
+
+\end{thebibliography}

@@ -1,94 +1,119 @@
 \relax 
+\providecommand\hyper@newdestlabel[2]{}
+\providecommand\HyperFirstAtBeginDocument{\AtBeginDocument}
+\HyperFirstAtBeginDocument{\ifx\hyper@anchor\@undefined
+\global\let\oldcontentsline\contentsline
+\gdef\contentsline#1#2#3#4{\oldcontentsline{#1}{#2}{#3}}
+\global\let\oldnewlabel\newlabel
+\gdef\newlabel#1#2{\newlabelxx{#1}#2}
+\gdef\newlabelxx#1#2#3#4#5#6{\oldnewlabel{#1}{{#2}{#3}}}
+\AtEndDocument{\ifx\hyper@anchor\@undefined
+\let\contentsline\oldcontentsline
+\let\newlabel\oldnewlabel
+\fi}
+\fi}
+\global\let\hyper@last\relax 
+\gdef\HyperFirstAtBeginDocument#1{#1}
+\providecommand\HyField@AuxAddToFields[1]{}
+\providecommand\HyField@AuxAddToCoFields[2]{}
+\bibstyle{unsrt}
 \select@language{english}
 \@writefile{toc}{\select@language{english}}
 \@writefile{lof}{\select@language{english}}
 \@writefile{lot}{\select@language{english}}
-\@writefile{toc}{\contentsline {chapter}{\numberline {1}Results and discussion}{1}}
+\citation{lapack}
+\@writefile{toc}{\contentsline {chapter}{\numberline {1}Results and discussion}{1}{chapter.1}}
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
-\@writefile{lof}{\contentsline {figure}{\numberline {1.1}{\ignorespaces Numerical solution using the multigrid solver of $\nabla ^2 u = f$ for $f = -2\qopname  \relax o{tanh}(3x)\qopname  \relax o{tanh}(3y)(18-9\qopname  \relax o{tanh}^2(3x)-9\qopname  \relax o{tanh}^2(3y))$\relax }}{2}}
+\@writefile{lof}{\contentsline {figure}{\numberline {1.1}{\ignorespaces Numerical solution using the multigrid solver of $\nabla ^2 u = f$ for $f = -2\qopname  \relax o{tanh}(3x)\qopname  \relax o{tanh}(3y)(18-9\qopname  \relax o{tanh}^2(3x)-9\qopname  \relax o{tanh}^2(3y))$\relax }}{2}{figure.caption.1}}
 \providecommand*\caption@xref[2]{\@setref\relax\@undefined{#1}}
-\newlabel{multi_simple_sol}{{1.1}{2}}
-\@writefile{toc}{\contentsline {section}{\numberline {1.1}Multigrid}{2}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {1.1.1}H-independent convergence}{2}}
-\newlabel{eq:prob1}{{1.1}{2}}
-\newlabel{multi_mesh_1}{{1.2a}{3}}
-\newlabel{sub@multi_mesh_1}{{a}{3}}
-\newlabel{multi_mesh_2}{{1.2b}{3}}
-\newlabel{sub@multi_mesh_2}{{b}{3}}
-\@writefile{lof}{\contentsline {figure}{\numberline {1.2}{\ignorespaces The two "supra meshes" that will be refined during the tests for the multigrid solver. We have one regular mesh (left) where the elements are squares and one crooked mesh (right) where the elements are slightly distorted.\relax }}{3}}
-\newlabel{multi_mesh}{{1.2}{3}}
-\@writefile{lot}{\contentsline {table}{\numberline {1.1}{\ignorespaces Errors after $k$ iterations of a V-cycle ($e_k$) for the regular mesh uniformly refined to have $N$ degrees of freedom and for different values of the parameters $\nu _1$ and $\nu _2$\relax }}{4}}
-\newlabel{multi_err_nu}{{1.1}{4}}
-\@writefile{lot}{\contentsline {table}{\numberline {1.2}{\ignorespaces Errors after $k$ iterations of a V-cycle ($e_k$) for the crooked mesh uniformly refined to have $N$ degrees of freedom and for $\nu _1=2$ and $\nu _2=2$\relax }}{5}}
-\newlabel{multi_err_crook}{{1.2}{5}}
-\@writefile{lot}{\contentsline {table}{\numberline {1.3}{\ignorespaces Errors after $k$ iterations of a V-cycle ($e_k$) for a mesh without hanging nodes and the two meshes presented in figure \ref  {multi_mesh_hanging}. Each mesh has $N$ degrees of freedom and the smoothing parameters were $\nu _1 = 2$ and $\nu _2 =2$.\relax }}{5}}
-\newlabel{multi_err_hanging}{{1.3}{5}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {1.1.2}Influence of hanging nodes}{5}}
-\newlabel{multi_mesh_hanging_1}{{1.3a}{6}}
-\newlabel{sub@multi_mesh_hanging_1}{{a}{6}}
-\newlabel{multi_mesh_hanging_2}{{1.3b}{6}}
-\newlabel{sub@multi_mesh_hanging_2}{{b}{6}}
-\@writefile{lof}{\contentsline {figure}{\numberline {1.3}{\ignorespaces Zoom on a certain part of the two meshes containing hanging nodes that will be used to test the multigrid solver. We have one mesh where we only have refined a part of the domain once more than the rest (left) and a mesh where we have refined a part thrice more than the rest which results in levels changing rapidly (right).\relax }}{6}}
-\newlabel{multi_mesh_hanging}{{1.3}{6}}
-\@writefile{toc}{\contentsline {section}{\numberline {1.2}Fine preconditioner}{6}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {1.2.1}No hanging nodes}{6}}
-\newlabel{eq:prob2}{{1.3}{6}}
-\@writefile{lof}{\contentsline {figure}{\numberline {1.4}{\ignorespaces Numerical solution to problem \ref  {eq:prob2} using an interpolation of order $p=2$ and $1.0\tmspace  +\medmuskip {.2222em}10^6$ degrees of freedom on a regular mesh with no hanging nodes.\relax }}{7}}
-\newlabel{fine_simple_sol}{{1.4}{7}}
-\@writefile{toc}{\contentsline {subsubsection}{Regular meshes}{7}}
-\@writefile{lot}{\contentsline {table}{\numberline {1.4}{\ignorespaces Number of degrees of freedom for a regular mesh with different number of quadrants and for different degrees of interpolation.\relax }}{8}}
-\newlabel{fine_reg_table}{{1.4}{8}}
-\@writefile{lof}{\contentsline {figure}{\numberline {1.5}{\ignorespaces Number of iterations of PCG with only the fine preconditioner for different degree $p$ of interpolation as a function of the number of quadrants in a regular mesh.\relax }}{8}}
-\newlabel{fine_reg_iter}{{1.5}{8}}
-\newlabel{fine_mesh_deform_1}{{1.6a}{9}}
-\newlabel{sub@fine_mesh_deform_1}{{a}{9}}
-\newlabel{fine_mesh_deform_2}{{1.6b}{9}}
-\newlabel{sub@fine_mesh_deform_2}{{b}{9}}
-\@writefile{lof}{\contentsline {figure}{\numberline {1.6}{\ignorespaces Examples of the meshes used for the tests of the fine preconditioner with distorted elements. The meshes are created using GMSH with its progression tool. The key parameter is the common ratio $a$ that we will be increasing progressively.\relax }}{9}}
-\newlabel{fine_mesh_deform}{{1.6}{9}}
-\@writefile{toc}{\contentsline {subsubsection}{Meshes with distorted elements}{9}}
-\@writefile{lof}{\contentsline {figure}{\numberline {1.7}{\ignorespaces bla\relax }}{10}}
-\newlabel{fine_dist_iter}{{1.7}{10}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {1.2.2}Influence of hanging nodes}{10}}
-\newlabel{eq:prob3}{{1.5}{10}}
-\@writefile{lot}{\contentsline {table}{\numberline {1.5}{\ignorespaces Number of quadrants obtained using the recursive refine function on the problem \ref  {eq:prob3} for different tolerances as well as the ratio $hang$ for each mesh with an interpolation of degree $p=2$.\relax }}{11}}
-\newlabel{fine_hanging_ratio}{{1.5}{11}}
-\newlabel{hang_rel}{{1.7}{11}}
-\@writefile{toc}{\contentsline {subsubsection}{Increasing the relative number of hanging nodes}{11}}
-\newlabel{hang_frac}{{1.8}{11}}
-\@writefile{lof}{\contentsline {figure}{\numberline {1.8}{\ignorespaces Number of iterations needed to reach a given norm on the residual for a degree of interpolation $p=2$ and for meshes obtained with different tolerances.\relax }}{12}}
-\newlabel{fine_hang_plot}{{1.8}{12}}
-\@writefile{lof}{\contentsline {figure}{\numberline {1.9}{\ignorespaces Number of iterations needed to reach the tolerance of the norm of the residual as a function of the degree of the interpolation used for a mesh obtained using $tol=0.02$ in the recursive refine function.\relax }}{12}}
-\newlabel{fine_hang_deg}{{1.9}{12}}
-\@writefile{toc}{\contentsline {subsubsection}{Increasing the degree of the interpolation}{13}}
-\@writefile{toc}{\contentsline {section}{\numberline {1.3}Two scale preconditioner}{13}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {1.3.1}No hanging nodes}{13}}
-\newlabel{eq:prob_two}{{1.9}{13}}
-\@writefile{lof}{\contentsline {figure}{\numberline {1.10}{\ignorespaces Numerical solution to problem \ref  {eq:prob_two} using an interpolation of order $p=2$ and $1.0\tmspace  +\medmuskip {.2222em}10^{6}$ degrees of freedom on a regular mesh with no hanging nodes. This numerical solution has been obtained by the PCG with the two scale preconditioner.\relax }}{14}}
-\newlabel{two_simple_sol}{{1.10}{14}}
-\@writefile{lot}{\contentsline {table}{\numberline {1.6}{\ignorespaces Number of degrees of freedom for a regular mesh with different number of quadrants and for different degrees of interpolation.\relax }}{14}}
-\newlabel{two_table_reg}{{1.6}{14}}
-\@writefile{toc}{\contentsline {subsubsection}{Regular meshes}{14}}
-\@writefile{lof}{\contentsline {figure}{\numberline {1.11}{\ignorespaces Number of iterations of PCG with the two scale preconditioner for degree $p$ of interpolation needed to reach the given tolerance of the norm of the residual as a function of the number of quadrants in a regular mesh.\relax }}{15}}
-\newlabel{two_reg_iter}{{1.11}{15}}
-\@writefile{toc}{\contentsline {subsubsection}{Meshes with distorted elements}{15}}
-\@writefile{lof}{\contentsline {figure}{\numberline {1.12}{\ignorespaces Number of iterations of PCG with the two scale preconditioner for an interpolation degree $p=2$ needed to reach the given tolerance on the norm of the residual as a function of the number of quadrants for meshes with quadrants more and more distorted.\relax }}{16}}
-\newlabel{two_irreg_iter}{{1.12}{16}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {1.3.2}Influence of hanging nodes}{16}}
-\newlabel{eq:two_hang}{{1.11}{16}}
-\@writefile{toc}{\contentsline {subsubsection}{Increasing the relative number of hanging nodes}{16}}
-\@writefile{lof}{\contentsline {figure}{\numberline {1.13}{\ignorespaces Numerical solution to problem \ref  {eq:two_hang} using an interpolation of order $p=2$ on a non conforming mesh and obtained with PCG with the two scale preconditioner.\relax }}{17}}
-\newlabel{two_hang_plot}{{1.13}{17}}
-\@writefile{lot}{\contentsline {table}{\numberline {1.7}{\ignorespaces Statistics about the different meshes used for the tests regarding the influence of hanging nodes on the number of iterations as well as the ratio $hang$ defined by equation \ref  {hang_frac}. The number of global and hanging nodes are for an interpolation degree $p=2$.\relax }}{17}}
-\newlabel{two_hang_table}{{1.7}{17}}
-\@writefile{lof}{\contentsline {figure}{\numberline {1.14}{\ignorespaces Number of iterations of PCG with the two scale preconditioner with a degree of interpolation $p=2$ on meshes with hanging nodes defined by the parameter $tol$.\relax }}{18}}
-\newlabel{two_hang_iter}{{1.14}{18}}
-\@writefile{toc}{\contentsline {subsubsection}{Increasing the degree of the interpolation}{18}}
-\@writefile{lof}{\contentsline {figure}{\numberline {1.15}{\ignorespaces Number of iterations of PCG with the two scale preconditioner as a function of the degree of the interpolation used for a mesh obtained with $tol = 0.001$ in the recursive refine function.\relax }}{19}}
-\newlabel{two_hang_deg}{{1.15}{19}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {1.3.3}Most efficient degree to obtain a given accuracy}{19}}
-\@writefile{lof}{\contentsline {figure}{\numberline {1.16}{\ignorespaces Best degree of interpolation to solve problem \ref  {eq:prob_two} on a distorted mesh as a function of the accuracy we want on the $L^2$-norm.\relax }}{20}}
-\newlabel{two_acc}{{1.16}{20}}
-\@writefile{toc}{\contentsline {section}{\numberline {1.4}Conclusion}{20}}
-\bibdata{sample.bib}
+\newlabel{multi_simple_sol}{{1.1}{2}{Numerical solution using the multigrid solver of $\nabla ^2 u = f$ for $f = -2\tanh (3x)\tanh (3y)(18-9\tanh ^2(3x)-9\tanh ^2(3y))$\relax }{figure.caption.1}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {1.1}Multigrid}{2}{section.1.1}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {1.1.1}H-independent convergence}{2}{subsection.1.1.1}}
+\newlabel{eq:prob1}{{1.1}{2}{H-independent convergence}{equation.1.1.1}{}}
+\newlabel{multi_mesh_1}{{1.2a}{3}{Regular mesh\relax }{figure.caption.2}{}}
+\newlabel{sub@multi_mesh_1}{{a}{3}{Regular mesh\relax }{figure.caption.2}{}}
+\newlabel{multi_mesh_2}{{1.2b}{3}{Crooked mesh\relax }{figure.caption.2}{}}
+\newlabel{sub@multi_mesh_2}{{b}{3}{Crooked mesh\relax }{figure.caption.2}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {1.2}{\ignorespaces The two "supra meshes" that will be refined during the tests for the multigrid solver. We have one regular mesh (left) where the elements are squares and one crooked mesh (right) where the elements are slightly distorted.\relax }}{3}{figure.caption.2}}
+\newlabel{multi_mesh}{{1.2}{3}{The two "supra meshes" that will be refined during the tests for the multigrid solver. We have one regular mesh (left) where the elements are squares and one crooked mesh (right) where the elements are slightly distorted.\relax }{figure.caption.2}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {1.1}{\ignorespaces Errors after $k$ iterations of a V-cycle ($e_k$) for the regular mesh uniformly refined to have $N$ degrees of freedom and for different values of the parameters $\nu _1$ and $\nu _2$\relax }}{4}{table.caption.3}}
+\newlabel{multi_err_nu}{{1.1}{4}{Errors after $k$ iterations of a V-cycle ($e_k$) for the regular mesh uniformly refined to have $N$ degrees of freedom and for different values of the parameters $\nu _1$ and $\nu _2$\relax }{table.caption.3}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {1.2}{\ignorespaces Errors after $k$ iterations of a V-cycle ($e_k$) for the crooked mesh uniformly refined to have $N$ degrees of freedom and for $\nu _1=2$ and $\nu _2=2$\relax }}{5}{table.caption.4}}
+\newlabel{multi_err_crook}{{1.2}{5}{Errors after $k$ iterations of a V-cycle ($e_k$) for the crooked mesh uniformly refined to have $N$ degrees of freedom and for $\nu _1=2$ and $\nu _2=2$\relax }{table.caption.4}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {1.3}{\ignorespaces Errors after $k$ iterations of a V-cycle ($e_k$) for a mesh without hanging nodes and the two meshes presented in figure \ref  {multi_mesh_hanging}. Each mesh has $N$ degrees of freedom and the smoothing parameters were $\nu _1 = 2$ and $\nu _2 =2$.\relax }}{5}{table.caption.6}}
+\newlabel{multi_err_hanging}{{1.3}{5}{Errors after $k$ iterations of a V-cycle ($e_k$) for a mesh without hanging nodes and the two meshes presented in figure \ref {multi_mesh_hanging}. Each mesh has $N$ degrees of freedom and the smoothing parameters were $\nu _1 = 2$ and $\nu _2 =2$.\relax }{table.caption.6}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {1.1.2}Influence of hanging nodes}{5}{subsection.1.1.2}}
+\newlabel{multi_mesh_hanging_1}{{1.3a}{6}{Two levels\relax }{figure.caption.5}{}}
+\newlabel{sub@multi_mesh_hanging_1}{{a}{6}{Two levels\relax }{figure.caption.5}{}}
+\newlabel{multi_mesh_hanging_2}{{1.3b}{6}{Levels rapidly changing\relax }{figure.caption.5}{}}
+\newlabel{sub@multi_mesh_hanging_2}{{b}{6}{Levels rapidly changing\relax }{figure.caption.5}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {1.3}{\ignorespaces Zoom on a certain part of the two meshes containing hanging nodes that will be used to test the multigrid solver. We have one mesh where we only have refined a part of the domain once more than the rest (left) and a mesh where we have refined a part thrice more than the rest which results in levels changing rapidly (right).\relax }}{6}{figure.caption.5}}
+\newlabel{multi_mesh_hanging}{{1.3}{6}{Zoom on a certain part of the two meshes containing hanging nodes that will be used to test the multigrid solver. We have one mesh where we only have refined a part of the domain once more than the rest (left) and a mesh where we have refined a part thrice more than the rest which results in levels changing rapidly (right).\relax }{figure.caption.5}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {1.2}Fine preconditioner}{6}{section.1.2}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {1.2.1}No hanging nodes}{6}{subsection.1.2.1}}
+\newlabel{eq:prob2}{{1.3}{6}{No hanging nodes}{equation.1.2.3}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {1.4}{\ignorespaces Numerical solution to problem \ref  {eq:prob2} using an interpolation of order $p=2$ and $1.0\tmspace  +\medmuskip {.2222em}10^6$ degrees of freedom on a regular mesh with no hanging nodes.\relax }}{7}{figure.caption.7}}
+\newlabel{fine_simple_sol}{{1.4}{7}{Numerical solution to problem \ref {eq:prob2} using an interpolation of order $p=2$ and $1.0\:10^6$ degrees of freedom on a regular mesh with no hanging nodes.\relax }{figure.caption.7}{}}
+\@writefile{toc}{\contentsline {subsubsection}{Regular meshes}{7}{section*.8}}
+\@writefile{lot}{\contentsline {table}{\numberline {1.4}{\ignorespaces Number of degrees of freedom for a regular mesh with different number of quadrants and for different degrees of interpolation.\relax }}{8}{table.caption.9}}
+\newlabel{fine_reg_table}{{1.4}{8}{Number of degrees of freedom for a regular mesh with different number of quadrants and for different degrees of interpolation.\relax }{table.caption.9}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {1.5}{\ignorespaces Number of iterations of PCG with only the fine preconditioner for different degree $p$ of interpolation as a function of the number of quadrants in a regular mesh.\relax }}{8}{figure.caption.10}}
+\newlabel{fine_reg_iter}{{1.5}{8}{Number of iterations of PCG with only the fine preconditioner for different degree $p$ of interpolation as a function of the number of quadrants in a regular mesh.\relax }{figure.caption.10}{}}
+\citation{overlap_constant}
+\citation{gmsh}
+\newlabel{fine_mesh_deform_1}{{1.6a}{9}{Mesh with $a=1.1$\relax }{figure.caption.12}{}}
+\newlabel{sub@fine_mesh_deform_1}{{a}{9}{Mesh with $a=1.1$\relax }{figure.caption.12}{}}
+\newlabel{fine_mesh_deform_2}{{1.6b}{9}{Mesh with $a=1.4$\relax }{figure.caption.12}{}}
+\newlabel{sub@fine_mesh_deform_2}{{b}{9}{Mesh with $a=1.4$\relax }{figure.caption.12}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {1.6}{\ignorespaces Examples of the meshes used for the tests of the fine preconditioner with distorted elements. The meshes are created using GMSH with its progression tool. The key parameter is the common ratio $a$ that we will be increasing progressively.\relax }}{9}{figure.caption.12}}
+\newlabel{fine_mesh_deform}{{1.6}{9}{Examples of the meshes used for the tests of the fine preconditioner with distorted elements. The meshes are created using GMSH with its progression tool. The key parameter is the common ratio $a$ that we will be increasing progressively.\relax }{figure.caption.12}{}}
+\@writefile{toc}{\contentsline {subsubsection}{Meshes with distorted elements}{9}{section*.11}}
+\@writefile{lof}{\contentsline {figure}{\numberline {1.7}{\ignorespaces bla\relax }}{10}{figure.caption.13}}
+\newlabel{fine_dist_iter}{{1.7}{10}{bla\relax }{figure.caption.13}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {1.2.2}Influence of hanging nodes}{10}{subsection.1.2.2}}
+\newlabel{eq:prob3}{{1.5}{10}{Influence of hanging nodes}{equation.1.2.5}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {1.5}{\ignorespaces Number of quadrants obtained using the recursive refine function on the problem \ref  {eq:prob3} for different tolerances as well as the ratio $hang$ for each mesh with an interpolation of degree $p=2$.\relax }}{11}{table.caption.15}}
+\newlabel{fine_hanging_ratio}{{1.5}{11}{Number of quadrants obtained using the recursive refine function on the problem \ref {eq:prob3} for different tolerances as well as the ratio $hang$ for each mesh with an interpolation of degree $p=2$.\relax }{table.caption.15}{}}
+\newlabel{hang_rel}{{1.7}{11}{Influence of hanging nodes}{equation.1.2.7}{}}
+\@writefile{toc}{\contentsline {subsubsection}{Increasing the relative number of hanging nodes}{11}{section*.14}}
+\newlabel{hang_frac}{{1.8}{11}{Increasing the relative number of hanging nodes}{equation.1.2.8}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {1.8}{\ignorespaces Number of iterations needed to reach a given norm on the residual for a degree of interpolation $p=2$ and for meshes obtained with different tolerances.\relax }}{12}{figure.caption.16}}
+\newlabel{fine_hang_plot}{{1.8}{12}{Number of iterations needed to reach a given norm on the residual for a degree of interpolation $p=2$ and for meshes obtained with different tolerances.\relax }{figure.caption.16}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {1.9}{\ignorespaces Number of iterations needed to reach the tolerance of the norm of the residual as a function of the degree of the interpolation used for a mesh obtained using $tol=0.02$ in the recursive refine function.\relax }}{12}{figure.caption.18}}
+\newlabel{fine_hang_deg}{{1.9}{12}{Number of iterations needed to reach the tolerance of the norm of the residual as a function of the degree of the interpolation used for a mesh obtained using $tol=0.02$ in the recursive refine function.\relax }{figure.caption.18}{}}
+\@writefile{toc}{\contentsline {subsubsection}{Increasing the degree of the interpolation}{13}{section*.17}}
+\@writefile{toc}{\contentsline {section}{\numberline {1.3}Two scale preconditioner}{13}{section.1.3}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {1.3.1}No hanging nodes}{13}{subsection.1.3.1}}
+\newlabel{eq:prob_two}{{1.9}{13}{No hanging nodes}{equation.1.3.9}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {1.10}{\ignorespaces Numerical solution to problem \ref  {eq:prob_two} using an interpolation of order $p=2$ and $1.0\tmspace  +\medmuskip {.2222em}10^{6}$ degrees of freedom on a regular mesh with no hanging nodes. This numerical solution has been obtained by the PCG with the two scale preconditioner.\relax }}{14}{figure.caption.19}}
+\newlabel{two_simple_sol}{{1.10}{14}{Numerical solution to problem \ref {eq:prob_two} using an interpolation of order $p=2$ and $1.0\:10^{6}$ degrees of freedom on a regular mesh with no hanging nodes. This numerical solution has been obtained by the PCG with the two scale preconditioner.\relax }{figure.caption.19}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {1.6}{\ignorespaces Number of degrees of freedom for a regular mesh with different number of quadrants and for different degrees of interpolation.\relax }}{14}{table.caption.21}}
+\newlabel{two_table_reg}{{1.6}{14}{Number of degrees of freedom for a regular mesh with different number of quadrants and for different degrees of interpolation.\relax }{table.caption.21}{}}
+\@writefile{toc}{\contentsline {subsubsection}{Regular meshes}{14}{section*.20}}
+\@writefile{lof}{\contentsline {figure}{\numberline {1.11}{\ignorespaces Number of iterations of PCG with the two scale preconditioner for degree $p$ of interpolation needed to reach the given tolerance of the norm of the residual as a function of the number of quadrants in a regular mesh.\relax }}{15}{figure.caption.22}}
+\newlabel{two_reg_iter}{{1.11}{15}{Number of iterations of PCG with the two scale preconditioner for degree $p$ of interpolation needed to reach the given tolerance of the norm of the residual as a function of the number of quadrants in a regular mesh.\relax }{figure.caption.22}{}}
+\@writefile{toc}{\contentsline {subsubsection}{Meshes with distorted elements}{15}{section*.23}}
+\@writefile{lof}{\contentsline {figure}{\numberline {1.12}{\ignorespaces Number of iterations of PCG with the two scale preconditioner for an interpolation degree $p=2$ needed to reach the given tolerance on the norm of the residual as a function of the number of quadrants for meshes with quadrants more and more distorted.\relax }}{16}{figure.caption.24}}
+\newlabel{two_irreg_iter}{{1.12}{16}{Number of iterations of PCG with the two scale preconditioner for an interpolation degree $p=2$ needed to reach the given tolerance on the norm of the residual as a function of the number of quadrants for meshes with quadrants more and more distorted.\relax }{figure.caption.24}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {1.3.2}Influence of hanging nodes}{16}{subsection.1.3.2}}
+\newlabel{eq:two_hang}{{1.11}{16}{Influence of hanging nodes}{equation.1.3.11}{}}
+\@writefile{toc}{\contentsline {subsubsection}{Increasing the relative number of hanging nodes}{16}{section*.26}}
+\@writefile{lof}{\contentsline {figure}{\numberline {1.13}{\ignorespaces Numerical solution to problem \ref  {eq:two_hang} using an interpolation of order $p=2$ on a non conforming mesh and obtained with PCG with the two scale preconditioner.\relax }}{17}{figure.caption.25}}
+\newlabel{two_hang_plot}{{1.13}{17}{Numerical solution to problem \ref {eq:two_hang} using an interpolation of order $p=2$ on a non conforming mesh and obtained with PCG with the two scale preconditioner.\relax }{figure.caption.25}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {1.7}{\ignorespaces Statistics about the different meshes used for the tests regarding the influence of hanging nodes on the number of iterations as well as the ratio $hang$ defined by equation \ref  {hang_frac}. The number of global and hanging nodes are for an interpolation degree $p=2$.\relax }}{17}{table.caption.27}}
+\newlabel{two_hang_table}{{1.7}{17}{Statistics about the different meshes used for the tests regarding the influence of hanging nodes on the number of iterations as well as the ratio $hang$ defined by equation \ref {hang_frac}. The number of global and hanging nodes are for an interpolation degree $p=2$.\relax }{table.caption.27}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {1.14}{\ignorespaces Number of iterations of PCG with the two scale preconditioner with a degree of interpolation $p=2$ on meshes with hanging nodes defined by the parameter $tol$.\relax }}{18}{figure.caption.28}}
+\newlabel{two_hang_iter}{{1.14}{18}{Number of iterations of PCG with the two scale preconditioner with a degree of interpolation $p=2$ on meshes with hanging nodes defined by the parameter $tol$.\relax }{figure.caption.28}{}}
+\@writefile{toc}{\contentsline {subsubsection}{Increasing the degree of the interpolation}{18}{section*.29}}
+\citation{overlap_constant}
+\@writefile{lof}{\contentsline {figure}{\numberline {1.15}{\ignorespaces Number of iterations of PCG with the two scale preconditioner as a function of the degree of the interpolation used for a mesh obtained with $tol = 0.001$ in the recursive refine function.\relax }}{19}{figure.caption.30}}
+\newlabel{two_hang_deg}{{1.15}{19}{Number of iterations of PCG with the two scale preconditioner as a function of the degree of the interpolation used for a mesh obtained with $tol = 0.001$ in the recursive refine function.\relax }{figure.caption.30}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {1.3.3}Most efficient degree to obtain a given accuracy}{19}{subsection.1.3.3}}
+\@writefile{lof}{\contentsline {figure}{\numberline {1.16}{\ignorespaces Best degree of interpolation to solve problem \ref  {eq:prob_two} on a distorted mesh as a function of the accuracy we want on the $L^2$-norm.\relax }}{20}{figure.caption.31}}
+\newlabel{two_acc}{{1.16}{20}{Best degree of interpolation to solve problem \ref {eq:prob_two} on a distorted mesh as a function of the accuracy we want on the $L^2$-norm.\relax }{figure.caption.31}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {1.4}Conclusion}{20}{section.1.4}}
+\bibdata{sample}
+\bibcite{lapack}{1}
+\bibcite{overlap_constant}{2}
+\bibcite{gmsh}{3}

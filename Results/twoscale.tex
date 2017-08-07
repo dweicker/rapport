@@ -152,7 +152,7 @@ Let us now move on to look at what happens when we increase the degree of the in
 
 We can see that as we increase the degree of the interpolation, the number of iterations increases. It goes from 31 for $p=2$ to 85 iterations when $p=8$. We can see that it is quite a lot. But we also have to note that going from degree 2 to degree 8, we have also gone from $2.1\:10^5$ degrees of freedom to $3.4\:10^6$.
 
-As in the case when we only had the fine preconditioner, several factors can be put forward to explain the increase in the number of iterations. First, when we increase the degree, the size of the overlap decreases and therefore the fine preconditioner is less effective. As mentioned in \textcolor{red}{Ref here!}, a fixed sized overlap would fix the issue. 
+As in the case when we only had the fine preconditioner, several factors can be put forward to explain the increase in the number of iterations. First, when we increase the degree, the size of the overlap decreases and therefore the fine preconditioner is less effective. As mentioned in \cite{overlap_constant}, a fixed sized overlap would fix the issue. 
 
 Second, we can say that the number of hanging nodes in the overlaps increases with the degree of the interpolation. Since we do not treat all possibilities when handling hanging quadrants, the error made is more important when we have a lot of nodes in the overlap.
 

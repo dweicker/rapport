@@ -1,0 +1,12 @@
+\BOOKMARK [0][-]{chapter.1}{Results and discussion}{}% 1
+\BOOKMARK [1][-]{section.1.1}{Multigrid}{chapter.1}% 2
+\BOOKMARK [2][-]{subsection.1.1.1}{H-independent convergence}{section.1.1}% 3
+\BOOKMARK [2][-]{subsection.1.1.2}{Influence of hanging nodes}{section.1.1}% 4
+\BOOKMARK [1][-]{section.1.2}{Fine preconditioner}{chapter.1}% 5
+\BOOKMARK [2][-]{subsection.1.2.1}{No hanging nodes}{section.1.2}% 6
+\BOOKMARK [2][-]{subsection.1.2.2}{Influence of hanging nodes}{section.1.2}% 7
+\BOOKMARK [1][-]{section.1.3}{Two scale preconditioner}{chapter.1}% 8
+\BOOKMARK [2][-]{subsection.1.3.1}{No hanging nodes}{section.1.3}% 9
+\BOOKMARK [2][-]{subsection.1.3.2}{Influence of hanging nodes}{section.1.3}% 10
+\BOOKMARK [2][-]{subsection.1.3.3}{Most efficient degree to obtain a given accuracy}{section.1.3}% 11
+\BOOKMARK [1][-]{section.1.4}{Conclusion}{chapter.1}% 12
