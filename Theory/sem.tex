@@ -17,20 +17,22 @@ G &= \bigcup\limits_{e} \Omega_e\\
 \begin{figure}
 \centering
 \includegraphics[scale=0.45]{Theory/hang_ex.png}
-\caption{Example of a legal non conforming mesh. We can see that we have two hanging nodes in red since they are not vertices of the bigger quadrants neighboring them.}
+\caption{Example of a legal non conforming mesh (it is 1-irregular). We can see that we have two hanging nodes in red since they are not vertices of the bigger quadrants neighboring them.}
 \label{hang_ex}
 \end{figure}
 
-We can define a hanging node as being a node that is not shared between all its neighboring quadrants. Figure \ref{hang_ex} shows an example of a mesh containing hanging nodes. We can see that the vertices in red are hanging nodes since they are vertices of the smaller quadrants neighboring them but not of the bigger quadrants neighboring them. Those nodes will require a special treatment in the spectral element method. 
+We can define a hanging node as being a node that is not shared between all its neighboring quadrants. We can note that hanging nodes can only be found on edges. Figure \ref{hang_ex} shows an example of a mesh containing hanging nodes. We can see that the vertices in red are hanging nodes since they are vertices of the smaller quadrants neighboring them but not of the bigger quadrants neighboring them. Those nodes will require a special treatment in the spectral element method. 
 
 \begin{figure}
 \centering
 \includegraphics[scale=0.45]{Theory/hang_illegal.png}
-\caption{Example of an illegal non conforming mesh. We can see that the top left quadrant has four neighbors through its south edge while we imposed a maximum of two. }
+\caption{Example of an illegal non conforming mesh (it is 2-irregular). We can see that the top left quadrant has four neighbors through its south edge while we imposed a maximum of two. }
 \label{hang_illegal}
 \end{figure}
 
-We have however one restriction to make on the mesh. We will allow two neighboring quadrants to have only one level of difference in the refinement. This means that the number of neighbors of a quadrant through a given edge is maximum two. Figure \ref{hang_illegal} shows an example of an illegal non conforming mesh. We can see that on that mesh the top left quadrant has four neighbors through its south edge. Handling all possibilities of hanging faces is impossible and that is why we (and the vast majority of others) consider as illegal meshes such as the one presented in figure \ref{hang_illegal}.
+We have however one restriction to make on the mesh. We will allow two neighboring quadrants to have only one level of difference in the refinement. This means that the number of neighbors of a quadrant through a given edge is maximum two. We call such meshes 1-irregular. Figure \ref{hang_illegal} shows an example of an illegal non conforming mesh. We can see that on that mesh the top left quadrant has four neighbors through its south edge. Since the maximum difference between the level of refinement between two neighboring quadrants is two, such a mesh is called 2-irregular.  Handling all possibilities of hanging faces for a general $k$-irregular mesh (with $k>1$) is impossible and that is why we (and the vast majority of others) consider as illegal meshes such as the one presented in figure \ref{hang_illegal}.
+
+For the rest of this chapter, it is important to note that, in a 1-irregular mesh, a hanging edge (an edge containing hanging nodes) is always half of a non hanging edge for its neighboring quadrant.
 
 Once we have our mesh, it is clear that we can compute the integral of any scalar function $g$ as the sum of integrals on the quadrants. Formally, we have :  
 
@@ -135,7 +137,22 @@ We want our global basis function $\phi_I$ to be a piece-wise polynomial of orde
 
 In order to define such a function, we first need a mapping that goes from the 2D reference element to the actual quadrant $e$, i.e. $x^e(\xi,\eta)$ and $y^e(\xi,\eta)$ that for quadrant $e$ give the actual coordinates of any point in the reference element. Let us also define the inverse mappings $\xi^e(x,y)$ and $\eta^e(x,y)$. 
 
-The last thing we need is is a global to local operator that gives the weight of a given global node on a local node 
+The last thing we need is is a global to local operator that gives for local node $(\xi_i,\eta_j)$ on quadrant $e$ the weight of global node $I$. Let us denote this operator $R^e_{ij}(I)$. In a conforming mesh, since each local node correspond to a global node, $R^e_{ij}(I)$ can only be equal to 0 or to 1. In a non conforming mesh, however, the value of $R^e_{ij}(I)$ must be computed to ensure the continuity of the global basis function. For example, if we have hanging nodes on the east edge of quadrant $e$ (where $i=p$), then $R^e_{pj}(I)$ is given by : 
+
+\begin{align*}
+R^e_{pj}(I) &= l_k \left(\frac{\xi_j}{2}\pm \frac{1}{2}\right) &\text{if $I$ is the $k$-th global node on the non hanging east edge}
+\end{align*} 
+
+More explanation about how to compute the operator $R^e_{ij}(I)$ can be found \textcolor{red}{ref here}. The plus or minus sign in the above formula comes from the fact that a hanging edge can be the first or the second part of the larger non hanging edge. This is why we accept only 1-irregular meshes : because we only have to handle two cases when we compute $R^e_{ij}(I)$. If we accepted $k$-irregular meshes with $k>1$, we would have too many different cases to look at. 
+
+With this operator and our mapping, it is then possible to compute the value of the basis function associated with node $I$ inside any element $e$. It is given by : 
+
+\begin{align}
+\phi_I(x,y) &= \sum_{i=0}^p\sum_{j=0}^p R^e_{ij}(I) \: l_i(\xi^e(x,y))\: l_j(\eta^e(x,y)) &\text{if $(x,y) \in \Omega_e$}
+\end{align}
+
+
+Figure \ref{global_basis_func} shows a global basis function on the mesh presented in figure \ref{global_nodes} (and therefore also for $p=2$). We can see that it is not entirely trivial since the global node associated with the basis function has a influence in quadrants where we have hanging nodes.
 
 
 
