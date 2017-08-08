@@ -9,6 +9,7 @@
 \usepackage[english]{babel}
 \usepackage{amsmath}
 \usepackage{subcaption}
+\usepackage{amssymb}
 
 % Bibliography
 \usepackage{hyperref}

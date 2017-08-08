@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014) (preloaded format=pdflatex 2014.10.4)  7 AUG 2017 17:56
+This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014) (preloaded format=pdflatex 2014.10.4)  8 AUG 2017 18:13
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -145,6 +145,16 @@ Package: keyval 2014/05/08 v1.15 key=value parser (DPC)
 \c@subfigure=\count103
 \c@subtable=\count104
 )
+(/usr/local/texlive/2014/texmf-dist/tex/latex/amsfonts/amssymb.sty
+Package: amssymb 2013/01/14 v3.01 AMS font symbols
+
+(/usr/local/texlive/2014/texmf-dist/tex/latex/amsfonts/amsfonts.sty
+Package: amsfonts 2013/01/14 v3.01 Basic AMSFonts support
+\symAMSa=\mathgroup4
+\symAMSb=\mathgroup5
+LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
+(Font)                  U/euf/m/n --> U/euf/b/n on input line 106.
+))
 (/usr/local/texlive/2014/texmf-dist/tex/latex/hyperref/hyperref.sty
 Package: hyperref 2012/11/06 v6.83m Hypertext links for LaTeX
 
@@ -546,7 +556,7 @@ e
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
-<EPL_TFEbanner.jpg, id=52, 526.3665pt x 256.0767pt>
+<EPL_TFEbanner.jpg, id=80, 526.3665pt x 256.0767pt>
 File: EPL_TFEbanner.jpg Graphic file (type jpg)
  <use EPL_TFEbanner.jpg>
 Package pdftex.def Info: EPL_TFEbanner.jpg used on input line 30.
@@ -592,7 +602,22 @@ LaTeX Font Info:    External font `lmex10' loaded for size
 (Font)              <8> on input line 30.
 LaTeX Font Info:    External font `lmex10' loaded for size
 (Font)              <6> on input line 30.
- [1
+LaTeX Font Info:    Try loading font information for U+msa on input line 30.
+
+(/usr/local/texlive/2014/texmf-dist/tex/latex/amsfonts/umsa.fd
+File: umsa.fd 2013/01/14 v3.01 AMS symbols A
+)
+(/usr/local/texlive/2014/texmf-dist/tex/latex/microtype/mt-msa.cfg
+File: mt-msa.cfg 2006/02/04 v1.1 microtype config. file: AMS symbols (a) (RS)
+)
+LaTeX Font Info:    Try loading font information for U+msb on input line 30.
+
+(/usr/local/texlive/2014/texmf-dist/tex/latex/amsfonts/umsb.fd
+File: umsb.fd 2013/01/14 v3.01 AMS symbols B
+)
+(/usr/local/texlive/2014/texmf-dist/tex/latex/microtype/mt-msb.cfg
+File: mt-msb.cfg 2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
+) [1
 
 
 {/usr/local/texlive/2014/texmf-var/fonts/map/pdftex/updmap/pdftex.map} <./EPL_T
@@ -602,16 +627,45 @@ FEbanner.jpg>]pdfTeX warning (ext4): destination with the same identifier (name
                    \relax 
 l.32 \newpage\null\thispagestyle{empty}\newpage
                                                 % Blank page [1]
-(./Results/intro.tex
+(./Theory/intro.tex
 Chapter 1.
+) (./Theory/problem.tex
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <10.95> on input line 2.
-) (./Results/multigrid.texpdfTeX warning (ext4): destination with the same iden
-tifier (name{page.1}) has been already used, duplicate ignored
+(Font)              <10.95> on input line 3.
+pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has 
+been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.3 
-     [1
+l.42 \end{align}
+                 [1
+
+]) (./Theory/sem.tex
+<Theory/hang_ex.png, id=115, 794.97pt x 469.755pt>
+File: Theory/hang_ex.png Graphic file (type png)
+ <use Theory/hang_ex.png>
+Package pdftex.def Info: Theory/hang_ex.png used on input line 19.
+(pdftex.def)             Requested size: 357.7332pt x 211.3878pt.
+
+<Theory/hang_illegal.png, id=118, 794.97pt x 469.755pt>
+File: Theory/hang_illegal.png Graphic file (type png)
+
+<use Theory/hang_illegal.png>
+Package pdftex.def Info: Theory/hang_illegal.png used on input line 28.
+(pdftex.def)             Requested size: 357.7332pt x 211.3878pt.
+
+
+Package Fancyhdr Warning: \headheight is too small (12.0pt): 
+ Make it at least 13.59999pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[2] [3 <./Theory/hang_ex.png> <./Theory/hang_illegal.png (PNG copy)>] [4]
+
+LaTeX Warning: Reference `global_nodes' on page 5 undefined on input line 129.
+
+[5]) (./Results/intro.tex [6]
+Chapter 2.
+) (./Results/multigrid.tex [7
 
 ]
 Package epstopdf Info: Source file: <Results/multi_simple_sol.eps>
@@ -626,7 +680,7 @@ ps-converted-to.pdf Results/multi_simple_sol.eps>
 (epstopdf)             \includegraphics on input line 8.
 Package epstopdf Info: Output file is already uptodate.
 
-<Results/multi_simple_sol-eps-converted-to.pdf, id=75, 1284.8pt x 638.385pt>
+<Results/multi_simple_sol-eps-converted-to.pdf, id=172, 1284.8pt x 638.385pt>
 File: Results/multi_simple_sol-eps-converted-to.pdf Graphic file (type pdf)
 
 <use Results/multi_simple_sol-eps-converted-to.pdf>
@@ -635,20 +689,14 @@ input line 8.
 (pdftex.def)             Requested size: 449.68674pt x 223.43808pt.
 
 Underfull \hbox (badness 1728) in paragraph at lines 9--9
-[]\T1/lmr/m/n/10.95 (+20) Figure 1.1: |Nu-mer-i-cal so-lu-tion us-ing the multi
+[]\T1/lmr/m/n/10.95 (+20) Figure 2.1: |Nu-mer-i-cal so-lu-tion us-ing the multi
 -grid solver of $\OMS/lmsy/m/n/10.95 r[]\OML/lmm/m/it/10.95 u \OT1/lmr/m/n/10.9
 5 (+20) = \OML/lmm/m/it/10.95 f$ \T1/lmr/m/n/10.95 (+20) for $\OML/lmm/m/it/10.
 95 f \OT1/lmr/m/n/10.95 (+20) =
  []
 
-
-Package Fancyhdr Warning: \headheight is too small (12.0pt): 
- Make it at least 13.59999pt.
- We now make it that large for the rest of the document.
- This may cause the page layout to be inconsistent, however.
-
-[2 <./Results/multi_simple_sol-eps-converted-to.pdf>]
-<Results/multi_mesh_1.png, id=109, 794.97pt x 469.755pt>
+[8 <./Results/multi_simple_sol-eps-converted-to.pdf>]
+<Results/multi_mesh_1.png, id=205, 794.97pt x 469.755pt>
 File: Results/multi_mesh_1.png Graphic file (type png)
 
 <use Results/multi_mesh_1.png>
@@ -659,7 +707,7 @@ Overfull \hbox (45.52371pt too wide) in paragraph at lines 37--38
  [][] 
  []
 
-<Results/multi_mesh_2.png, id=110, 794.97pt x 469.755pt>
+<Results/multi_mesh_2.png, id=206, 794.97pt x 469.755pt>
 File: Results/multi_mesh_2.png Graphic file (type png)
 
 <use Results/multi_mesh_2.png>
@@ -670,8 +718,8 @@ Overfull \hbox (45.52371pt too wide) in paragraph at lines 43--44
  [][] 
  []
 
-[3 <./Results/multi_mesh_1.png (PNG copy)> <./Results/multi_mesh_2.png (PNG cop
-y)>] [4] <Results/multi_mesh_hanging_1.png, id=128, 794.97pt x 469.755pt>
+[9 <./Results/multi_mesh_1.png (PNG copy)> <./Results/multi_mesh_2.png (PNG cop
+y)>] [10] <Results/multi_mesh_hanging_1.png, id=223, 794.97pt x 469.755pt>
 File: Results/multi_mesh_hanging_1.png Graphic file (type png)
 
 <use Results/multi_mesh_hanging_1.png>
@@ -679,14 +727,14 @@ Package pdftex.def Info: Results/multi_mesh_hanging_1.png used on input line 15
 3.
 (pdftex.def)             Requested size: 182.09833pt x 107.60413pt.
 
-<Results/multi_mesh_hanging_2.png, id=129, 794.97pt x 469.755pt>
+<Results/multi_mesh_hanging_2.png, id=224, 794.97pt x 469.755pt>
 File: Results/multi_mesh_hanging_2.png Graphic file (type png)
 
 <use Results/multi_mesh_hanging_2.png>
 Package pdftex.def Info: Results/multi_mesh_hanging_2.png used on input line 15
 9.
 (pdftex.def)             Requested size: 182.09833pt x 107.60413pt.
- [5]) (./Results/fine.tex
+ [11]) (./Results/fine.tex
 Package epstopdf Info: Source file: <Results/fine_simple_sol.eps>
 (epstopdf)                    date: 2017-08-03 11:16:33
 (epstopdf)                    size: 21236033 bytes
@@ -699,15 +747,15 @@ s-converted-to.pdf Results/fine_simple_sol.eps>
 (epstopdf)             \includegraphics on input line 21.
 Package epstopdf Info: Output file is already uptodate.
 
-<Results/fine_simple_sol-eps-converted-to.pdf, id=143, 1284.8pt x 637.38126pt>
+<Results/fine_simple_sol-eps-converted-to.pdf, id=238, 1284.8pt x 637.38126pt>
 File: Results/fine_simple_sol-eps-converted-to.pdf Graphic file (type pdf)
 
 <use Results/fine_simple_sol-eps-converted-to.pdf>
 Package pdftex.def Info: Results/fine_simple_sol-eps-converted-to.pdf used on i
 nput line 21.
 (pdftex.def)             Requested size: 449.68674pt x 223.08678pt.
- [6 <./Results/multi_mesh_hanging_1.png (PNG copy)> <./Results/multi_mesh_hangi
-ng_2.png (PNG copy)>]
+ [12 <./Results/multi_mesh_hanging_1.png (PNG copy)> <./Results/multi_mesh_hang
+ing_2.png (PNG copy)>]
 Package epstopdf Info: Source file: <Results/fine_reg_iter.eps>
 (epstopdf)                    date: 2017-08-03 17:34:41
 (epstopdf)                    size: 13387 bytes
@@ -720,16 +768,16 @@ converted-to.pdf Results/fine_reg_iter.eps>
 (epstopdf)             \includegraphics on input line 61.
 Package epstopdf Info: Output file is already uptodate.
 
-<Results/fine_reg_iter-eps-converted-to.pdf, id=156, 1284.8pt x 638.385pt>
+<Results/fine_reg_iter-eps-converted-to.pdf, id=251, 1284.8pt x 638.385pt>
 File: Results/fine_reg_iter-eps-converted-to.pdf Graphic file (type pdf)
 
 <use Results/fine_reg_iter-eps-converted-to.pdf>
 Package pdftex.def Info: Results/fine_reg_iter-eps-converted-to.pdf used on inp
 ut line 61.
 (pdftex.def)             Requested size: 449.68674pt x 223.43808pt.
- [7 <./Results/fine_simple_sol-eps-converted-to.pdf>] [8 <./Results/fine_reg_it
-er-eps-converted-to.pdf>]
-<Results/fine_mesh_deform_1.png, id=199, 794.97pt x 469.755pt>
+ [13 <./Results/fine_simple_sol-eps-converted-to.pdf>] [14 <./Results/fine_reg_
+iter-eps-converted-to.pdf>]
+<Results/fine_mesh_deform_1.png, id=293, 794.97pt x 469.755pt>
 File: Results/fine_mesh_deform_1.png Graphic file (type png)
 
 <use Results/fine_mesh_deform_1.png>
@@ -744,7 +792,7 @@ LaTeX Font Info:    External font `lmex10' loaded for size
 (Font)              <10> on input line 80.
 LaTeX Font Info:    External font `lmex10' loaded for size
 (Font)              <7> on input line 80.
-<Results/fine_mesh_deform_2.png, id=200, 794.97pt x 469.755pt>
+<Results/fine_mesh_deform_2.png, id=294, 794.97pt x 469.755pt>
 File: Results/fine_mesh_deform_2.png Graphic file (type png)
 
 <use Results/fine_mesh_deform_2.png>
@@ -755,8 +803,8 @@ Overfull \hbox (45.52371pt too wide) in paragraph at lines 85--86
  [][] 
  []
 
-[9 <./Results/fine_mesh_deform_1.png (PNG copy)> <./Results/fine_mesh_deform_2.
-png (PNG copy)>]
+[15 <./Results/fine_mesh_deform_1.png (PNG copy)> <./Results/fine_mesh_deform_2
+.png (PNG copy)>]
 Package epstopdf Info: Source file: <Results/fine_dist_iter.eps>
 (epstopdf)                    date: 2017-08-04 10:59:20
 (epstopdf)                    size: 11057 bytes
@@ -769,14 +817,14 @@ f>
 (epstopdf)             \includegraphics on input line 103.
 Package epstopdf Info: Output file is already uptodate.
 
-<Results/fine_dist_iter-eps-converted-to.pdf, id=214, 1284.8pt x 636.3775pt>
+<Results/fine_dist_iter-eps-converted-to.pdf, id=307, 1284.8pt x 636.3775pt>
 File: Results/fine_dist_iter-eps-converted-to.pdf Graphic file (type pdf)
 
 <use Results/fine_dist_iter-eps-converted-to.pdf>
 Package pdftex.def Info: Results/fine_dist_iter-eps-converted-to.pdf used on in
 put line 103.
 (pdftex.def)             Requested size: 449.68674pt x 222.73546pt.
- [10 <./Results/fine_dist_iter-eps-converted-to.pdf>]
+ [16 <./Results/fine_dist_iter-eps-converted-to.pdf>]
 Package epstopdf Info: Source file: <Results/fine_hang_plot.eps>
 (epstopdf)                    date: 2017-08-04 19:45:40
 (epstopdf)                    size: 8877 bytes
@@ -789,7 +837,7 @@ f>
 (epstopdf)             \includegraphics on input line 163.
 Package epstopdf Info: Output file is already uptodate.
 
-<Results/fine_hang_plot-eps-converted-to.pdf, id=232, 1284.8pt x 638.385pt>
+<Results/fine_hang_plot-eps-converted-to.pdf, id=324, 1284.8pt x 638.385pt>
 File: Results/fine_hang_plot-eps-converted-to.pdf Graphic file (type pdf)
 
 <use Results/fine_hang_plot-eps-converted-to.pdf>
@@ -808,14 +856,14 @@ converted-to.pdf Results/fine_hang_deg.eps>
 (epstopdf)             \includegraphics on input line 178.
 Package epstopdf Info: Output file is already uptodate.
 
-<Results/fine_hang_deg-eps-converted-to.pdf, id=235, 1284.8pt x 638.385pt>
+<Results/fine_hang_deg-eps-converted-to.pdf, id=327, 1284.8pt x 638.385pt>
 File: Results/fine_hang_deg-eps-converted-to.pdf Graphic file (type pdf)
 
 <use Results/fine_hang_deg-eps-converted-to.pdf>
 Package pdftex.def Info: Results/fine_hang_deg-eps-converted-to.pdf used on inp
 ut line 178.
 (pdftex.def)             Requested size: 449.68674pt x 223.43808pt.
- [11] [12 <./Results/fine_hang_plot-eps-converted-to.pdf> <./Results/fine_hang_
+ [17] [18 <./Results/fine_hang_plot-eps-converted-to.pdf> <./Results/fine_hang_
 deg-eps-converted-to.pdf>])
 (./Results/twoscale.tex
 Package epstopdf Info: Source file: <Results/two_simple_sol.eps>
@@ -830,14 +878,14 @@ f>
 (epstopdf)             \includegraphics on input line 24.
 Package epstopdf Info: Output file is already uptodate.
 
-<Results/two_simple_sol-eps-converted-to.pdf, id=262, 1284.8pt x 638.385pt>
+<Results/two_simple_sol-eps-converted-to.pdf, id=355, 1284.8pt x 638.385pt>
 File: Results/two_simple_sol-eps-converted-to.pdf Graphic file (type pdf)
 
 <use Results/two_simple_sol-eps-converted-to.pdf>
 Package pdftex.def Info: Results/two_simple_sol-eps-converted-to.pdf used on in
 put line 24.
 (pdftex.def)             Requested size: 449.68674pt x 223.43808pt.
- [13]
+ [19]
 Package epstopdf Info: Source file: <Results/two_reg_iter.eps>
 (epstopdf)                    date: 2017-08-05 14:42:57
 (epstopdf)                    size: 12403 bytes
@@ -850,14 +898,14 @@ onverted-to.pdf Results/two_reg_iter.eps>
 (epstopdf)             \includegraphics on input line 54.
 Package epstopdf Info: Output file is already uptodate.
 
-<Results/two_reg_iter-eps-converted-to.pdf, id=275, 1284.8pt x 636.3775pt>
+<Results/two_reg_iter-eps-converted-to.pdf, id=368, 1284.8pt x 636.3775pt>
 File: Results/two_reg_iter-eps-converted-to.pdf Graphic file (type pdf)
 
 <use Results/two_reg_iter-eps-converted-to.pdf>
 Package pdftex.def Info: Results/two_reg_iter-eps-converted-to.pdf used on inpu
 t line 54.
 (pdftex.def)             Requested size: 449.68674pt x 222.73546pt.
- [14 <./Results/two_simple_sol-eps-converted-to.pdf>]
+ [20 <./Results/two_simple_sol-eps-converted-to.pdf>]
 Package epstopdf Info: Source file: <Results/two_irreg_iter.eps>
 (epstopdf)                    date: 2017-08-05 16:56:03
 (epstopdf)                    size: 11649 bytes
@@ -870,14 +918,14 @@ f>
 (epstopdf)             \includegraphics on input line 73.
 Package epstopdf Info: Output file is already uptodate.
 
-<Results/two_irreg_iter-eps-converted-to.pdf, id=309, 1284.8pt x 636.3775pt>
+<Results/two_irreg_iter-eps-converted-to.pdf, id=402, 1284.8pt x 636.3775pt>
 File: Results/two_irreg_iter-eps-converted-to.pdf Graphic file (type pdf)
 
 <use Results/two_irreg_iter-eps-converted-to.pdf>
 Package pdftex.def Info: Results/two_irreg_iter-eps-converted-to.pdf used on in
 put line 73.
 (pdftex.def)             Requested size: 449.68674pt x 222.73546pt.
- [15 <./Results/two_reg_iter-eps-converted-to.pdf>]
+ [21 <./Results/two_reg_iter-eps-converted-to.pdf>]
 Package epstopdf Info: Source file: <Results/two_hang_plot.eps>
 (epstopdf)                    date: 2017-08-05 20:47:56
 (epstopdf)                    size: 21236031 bytes
@@ -890,7 +938,7 @@ converted-to.pdf Results/two_hang_plot.eps>
 (epstopdf)             \includegraphics on input line 101.
 Package epstopdf Info: Output file is already uptodate.
 
-<Results/two_hang_plot-eps-converted-to.pdf, id=322, 1284.8pt x 637.38126pt>
+<Results/two_hang_plot-eps-converted-to.pdf, id=415, 1284.8pt x 637.38126pt>
 File: Results/two_hang_plot-eps-converted-to.pdf Graphic file (type pdf)
 
 <use Results/two_hang_plot-eps-converted-to.pdf>
@@ -902,7 +950,7 @@ Overfull \hbox (2.49724pt too wide) in paragraph at lines 114--121
  [][] 
  []
 
-[16 <./Results/two_irreg_iter-eps-converted-to.pdf>] [17 <./Results/two_hang_pl
+[22 <./Results/two_irreg_iter-eps-converted-to.pdf>] [23 <./Results/two_hang_pl
 ot-eps-converted-to.pdf>]
 Package epstopdf Info: Source file: <Results/two_hang_iter.eps>
 (epstopdf)                    date: 2017-08-06 17:23:43
@@ -916,7 +964,7 @@ converted-to.pdf Results/two_hang_iter.eps>
 (epstopdf)             \includegraphics on input line 131.
 Package epstopdf Info: Output file is already uptodate.
 
-<Results/two_hang_iter-eps-converted-to.pdf, id=374, 1284.8pt x 636.3775pt>
+<Results/two_hang_iter-eps-converted-to.pdf, id=467, 1284.8pt x 636.3775pt>
 File: Results/two_hang_iter-eps-converted-to.pdf Graphic file (type pdf)
 
 <use Results/two_hang_iter-eps-converted-to.pdf>
@@ -935,14 +983,14 @@ onverted-to.pdf Results/two_hang_deg.eps>
 (epstopdf)             \includegraphics on input line 146.
 Package epstopdf Info: Output file is already uptodate.
 
-<Results/two_hang_deg-eps-converted-to.pdf, id=377, 1284.8pt x 636.3775pt>
+<Results/two_hang_deg-eps-converted-to.pdf, id=470, 1284.8pt x 636.3775pt>
 File: Results/two_hang_deg-eps-converted-to.pdf Graphic file (type pdf)
 
 <use Results/two_hang_deg-eps-converted-to.pdf>
 Package pdftex.def Info: Results/two_hang_deg-eps-converted-to.pdf used on inpu
 t line 146.
 (pdftex.def)             Requested size: 449.68674pt x 222.73546pt.
- [18 <./Results/two_hang_iter-eps-converted-to.pdf>] [19 <./Results/two_hang_de
+ [24 <./Results/two_hang_iter-eps-converted-to.pdf>] [25 <./Results/two_hang_de
 g-eps-converted-to.pdf>]
 Package epstopdf Info: Source file: <Results/two_acc.eps>
 (epstopdf)                    date: 2017-08-07 14:02:19
@@ -955,14 +1003,14 @@ ted-to.pdf Results/two_acc.eps>
 (epstopdf)             \includegraphics on input line 179.
 Package epstopdf Info: Output file is already uptodate.
 
-<Results/two_acc-eps-converted-to.pdf, id=406, 1284.8pt x 636.3775pt>
+<Results/two_acc-eps-converted-to.pdf, id=498, 1284.8pt x 636.3775pt>
 File: Results/two_acc-eps-converted-to.pdf Graphic file (type pdf)
 
 <use Results/two_acc-eps-converted-to.pdf>
 Package pdftex.def Info: Results/two_acc-eps-converted-to.pdf used on input lin
 e 179.
 (pdftex.def)             Requested size: 449.68674pt x 222.73546pt.
-) (./Results/conclusion.tex [20 <./Results/two_acc-eps-converted-to.pdf>]) [21]
+) (./Results/conclusion.tex [26 <./Results/two_acc-eps-converted-to.pdf>]) [27]
  (./main.bbl
 LaTeX Font Info:    Try loading font information for T1+lmtt on input line 5.
 
@@ -973,7 +1021,7 @@ Package microtype Info: Loading generic settings for font family
 (microtype)             `lmtt' (encoding: T1).
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
-) [22
+) [28
 
 ]
 *geometry* verbose mode - [ newgeometry ] result:
@@ -1009,54 +1057,60 @@ Package microtype Info: Loading generic settings for font family
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
 LaTeX Font Info:    Font shape `T1/phv/bx/n' in size <9> not available
-(Font)              Font shape `T1/phv/b/n' tried instead on input line 53.
+(Font)              Font shape `T1/phv/b/n' tried instead on input line 57.
 
-Overfull \hbox (1.90796pt too wide) in paragraph at lines 53--54
+Overfull \hbox (1.90796pt too wide) in paragraph at lines 57--58
  [][][] 
  []
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 55.
-[23
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 59.
+[29
 
 ]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 55.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 59.
  (./main.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 55.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 55.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 59.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 59.
 Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: 9C2672789024F21A1EBB5B5D094106B6;860.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 55.
+(rerunfilecheck)             Checksum: 660A82A2EA3418089374373396C09100;1439.
+
+
+LaTeX Warning: There were undefined references.
+
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 59.
  ) 
 Here is how much of TeX's memory you used:
- 10727 strings out of 493117
- 166366 string characters out of 6135433
- 315796 words of memory out of 5000000
- 13744 multiletter control sequences out of 15000+600000
- 107030 words of font info for 146 fonts, out of 8000000 for 9000
+ 11124 strings out of 493117
+ 171396 string characters out of 6135433
+ 317241 words of memory out of 5000000
+ 14067 multiletter control sequences out of 15000+600000
+ 116236 words of font info for 166 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  49i,13n,45p,1208b,536s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/local/texlive/2014/texmf-dist/fonts/enc/dvips/lm/lm-ec.enc}{/usr/local/
 texlive/2014/texmf-dist/fonts/enc/dvips/lm/lm-rm.enc}{/usr/local/texlive/2014/t
-exmf-dist/fonts/enc/dvips/lm/lm-mathex.enc}{/usr/local/texlive/2014/texmf-dist/
-fonts/enc/dvips/lm/lm-mathsy.enc}{/usr/local/texlive/2014/texmf-dist/fonts/enc/
-dvips/lm/lm-mathit.enc}{/usr/local/texlive/2014/texmf-dist/fonts/enc/dvips/base
+exmf-dist/fonts/enc/dvips/lm/lm-mathsy.enc}{/usr/local/texlive/2014/texmf-dist/
+fonts/enc/dvips/lm/lm-mathit.enc}{/usr/local/texlive/2014/texmf-dist/fonts/enc/
+dvips/lm/lm-mathex.enc}{/usr/local/texlive/2014/texmf-dist/fonts/enc/dvips/base
 /8r.enc}</usr/local/texlive/2014/texmf-dist/fonts/type1/public/lm/lmbx10.pfb></
 usr/local/texlive/2014/texmf-dist/fonts/type1/public/lm/lmbx12.pfb></usr/local/
 texlive/2014/texmf-dist/fonts/type1/public/lm/lmex10.pfb></usr/local/texlive/20
 14/texmf-dist/fonts/type1/public/lm/lmmi10.pfb></usr/local/texlive/2014/texmf-d
-ist/fonts/type1/public/lm/lmmi8.pfb></usr/local/texlive/2014/texmf-dist/fonts/t
-ype1/public/lm/lmr10.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/public
-/lm/lmr6.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/public/lm/lmr8.pfb
-></usr/local/texlive/2014/texmf-dist/fonts/type1/public/lm/lmri10.pfb></usr/loc
-al/texlive/2014/texmf-dist/fonts/type1/public/lm/lmsy10.pfb></usr/local/texlive
-/2014/texmf-dist/fonts/type1/public/lm/lmsy8.pfb></usr/local/texlive/2014/texmf
--dist/fonts/type1/public/lm/lmtt10.pfb></usr/local/texlive/2014/texmf-dist/font
-s/type1/urw/helvetic/uhvb8a.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1
-/urw/helvetic/uhvr8a.pfb>
-Output written on main.pdf (25 pages, 1111376 bytes).
+ist/fonts/type1/public/lm/lmmi6.pfb></usr/local/texlive/2014/texmf-dist/fonts/t
+ype1/public/lm/lmmi8.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/public
+/lm/lmr10.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/public/lm/lmr6.pf
+b></usr/local/texlive/2014/texmf-dist/fonts/type1/public/lm/lmr8.pfb></usr/loca
+l/texlive/2014/texmf-dist/fonts/type1/public/lm/lmri10.pfb></usr/local/texlive/
+2014/texmf-dist/fonts/type1/public/lm/lmsy10.pfb></usr/local/texlive/2014/texmf
+-dist/fonts/type1/public/lm/lmsy8.pfb></usr/local/texlive/2014/texmf-dist/fonts
+/type1/public/lm/lmtt10.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/pub
+lic/amsfonts/symbols/msbm10.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1
+/urw/helvetic/uhvb8a.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/urw/he
+lvetic/uhvr8a.pfb>
+Output written on main.pdf (31 pages, 1149874 bytes).
 PDF statistics:
- 513 PDF objects out of 1000 (max. 8388607)
- 344 compressed objects within 4 object streams
- 85 named destinations out of 1000 (max. 500000)
- 28357 words of extra memory for PDF output out of 29859 (max. 10000000)
+ 617 PDF objects out of 1000 (max. 8388607)
+ 436 compressed objects within 5 object streams
+ 113 named destinations out of 1000 (max. 500000)
+ 29447 words of extra memory for PDF output out of 29859 (max. 10000000)
 

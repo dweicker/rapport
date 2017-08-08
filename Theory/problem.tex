@@ -1,0 +1,50 @@
+\section{Presentation of the problem}
+
+In this section, we will present the problem we will solve. Let us consider a domain $\Omega \in \mathbb{R}^2$ with its boundary $\Gamma = \partial\Omega$. Then, we want to find a function $u : \Omega \rightarrow \mathbb{R}$ that satisfies : 
+
+\begin{align}
+\nabla^2 u &= f &\text{on $\Omega$} \label{eq:poisson}\\
+u &= u_0 &\text{on $\Gamma$}
+\end{align}
+
+Where $f : \Omega \rightarrow \mathbb{R}$ and $u_0 : \Gamma \rightarrow \mathbb{R}$ are two given functions. We also assume that $f$ and $u_0$ satisfy the standard regularity assumptions. Let us denote $H^1(\Omega)$, the Sobolev space containing functions whose partial derivatives up to order 1 are in $L^2(\Omega)$. Let us also define $H^1_0(\Omega)$, a subspace of $H^1(\Omega)$ where the functions are equal to zero on $\Gamma$. 
+
+\begin{align*}
+H_0^1(\Omega) = \{ v \in H^1(\Omega) , v|_\Gamma = 0 \}
+\end{align*}
+
+Let us then multiply equation \ref{eq:poisson} by any function $v$ in $H_0^1(\Omega)$ and  integrate it over the domain. And since the laplacian is equivalent to the divergence of the gradient, we have that : 
+
+\begin{align}
+\int_\Omega \nabla \cdot (\nabla u)v \:dxdy = \int_\Omega f v \:dxdy \label{eq:sobolev}
+\end{align}
+
+Any function $u$ that is a solution of \ref{eq:poisson} is obviously also a solution of \ref{eq:sobolev} for every function $v \in H_0^1(\Omega)$. Let us now recall that for any function $u$ and $v$ regular enough : 
+
+$$\nabla \cdot (v\nabla u) = \nabla u \cdot \nabla v + v\nabla \cdot (\nabla u)$$
+
+Using this relation on equation \ref{eq:sobolev}, we get : 
+
+\begin{align}
+\int_\Omega \nabla u \cdot \nabla v \:dxdy = -\int_\Omega \nabla \cdot (v\nabla u) dxdy -\int_\Omega f v \:dxdy
+\end{align}
+
+Finally, using the divergence theorem, we have : 
+
+\begin{align}
+\int_\Omega \nabla u \cdot \nabla v \:dxdy = -\int_\Gamma (v\nabla u) \cdot \textbf{n} \:ds -\int_\Omega f v \:dxdy
+\end{align}
+
+Since $v\in H_0^1(\Omega)$, it is equal to zero on the boundary and therefore : 
+
+\begin{align}
+\int_\Omega \nabla u \cdot \nabla v \:dxdy = -\int_\Omega f v \:dxdy 
+\end{align}
+
+We can now state the weak formulation of problem \ref{eq:poisson}. Let us assume, without loss of generality that $u_0 = 0$. Then, we want to find a function $u \in H^1_0(\Omega)$ that satisfies : 
+
+\begin{align}
+\int_\Omega \nabla u \cdot \nabla v \:dxdy &= -\int_\Omega f v \:dxdy &\forall v \in H_0^1(\Omega) \label{eq:weakform} 
+\end{align}
+
+ 
