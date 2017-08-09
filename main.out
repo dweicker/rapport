@@ -5,15 +5,17 @@
 \BOOKMARK [2][-]{subsection.1.2.2}{Discretization of equation 1.7}{section.1.2}% 5
 \BOOKMARK [2][-]{subsection.1.2.3}{Basis functions on the reference element and Gauss-Lobatto-Legendre nodes}{section.1.2}% 6
 \BOOKMARK [2][-]{subsection.1.2.4}{Global basis function}{section.1.2}% 7
-\BOOKMARK [0][-]{chapter.2}{Results and discussion}{}% 8
-\BOOKMARK [1][-]{section.2.1}{Multigrid}{chapter.2}% 9
-\BOOKMARK [2][-]{subsection.2.1.1}{H-independent convergence}{section.2.1}% 10
-\BOOKMARK [2][-]{subsection.2.1.2}{Influence of hanging nodes}{section.2.1}% 11
-\BOOKMARK [1][-]{section.2.2}{Fine preconditioner}{chapter.2}% 12
-\BOOKMARK [2][-]{subsection.2.2.1}{No hanging nodes}{section.2.2}% 13
-\BOOKMARK [2][-]{subsection.2.2.2}{Influence of hanging nodes}{section.2.2}% 14
-\BOOKMARK [1][-]{section.2.3}{Two scale preconditioner}{chapter.2}% 15
-\BOOKMARK [2][-]{subsection.2.3.1}{No hanging nodes}{section.2.3}% 16
-\BOOKMARK [2][-]{subsection.2.3.2}{Influence of hanging nodes}{section.2.3}% 17
-\BOOKMARK [2][-]{subsection.2.3.3}{Most efficient degree to obtain a given accuracy}{section.2.3}% 18
-\BOOKMARK [1][-]{section.2.4}{Conclusion}{chapter.2}% 19
+\BOOKMARK [2][-]{subsection.1.2.5}{Computing the right-hand side}{section.1.2}% 8
+\BOOKMARK [2][-]{subsection.1.2.6}{Computing a matrix-vector product}{section.1.2}% 9
+\BOOKMARK [0][-]{chapter.2}{Results and discussion}{}% 10
+\BOOKMARK [1][-]{section.2.1}{Multigrid}{chapter.2}% 11
+\BOOKMARK [2][-]{subsection.2.1.1}{H-independent convergence}{section.2.1}% 12
+\BOOKMARK [2][-]{subsection.2.1.2}{Influence of hanging nodes}{section.2.1}% 13
+\BOOKMARK [1][-]{section.2.2}{Fine preconditioner}{chapter.2}% 14
+\BOOKMARK [2][-]{subsection.2.2.1}{No hanging nodes}{section.2.2}% 15
+\BOOKMARK [2][-]{subsection.2.2.2}{Influence of hanging nodes}{section.2.2}% 16
+\BOOKMARK [1][-]{section.2.3}{Two scale preconditioner}{chapter.2}% 17
+\BOOKMARK [2][-]{subsection.2.3.1}{No hanging nodes}{section.2.3}% 18
+\BOOKMARK [2][-]{subsection.2.3.2}{Influence of hanging nodes}{section.2.3}% 19
+\BOOKMARK [2][-]{subsection.2.3.3}{Most efficient degree to obtain a given accuracy}{section.2.3}% 20
+\BOOKMARK [1][-]{section.2.4}{Conclusion}{chapter.2}% 21
