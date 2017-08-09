@@ -10,6 +10,8 @@
 \usepackage{amsmath}
 \usepackage{subcaption}
 \usepackage{amssymb}
+\usepackage{algorithm}
+\usepackage[noend]{algpseudocode}
 
 % Bibliography
 \usepackage{hyperref}
