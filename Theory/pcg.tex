@@ -1,0 +1,75 @@
+\section{Preconditioned conjugate gradients}
+
+Now that we have our right hand side vector $b$ and that we are able to compute a matrix-vector product $Au$, we can explain how to solve the linear system. 
+
+Since the number of degrees of freedom is huge, it is impossible to use a direct method to solve the linear system. Instead, we will turn ourselves to iterative methods. 
+
+The matrix $A$ arises from the discretization of an Poisson equation using finite elements and therefore it is sparse, symmetric and positive-definite (see \textcolor{red}{ref here}). The conjugate gradients method is therefore well suited to solve the linear system. We have to note however that the convergence speed of the conjugate gradients depends on the condition number of the matrix $A$, $\kappa(A)$. Indeed, as given in \textcolor{red}{ref here}, if we denote $e_i = u-u_i$ where u is the solution of the linear system and $u_i$ is our approximation after the $i$-th iteration, then : 
+
+\begin{align}
+||e_i||_A \leq 2 \left(\frac{\sqrt{\kappa(A)}-1}{\sqrt{\kappa(A)}+1}\right)^i ||e_0||_A \label{eq:cg_conv}
+\end{align}
+
+
+Where $||e_i||_A = \left(e_i^TAe_i\right)^\frac{1}{2}$. We can see in equation \ref{eq:cg_conv} that the higher the condition number of $A$, the slower the convergence.  
+
+Unfortunately, the condition number of the matrix $A$ is often very large and that is why we need to use a preconditioner. 
+
+Formally, we want to solve : 
+
+$$Au=b$$
+
+Which is equivalent to solving : 
+
+$$M^{-1}A u = M^{-1}b$$
+
+If $M$ is easy to invert and $\kappa(M^{-1}A) \ll \kappa(A)$, then we should have a faster convergence at not too great a cost. The problem is that it is not possible to guarantee that $M^{-1}A$ is either symmetric nor positive definite, which is required for the CG.
+
+However, we know that if $M$ is symmetric and positive-definite, then there exists a matrix $E$ such that $M = EE^T$. We can also note that $M^{-1}A$ and $E^{-1}AE^{-T}$ have the same eigenvalues. Indeed, let us assume that $v$ if an eigenvector of $M^{-1}A$ associated with eigenvalue $\lambda$. Then :
+
+$$E^{-1}AE^{-T} (E^{T}v) = (E^{T}E^{-T})E^{-1}Av = E^{T}M^{-1}Av = \lambda E^Tv$$
+
+And we can conclude that $E^Tv$ is an eigenvector of $E^{-1}AE^T$ with eigenvalue $\lambda$. If the two matrices have the same eigenvalues, they also have the same condition number. If $A$ is symmetric and positive-definite, it is clear that $E^{-1}AE^{-T}$ is also symmetric and positive-definite. We can thus use the CG to solve the following system (which is equivalent to $Au=b$) : 
+
+\begin{align*}
+E^{-1}AE^{-T} \hat{u} &= E^{-1}b &\hat{u} = E^{T}u
+\end{align*}
+
+This formulation has the unwanted property of making explicit use of the matrix $E$. We would like to remove it entirely and use $M$ only. It is indeed possible (see \textcolor{red}{ref here}).
+
+Let us define $u_i$ the approximation after the $i$-th approximation and $r_i = b-Au_i$. Then, the PCG procedure is given by algorithm \ref{pcg}. We can note that we indeed do not mention $E$ but use $M^{-1}$ instead. We can also see that we start with a zero initial guess. It does not have to be the case and if we had a better initial guess, we should use it. 
+
+\begin{algorithm}
+\begin{algorithmic}
+\State $u_0 = 0$
+\State $r_0 = b-Au_0$
+\State $z_0 = M^{-1}r_0$
+\State $p_0 = z_0$
+\State $i = 0$
+\While{$||r_i||_2 > \epsilon ||r_0||_2$}
+\State $d_i = Ap_i$
+\State $\alpha_i = \frac{r_i^Tz_i}{p^T_id_i}$
+\State $u_{i+1} = u_i + \alpha_i p_i$
+\State $r_{i+1} = r_i - \alpha_i d_i$
+\State $z_{i+1} = M^{-1}r_{i+1}$
+\State $\beta_{i+1} = \frac{z_{i+1}^Tr_{i+1}}{z_i^Tr_i}$
+\State $ p_{i+1} = z_{i+1} + \beta_{i+1}p_i$
+\State $i = i+1$
+\EndWhile
+\end{algorithmic}
+\caption{Preconditioned Conjugate Gradients}
+\label{pcg}
+\end{algorithm}
+
+The stopping criterion is defined using the norm of the residual. We want it to be less than a given fraction of the norm of the initial residual. 
+
+The most important part in the algorithm presented is the preconditioner $M^{-1}$. Indeed, the convergence speed is a function of $\kappa(M^{-1}A)$. Therefore, we want a preconditioner that is easy to compute and such that the condition number of $M^{-1}A$ is a lot smaller than the one of $A$. Oftentimes, those two goals are contradictory. 
+
+As explained in the introduction, our preconditioner here consists of two parts. We have one coarse grid correction based on solving the problem on the mesh with an interpolation of degree $p=1$. The resolution of this coarse problem will be done using a multigrid method. Let us call this part $P^c$. The second part is the fine preconditioner where we solve the problem exactly on overlapping subdomains (this is often called an additive Schwarz preconditioner). Let us call this part $P^f$. We then add the two part of the preconditioner : 
+
+$$ M^{-1} = P^c + P^f$$
+
+The hope is that the two parts of the preconditioner act on different parts of the problem and that the sum of the two makes a good preconditioner. The rest of this chapter is entirely about how to compute $M^{-1}r = P^cr+P^fr$.
+
+ 
+

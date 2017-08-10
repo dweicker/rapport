@@ -12,15 +12,16 @@
 \BOOKMARK [2][-]{subsection.1.4.1}{Restriction of r from a high degree to p=1}{section.1.4}% 12
 \BOOKMARK [2][-]{subsection.1.4.2}{Prolongation of the solution from p=1 to a high degree}{section.1.4}% 13
 \BOOKMARK [2][-]{subsection.1.4.3}{The geometric multigrid solver}{section.1.4}% 14
-\BOOKMARK [0][-]{chapter.2}{Results and discussion}{}% 15
-\BOOKMARK [1][-]{section.2.1}{Multigrid}{chapter.2}% 16
-\BOOKMARK [2][-]{subsection.2.1.1}{H-independent convergence}{section.2.1}% 17
-\BOOKMARK [2][-]{subsection.2.1.2}{Influence of hanging nodes}{section.2.1}% 18
-\BOOKMARK [1][-]{section.2.2}{Fine preconditioner}{chapter.2}% 19
-\BOOKMARK [2][-]{subsection.2.2.1}{No hanging nodes}{section.2.2}% 20
-\BOOKMARK [2][-]{subsection.2.2.2}{Influence of hanging nodes}{section.2.2}% 21
-\BOOKMARK [1][-]{section.2.3}{Two scale preconditioner}{chapter.2}% 22
-\BOOKMARK [2][-]{subsection.2.3.1}{No hanging nodes}{section.2.3}% 23
-\BOOKMARK [2][-]{subsection.2.3.2}{Influence of hanging nodes}{section.2.3}% 24
-\BOOKMARK [2][-]{subsection.2.3.3}{Most efficient degree to obtain a given accuracy}{section.2.3}% 25
-\BOOKMARK [1][-]{section.2.4}{Conclusion}{chapter.2}% 26
+\BOOKMARK [1][-]{section.1.5}{Fine preconditioner : additive overlapping Schwarz}{chapter.1}% 15
+\BOOKMARK [0][-]{chapter.2}{Results and discussion}{}% 16
+\BOOKMARK [1][-]{section.2.1}{Multigrid}{chapter.2}% 17
+\BOOKMARK [2][-]{subsection.2.1.1}{H-independent convergence}{section.2.1}% 18
+\BOOKMARK [2][-]{subsection.2.1.2}{Influence of hanging nodes}{section.2.1}% 19
+\BOOKMARK [1][-]{section.2.2}{Fine preconditioner}{chapter.2}% 20
+\BOOKMARK [2][-]{subsection.2.2.1}{No hanging nodes}{section.2.2}% 21
+\BOOKMARK [2][-]{subsection.2.2.2}{Influence of hanging nodes}{section.2.2}% 22
+\BOOKMARK [1][-]{section.2.3}{Two scale preconditioner}{chapter.2}% 23
+\BOOKMARK [2][-]{subsection.2.3.1}{No hanging nodes}{section.2.3}% 24
+\BOOKMARK [2][-]{subsection.2.3.2}{Influence of hanging nodes}{section.2.3}% 25
+\BOOKMARK [2][-]{subsection.2.3.3}{Most efficient degree to obtain a given accuracy}{section.2.3}% 26
+\BOOKMARK [1][-]{section.2.4}{Conclusion}{chapter.2}% 27
