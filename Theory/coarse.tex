@@ -2,7 +2,7 @@
 
 Let us first present the coarse part of the preconditioner. It consists of solving the problem on the mesh using an interpolation of degree $p=1$ with a geometric multigrid method. 
 
-Since in general we use an interpolation degree $p$, the first thing to do is to restrict this residual on the same mesh but for a degree $p=1$. The first part of this section presents the restriction used. Similarly, once we have computed the solution for $p=1$, we have to prolong it to a higher degree. To preserve the symmetry of the problem, we will define the prolongation operator to be the transpose of the restriction operator. The procedure explained here is an application with hanging nodes of the one described in \textcolor{red}{ref here}. Formally, if we denote by $S$ the restriction operator and by $G$ the geometric multigrid solver, we have : 
+Since in general we use an interpolation degree $p$, the first thing to do is to restrict this residual on the same mesh but for a degree $p=1$. The first part of this section presents the restriction used. Similarly, once we have computed the solution for $p=1$, we have to prolong it to a higher degree. To preserve the symmetry of the problem, we will define the prolongation operator to be the transpose of the restriction operator. The procedure explained here is an application with hanging nodes of the one described in \cite{remacle}. Formally, if we denote by $S$ the restriction operator and by $G$ the geometric multigrid solver, we have : 
 
 $$P^cr = S^TGSr$$
 
@@ -16,9 +16,9 @@ As a result, the PCG will stop even tough we have not reached the solution. That
 
 \subsection{Restriction of $r$ from a high degree to $p=1$}
 
-Let us now define the operator $S$ that will restrict the high degree residual $r$ to a low degree $p=1$. Authors of \textcolor{red}{ref here} have shown that a good choice for the restriction is the $L^2$ projection. 
+Let us now define the operator $S$ that will restrict the high degree residual $r$ to a low degree $p=1$. Authors of \cite{l2proj} have shown that a good choice for the restriction is the $L^2$ projection. 
 
-Let us call $V^h_p \in H^1(\Omega)$ the space whose basis consists of the high degree global basis functions (later denoted $\phi_i$ for $i=1,...,N$) and $V^h_1 \in H^1(\Omega)$ the one whose basis is constituted by the bilinear global basis function (later denoted $\Phi_i$ for $i=1,...,M$). We want to find $R \in V^h_1(\Omega)$ such that $R$ is the $L^2$ projection of $r \in V^p(\Omega)$ onto $ V^h_1(\Omega)$. As shown in \textcolor{red}{ref here}, the $L^2$ projection is then given by :
+Let us call $V^h_p \subset H^1(\Omega)$ the space whose basis consists of the high degree global basis functions (later denoted $\phi_i$ for $i=1,...,N$) and $V^h_1 \subset H^1(\Omega)$ the one whose basis is constituted by the bilinear global basis function (later denoted $\Phi_i$ for $i=1,...,M$). We want to find $R \in V^h_1(\Omega)$ such that $R$ is the $L^2$ projection of $r \in V^p(\Omega)$ onto $ V^h_1(\Omega)$. As shown in \cite{remacle}, the $L^2$ projection is then given by :
 
 $$ R = Cm^{-1}r$$ 
 
@@ -103,7 +103,7 @@ $$(P^cr)_K = \frac{z_K}{m_K}$$
 
 \subsection{The geometric multigrid solver}
 
-This subsection generally describe how the geometric multigrid method works and why it is so effective. However, a lot of details have been omitted and more information can be obtained in the relevant literature \textcolor{red}{ref here}.
+This subsection generally describe how the geometric multigrid method works and why it is so effective. However, a lot of details have been omitted and more information can be obtained in the relevant literature (for example in \cite{multi_book}).
 
 \subsubsection{Motivation}
 

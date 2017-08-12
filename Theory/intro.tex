@@ -1,3 +1,11 @@
 \chapter{Theory}
 
-This is the intro. 
+In this chapter, we present the theory behind the different algorithms used. As mentioned in the introduction, the objective is to solve Poisson's equation as quickly as possible. The particularities of hanging nodes are also an important part of this chapter. 
+
+The first section formalizes the mathematical problem to solve and derives the weak formulation of Poisson's equation that will be used for the discretization.
+
+The second section presents the spectral element method and how it applies on non conforming meshes. Both the mesh and the discretization of the weak formulation are explained.
+
+We will then turn to the iterative method used to solve the linear system of equations arising from the discretization : the preconditioned conjugate gradients. 
+
+The last two sections explain in some details the two parts of our preconditioner. The coarse part is constituted by a geometric multigrid solver while the fine scale preconditioner consists of an overlapping additive Schwarz method. 

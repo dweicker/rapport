@@ -30,7 +30,7 @@ We can define a hanging node as being a node that is not shared between all its 
 \label{hang_illegal}
 \end{figure}
 
-We have however one restriction to make on the mesh. We will allow two neighboring quadrants to have only one level of difference in the refinement. This means that the number of neighbors of a quadrant through a given edge is maximum two. We call such meshes 1-irregular. Figure \ref{hang_illegal} shows an example of an illegal non conforming mesh. We can see that on that mesh the top left quadrant has four neighbors through its south edge. Since the maximum difference between the level of refinement between two neighboring quadrants is two, such a mesh is called 2-irregular.  Handling all possibilities of hanging faces for a general $k$-irregular mesh (with $k>1$) is impossible and that is why we (and the vast majority of others) consider as illegal meshes such as the one presented in figure \ref{hang_illegal}.
+We have however one restriction to make on the mesh. We will allow two neighboring quadrants to have only one level of difference in the refinement. This means that the number of neighbors of a quadrant through a given edge is maximum two. We call such meshes 1-irregular. Figure \ref{hang_illegal} shows an example of an illegal non conforming mesh. We can see that on that mesh the top left quadrant has four neighbors through its south edge. Since the maximum difference of the levels of refinement between two neighboring quadrants is two, such a mesh is called 2-irregular.  Handling all possibilities of hanging faces for a general $k$-irregular mesh (with $k>1$) is impossible and that is why we (and the vast majority of others) consider as illegal meshes such as the one presented in figure \ref{hang_illegal}.
 
 For the rest of this chapter, it is important to note that, in a 1-irregular mesh, a hanging edge (an edge containing hanging nodes) is always half of a non hanging edge for its neighboring quadrant.
 
@@ -50,7 +50,7 @@ Using Galerkin approximation, we will also restrict our search of the solution t
 
 $$u^h = \sum_{j=1}^N u_j \phi_j $$
 
-Asking equation \ref{eq:weakform} to be satisfied for every function in $V^h$ is equivalent to ask it to be satisfied for every function of its basis. As a results, the discretized version of equation \ref{eq:weakform} is given by : 
+Asking equation \ref{eq:weakform} to be satisfied for every function in $V^h$ is equivalent to ask it to be satisfied for every function of its basis. As a result, the discretized version of equation \ref{eq:weakform} is given by : 
 
 \begin{align}
 \sum_{j = 1}^N \int_\Omega \nabla \phi_i \cdot \nabla \phi_j \:dxdy \: u_j &= -\int_\Omega f\phi_i \:dxdy &\text{for $i=1,...,N$} 
@@ -69,7 +69,7 @@ Those integral will be performed using equation \ref{eq:int}.
 
 As shows equations \ref{eq:A} and \ref{eq:b}, we need to compute integrals to solve the problem. Here, we will perform the integration using Gauss-Lobatto-Legendre (GLL) quadrature. The particularity of 1D GLL nodes is that they include the end points of the interval on which we compute the integral. For example, on the one dimensional reference element, it means that the GLL nodes include $\xi = -1$ and $\xi=1$. This particularity enables us to use the GLL nodes both as quadrature points and as global nodes where we compute our numerical solution. We will see later that this allows us to compute the matrix-vector product very efficiently. 
 
-For $p+1$ GLL nodes, we can integrate exactly polynomials of degree at most $2p-1$. It is less than for the Gauss-Legendre quadrature (which achieve to integrate exactly polynomials up to order $2p+1$). The way to compute the GLL nodes and their weights is for example detailled (\textcolor{red}{ref here}). Table \ref{gll_values} shows the values for different degrees. We can see that the nodes are not uniformly distributed but they tend to cluster near the end points $\xi = -1$ and $\xi=1$.
+For $p+1$ GLL nodes, the quadrature integrate exactly polynomials of degree at most $2p-1$. It is less than for the Gauss-Legendre quadrature (which achieve to integrate exactly polynomials up to order $2p+1$). The way to compute the GLL nodes and their weights is for example detailled in \cite{gll_nodes}. Table \ref{gll_values} shows the values for different degrees. We can see that the nodes are not uniformly distributed but they tend to cluster near the end points $\xi = -1$ and $\xi=1$.
 
 \begin{table}
 \centering
@@ -128,22 +128,19 @@ u(\xi,\eta) = \sum_{i=0}^p\sum_{j=0}^p u_{ij}l_i(\xi)l_j(\eta)
 
 \subsection{Global basis function}
 
-Let us first mention the distinction between global and local nodes. Each quadrant has $(p+1)^2$ local GLL nodes but that does not mean that all of them are global nodes, since some might be hanging. One solution consists to treat hanging nodes as global nodes and then add equations in the linear system $Au=b$ to enforce the continuity of the numerical solution. Another solution is to immediately enforce the continuity of the numerical solution by having continuous global basis function. This is what is done here. We will consider $N$ global nodes (that are the GLL nodes for at least one quadrant) and give them a global unique index $I = 1,...,N$. 
-
-\textcolor{red}{montrer mesh ici et aussi montrer une shape function pour p=2}
-
+Let us first mention the distinction between global and local nodes. Each quadrant has $(p+1)^2$ local GLL nodes but that does not mean that all of them are global nodes, since some might be hanging. As explained in \cite{hang_treat}, one solution consists to treat hanging nodes as global nodes and then add equations in the linear system $Au=b$ to enforce the continuity of the numerical solution. Another solution is to immediately enforce the continuity of the numerical solution by having continuous global basis function. This is what is done here. We will consider $N$ global nodes (that are the GLL nodes for at least one quadrant) and give them a global unique index $I = 1,...,N$. 
 
 We want our global basis function $\phi_I$ to be a piece-wise polynomial of order $p$ and to have a value of exactly $1$ at global node $I$ and to be equal to $0$ on any other global node. 
 
 In order to define such a function, we first need a mapping that goes from the 2D reference element to the actual quadrant $e$, i.e. $x^e(\xi,\eta)$ and $y^e(\xi,\eta)$ that for quadrant $e$ give the actual coordinates of any point in the reference element. Let us also define the inverse mappings $\xi^e(x,y)$ and $\eta^e(x,y)$. 
 
-The last thing we need is is a global to local operator that gives for local node $(\xi_i,\eta_j)$ on quadrant $e$ the weight of global node $I$. Let us denote this operator $R^e_{ij}(I)$. In a conforming mesh, since each local node correspond to a global node, $R^e_{ij}(I)$ can only be equal to 0 or to 1. In a non conforming mesh, however, the value of $R^e_{ij}(I)$ must be computed to ensure the continuity of the global basis function. For example, if we have hanging nodes on the east edge of quadrant $e$ (where $i=p$), then $R^e_{pj}(I)$ is given by : 
+The last thing we need is a global to local operator that gives for local node $(\xi_i,\eta_j)$ on quadrant $e$ the weight of global node $I$. Let us denote this operator $R^e_{ij}(I)$. In a conforming mesh, since each local node correspond to a global node, $R^e_{ij}(I)$ can only be equal to 0 or to 1. In a non conforming mesh, however, the value of $R^e_{ij}(I)$ must be computed to ensure the continuity of the global basis function. For example, if we have hanging nodes on the east edge of quadrant $e$ (where $i=p$), then $R^e_{pj}(I)$ is given by : 
 
 \begin{align*}
 R^e_{pj}(I) &= l_k \left(\frac{\xi_j}{2}\pm \frac{1}{2}\right) &\text{if $I$ is the $k$-th global node on the non hanging east edge}
 \end{align*} 
 
-More explanation about how to compute the operator $R^e_{ij}(I)$ can be found \textcolor{red}{ref here}. The plus or minus sign in the above formula comes from the fact that a hanging edge can be the first or the second part of the larger non hanging edge. This is why we accept only 1-irregular meshes : because we only have to handle two cases when we compute $R^e_{ij}(I)$. If we accepted $k$-irregular meshes with $k>1$, we would have too many different cases to look at. 
+More explanation about how to compute the operator $R^e_{ij}(I)$ can be found in \cite{hang_handle}. The plus or minus sign in the above formula comes from the fact that a hanging edge can be the first or the second part of the larger non hanging edge. This is why we accept only 1-irregular meshes : because we only have to handle two cases when we compute $R^e_{ij}(I)$. If we accepted $k$-irregular meshes with $k>1$, we would have too many different cases to look at. 
 
 With this operator and our mapping, it is then possible to compute the value of the basis function associated with node $I$ inside any element $e$. It is given by : 
 
@@ -163,7 +160,7 @@ Figure \ref{global_basis_func} shows a global basis function on the mesh present
 
 Let us also note that there is no global basis function associated with a hanging node. 
 
-In practice, we do not build the operator $R^e_{ij}(I)$ explicitly since only nodes located on edges can be hanging. 
+In practice, we do not build the operator $R^e_{ij}(I)$ explicitly since only nodes located on edges can be hanging and the p4est library helps us to treat hanging nodes (see the implementation chapter for more details).  
 
 \subsection{Computing the right-hand side}
 
@@ -194,7 +191,7 @@ Since $l_i(\xi_j) = \delta_{ij}$, this becomes :
 
 $$  b_I^e = - \sum_{m=0}^p\sum_{n=0}^p w_m w_n f^e_{mn} R^e_{mn}(I) |J^e_{mn}|$$
 
-This expression looks more complicated than it actually is. Indeed, the operator $R_{mn}^e(I)$ is often equal to zero. It is non zero only if in quadrant $e$, the local node $(m,n)$ is the global node $I$ (in which case it is equal to 1) or if the local node $(m,n)$ is located on a hanging edge where the global node $I$ has an influence. Therefore, in a quadrant where we do not have hanging nodes, and if the local node $(m,n)$ has $I$ as global number, we have : 
+This expression looks more complicated than it actually is. Indeed, the operator $R_{mn}^e(I)$ is often equal to zero. It is non zero only if in quadrant $e$, the local node $(m,n)$ is the global node $I$ (in which case it is equal to 1) or if the local node $(m,n)$ is located on a hanging edge where the global node $I$ has an influence. Therefore, in a quadrant where we do not have hanging nodes, and if the local node $(m,n)$ has $I$ as global number, we simply have : 
 
 $$b_I^e = - w_m w_n f^e_{mn} |J^e_{mn}|$$
 
@@ -251,7 +248,7 @@ W_{ij;e}^{\xi\eta} =& w_i w_j |J^e(\xi_i,\eta_j)| \left(\frac{\partial \xi}{\par
 W_{ij;e}^{\eta\eta} =& w_i w_j |J^e(\xi_i,\eta_j)| \left(\frac{\partial \eta}{\partial x}\frac{\partial \eta}{\partial x}+\frac{\partial \eta}{\partial y}\frac{\partial \eta}{\partial y}\right)(\xi_i,\eta_j)
 \end{align*}
 
-The derivatives that appear in the expression above do not need an analytic expression for the inverse mapping to be available. We can compute them using the inverse of the jacobian matrix (\textcolor{red}{ref here}).
+The derivatives that appear in the expression above do not need an analytic expression for the inverse mapping to be available. We can compute them using the inverse of the jacobian matrix to obtain the values of $\frac{\partial xi}{\partial x}(\xi_i,\eta_j)$,...
 
 Let us also remind the definition of the derivation matrix $H$ given by equation \ref{eq:derivation_matrix}. Using the quadrature, we have : 
 

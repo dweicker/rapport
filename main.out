@@ -12,16 +12,23 @@
 \BOOKMARK [2][-]{subsection.1.4.1}{Restriction of r from a high degree to p=1}{section.1.4}% 12
 \BOOKMARK [2][-]{subsection.1.4.2}{Prolongation of the solution from p=1 to a high degree}{section.1.4}% 13
 \BOOKMARK [2][-]{subsection.1.4.3}{The geometric multigrid solver}{section.1.4}% 14
-\BOOKMARK [1][-]{section.1.5}{Fine preconditioner : additive overlapping Schwarz}{chapter.1}% 15
-\BOOKMARK [0][-]{chapter.2}{Results and discussion}{}% 16
-\BOOKMARK [1][-]{section.2.1}{Multigrid}{chapter.2}% 17
-\BOOKMARK [2][-]{subsection.2.1.1}{H-independent convergence}{section.2.1}% 18
-\BOOKMARK [2][-]{subsection.2.1.2}{Influence of hanging nodes}{section.2.1}% 19
-\BOOKMARK [1][-]{section.2.2}{Fine preconditioner}{chapter.2}% 20
-\BOOKMARK [2][-]{subsection.2.2.1}{No hanging nodes}{section.2.2}% 21
-\BOOKMARK [2][-]{subsection.2.2.2}{Influence of hanging nodes}{section.2.2}% 22
-\BOOKMARK [1][-]{section.2.3}{Two scale preconditioner}{chapter.2}% 23
-\BOOKMARK [2][-]{subsection.2.3.1}{No hanging nodes}{section.2.3}% 24
-\BOOKMARK [2][-]{subsection.2.3.2}{Influence of hanging nodes}{section.2.3}% 25
-\BOOKMARK [2][-]{subsection.2.3.3}{Most efficient degree to obtain a given accuracy}{section.2.3}% 26
-\BOOKMARK [1][-]{section.2.4}{Conclusion}{chapter.2}% 27
+\BOOKMARK [1][-]{section.1.5}{Fine preconditioner : overlapping additive Schwarz}{chapter.1}% 15
+\BOOKMARK [2][-]{subsection.1.5.1}{Overlapping subdomains}{section.1.5}% 16
+\BOOKMARK [2][-]{subsection.1.5.2}{Additive Schwarz method}{section.1.5}% 17
+\BOOKMARK [2][-]{subsection.1.5.3}{Managing the actual boundary}{section.1.5}% 18
+\BOOKMARK [0][-]{chapter.2}{Implementation}{}% 19
+\BOOKMARK [1][-]{section.2.1}{The p4est library}{chapter.2}% 20
+\BOOKMARK [2][-]{subsection.2.1.1}{AMR for p4est}{section.2.1}% 21
+\BOOKMARK [2][-]{subsection.2.1.2}{Handling the hanging nodes}{section.2.1}% 22
+\BOOKMARK [0][-]{chapter.3}{Results and discussion}{}% 23
+\BOOKMARK [1][-]{section.3.1}{Multigrid}{chapter.3}% 24
+\BOOKMARK [2][-]{subsection.3.1.1}{H-independent convergence}{section.3.1}% 25
+\BOOKMARK [2][-]{subsection.3.1.2}{Influence of hanging nodes}{section.3.1}% 26
+\BOOKMARK [1][-]{section.3.2}{Fine preconditioner}{chapter.3}% 27
+\BOOKMARK [2][-]{subsection.3.2.1}{No hanging nodes}{section.3.2}% 28
+\BOOKMARK [2][-]{subsection.3.2.2}{Influence of hanging nodes}{section.3.2}% 29
+\BOOKMARK [1][-]{section.3.3}{Two scale preconditioner}{chapter.3}% 30
+\BOOKMARK [2][-]{subsection.3.3.1}{No hanging nodes}{section.3.3}% 31
+\BOOKMARK [2][-]{subsection.3.3.2}{Influence of hanging nodes}{section.3.3}% 32
+\BOOKMARK [2][-]{subsection.3.3.3}{Most efficient degree to obtain a given accuracy}{section.3.3}% 33
+\BOOKMARK [1][-]{section.3.4}{Conclusion}{chapter.3}% 34
