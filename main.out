@@ -20,15 +20,18 @@
 \BOOKMARK [1][-]{section.2.1}{The p4est library}{chapter.2}% 20
 \BOOKMARK [2][-]{subsection.2.1.1}{AMR for p4est}{section.2.1}% 21
 \BOOKMARK [2][-]{subsection.2.1.2}{Handling the hanging nodes}{section.2.1}% 22
-\BOOKMARK [0][-]{chapter.3}{Results and discussion}{}% 23
-\BOOKMARK [1][-]{section.3.1}{Multigrid}{chapter.3}% 24
-\BOOKMARK [2][-]{subsection.3.1.1}{H-independent convergence}{section.3.1}% 25
-\BOOKMARK [2][-]{subsection.3.1.2}{Influence of hanging nodes}{section.3.1}% 26
-\BOOKMARK [1][-]{section.3.2}{Fine preconditioner}{chapter.3}% 27
-\BOOKMARK [2][-]{subsection.3.2.1}{No hanging nodes}{section.3.2}% 28
-\BOOKMARK [2][-]{subsection.3.2.2}{Influence of hanging nodes}{section.3.2}% 29
-\BOOKMARK [1][-]{section.3.3}{Two scale preconditioner}{chapter.3}% 30
-\BOOKMARK [2][-]{subsection.3.3.1}{No hanging nodes}{section.3.3}% 31
-\BOOKMARK [2][-]{subsection.3.3.2}{Influence of hanging nodes}{section.3.3}% 32
-\BOOKMARK [2][-]{subsection.3.3.3}{Most efficient degree to obtain a given accuracy}{section.3.3}% 33
-\BOOKMARK [1][-]{section.3.4}{Conclusion}{chapter.3}% 34
+\BOOKMARK [1][-]{section.2.2}{Multigrid structure}{chapter.2}% 23
+\BOOKMARK [2][-]{subsection.2.2.1}{Filling the highest level}{section.2.2}% 24
+\BOOKMARK [2][-]{subsection.2.2.2}{Recursively filling the lower levels}{section.2.2}% 25
+\BOOKMARK [0][-]{chapter.3}{Results and discussion}{}% 26
+\BOOKMARK [1][-]{section.3.1}{Multigrid}{chapter.3}% 27
+\BOOKMARK [2][-]{subsection.3.1.1}{H-independent convergence}{section.3.1}% 28
+\BOOKMARK [2][-]{subsection.3.1.2}{Influence of hanging nodes}{section.3.1}% 29
+\BOOKMARK [1][-]{section.3.2}{Fine preconditioner}{chapter.3}% 30
+\BOOKMARK [2][-]{subsection.3.2.1}{No hanging nodes}{section.3.2}% 31
+\BOOKMARK [2][-]{subsection.3.2.2}{Influence of hanging nodes}{section.3.2}% 32
+\BOOKMARK [1][-]{section.3.3}{Two scale preconditioner}{chapter.3}% 33
+\BOOKMARK [2][-]{subsection.3.3.1}{No hanging nodes}{section.3.3}% 34
+\BOOKMARK [2][-]{subsection.3.3.2}{Influence of hanging nodes}{section.3.3}% 35
+\BOOKMARK [2][-]{subsection.3.3.3}{Most efficient degree to obtain a given accuracy}{section.3.3}% 36
+\BOOKMARK [1][-]{section.3.4}{Conclusion}{chapter.3}% 37

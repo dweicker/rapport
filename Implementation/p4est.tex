@@ -115,7 +115,7 @@ The function that we build to decode $face\_code$ returns $false$ if no edge if 
 
 \begin{align*}
 hanging\_corner_i &= -1 &\text{if corner $i$ is not hanging}\\
-&= a &\text{if $c$ is the non hanging corner corresponding to $i$}
+&= a &\text{if $a$ is the non hanging corner corresponding to $i$}
 \end{align*}
 
 The $face\_code$ is a bitcode where the last two bits contain the position of the quadrant relative to its parent and the next two bits contain the status of the potentially hanging edges. Indeed, it is obvious that for any quadrant, at most two edges can be hanging. 
