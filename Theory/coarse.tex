@@ -103,7 +103,7 @@ $$(P^cr)_K = \frac{z_K}{m_K}$$
 
 \subsection{The geometric multigrid solver}
 
-This subsection generally describe how the geometric multigrid method works and why it is so effective. However, a lot of details have been omitted and more information can be obtained in the relevant literature (for example in \cite{multi_book}).
+This subsection generally describe how the geometric multigrid method works and why it is so effective. However, a lot of details have been omitted and more information can be obtained in the relevant literature (for example in \cite{multi_book}). It has to be noted that here the degree of interpolation is always $p=1$.
 
 \subsubsection{Motivation}
 
@@ -118,19 +118,19 @@ Which is qualitatively the same problem. But if we are able to solve it for $e$ 
 
 $$u = v + e$$
 
-The second observation we have to make is that the discretization of problem \ref{eq:poisson} or equivalently the one above yields a linear system of equations to solve (as the one derived in the first section of this chapter). As already mentioned, the matrix $A$ defining this linear system has very often a very large condition number $\kappa(A)$. As a result, using iterative methods can be very slow. Typically, the condition number of $A$ is $\mathcal{O}(h^2)$ where $h$ is the size of the smallest quadrant \textcolor{red}{ref here}. Thus, if we use a coarser grid (where the smallest quadrant has a larger size than before), the problem is easier to solve. 
+The second observation we have to make is that the discretization of problem \ref{eq:poisson} or equivalently the one above yields a linear system of equations to solve (as the one derived in the first section of this chapter). As already mentioned, the matrix $A$ defining this linear system has very often a very large condition number $\kappa(A)$. As a result, using iterative methods can be very slow. Typically, the condition number of $A$ for $p=1$ is $\mathcal{O}(h^2)$ where $h$ is the size of the smallest quadrant (see \cite{condNumb}). Thus, if we use a coarser grid (where the smallest quadrant has a larger size than before), the problem is easier to solve. 
 
 The idea behind multigrid is therefore a two-level idea. It works as follow : 
 
 \begin{enumerate}
 \item Given an approximate solution to the problem, compute the residual $f-\nabla^2v$.
 \item Solve problem \ref{eq:poisson_error} to obtain $e$. It should be easier to solve than the initial problem by using a coarser grid.
-\item Add $e$ to $v$ to get the solution $u$ 
+\item Add $e$ to $v$ to get the solution $u$. 
 \end{enumerate}
 
 The next step in the reasoning is to use this idea recursively. Indeed, in step 2, to solve problem \ref{eq:poisson_error}, one can reuse the same process. A more precise definition of the algorithm is given at the end of this section, in algorithms  \ref{mu_cycle} and \ref{multi_algo}.
 
-We still have not explained two things in the procedure above. The first is how to choose an approximate solution to the problem. In theory, it can be any but we have to remember that, in step 2, we will use a coarser grid to solve for $e$. As a result, we want an approximation such that $e = u-v$ is a smooth function that a coarse grid can capture well. One way to obtain this approximation is by using an iterative method. Indeed, it has been shown (\textcolor{red}{ref here}) that even tough iterative methods like Jacobi or Gauss-Seidel have a tendency to stall, just a few iterations allows them to capture the high-frequency modes in the solution. That means that if we compute $v$ by doing some iterations of the Jacobi method, then $e = u-v$ will contain only low frequency modes. And a solution containing low frequencies can be computed on a coarser grid. This property that the high frequency errors converge a lot quicker than the low frequency error is called the smoothing property and is hold by a lot of different smoother (for example, the Jacobi method).
+We still have not explained two things in the procedure above. The first is how to choose an approximate solution to the problem. In theory, it can be any but we have to remember that, in step 2, we will use a coarser grid to solve for $e$. As a result, we want an approximation such that $e = u-v$ is a smooth function that a coarse grid can capture well. One way to obtain this approximation is by using an iterative method. Indeed, it has been shown (for example, in \cite{smoothing}) that even tough iterative methods like Jacobi or Gauss-Seidel have a tendency to stall, just a few iterations allows them to capture the high-frequency modes in the solution. That means that if we compute $v$ by doing some iterations of the Jacobi method, then $e = u-v$ will contain only low frequency modes. And a solution containing low frequencies can be computed on a coarser grid. This property that the high frequency errors converge a lot quicker than the low frequency error is called the smoothing property and is hold by a lot of different smoother (for example, the Jacobi method).
 
 The second thing we have to consider is how to transfer one function onto another grid. Indeed, in step 1, we compute the residual $f-\nabla^2 v$ but then we have to solve problem \ref{eq:poisson_error} on a different, coarser grid. We therefore need an operator to compute the right-hand side of the linear system on the coarser grid from the right-hand side of the one on the initial grid. This is called the restriction operator. Similarly, when we have computed the solution on the coarser grid in step 2, we need to update our approximation $v$ with $e$ on the initial grid. This operator is called the prolongation operator. We will see that there exists a link between those two operators.
 
@@ -148,7 +148,7 @@ Where $D$ is a diagonal matrix containing the diagonal of $A$, $-L$ is the stric
 
 $$ v^{i+1} = \omega\left(D^{-1}(L+U)v^i + D^{-1}b\right) + (1-\omega)v^i$$
 
-It is to be noted that since $D$ is diagonal, it is very cheap to compute $D^{-1}$. It can be shown (\textcolor{red}{ref here}) that if $0<\omega\leq 1$ then the damped Jacobi method is stable. The parameter $\omega$ can then be tuned to obtain different properties in the convergence of high frequency errors. In \textcolor{red}{ref here}, it is shown that a good choice for $\omega$ is : 
+It is to be noted that since $D$ is diagonal, it is very cheap to compute $D^{-1}$. It can be shown (see \cite{multi_book}) that if $0<\omega\leq 1$ then the damped Jacobi method is stable. The parameter $\omega$ can then be tuned to obtain different properties in the convergence of high frequency errors. In \cite{multi_book}, it is shown that a good choice for $\omega$ is : 
 
 $$\omega = \frac{2}{3}$$
 
@@ -180,13 +180,13 @@ In order to do this, we have to precise the nature of the different meshes that 
 
 Now that we have some sense of how the meshes are constructed, it is possible to define the prolongation operator. We can see on figure \ref{hang_lev_2} the influence of increasing by one level. There is the apparition of three new global nodes (in red) and two new hanging nodes (in blue).
 
-Since we use a bilinear interpolation (thus linear along each edge), the prolongation operator is quite natural : the new node created in the middle of a refined quadrant (and that can never be hanging) is equal to a fourth of the sum of the values at the corners of the larger quadrant. Concerning the nodes added on the edges, if they are not hanging, they are equal to the half of the sum of the values at the ends of the edge. Of course, we do not need to compute the prolongation for the hanging edges since they are not global. 
+Since we use a bilinear interpolation (thus linear along each edge), the prolongation operator is quite natural : the new node created in the middle of a refined quadrant (and that can never be hanging) is equal to a fourth of the sum of the values at the corners of the larger quadrant. Concerning the nodes added on the edges, if they are not hanging, they are equal to half of the sum of the values at the ends of the edge. Of course, we do not need to compute the prolongation for the hanging edges since they are not global. 
 
 \subsubsection{Restriction operator}
 
 As before, to conserve the symmetry of the problem, the restriction operator is defined as the transpose of the prolongation operator. 
 
-It means that if a group of four quadrants has to be coarsen to move to the mesh a level below, the value of the residual at the middle nodes (once again, it can never be hanging) contribute a fourth of its value to the residual at the four corners of the larger quadrant. Similarly, the residual at a node on an edge that is not hanging contributes half of its value to both the nodes at the ends of the edge. 
+It means that if a group of four quadrants has to be coarsened to move to the mesh a level below, the value of the residual at the middle node (once again, it can never be hanging) contributes a fourth of its value to the residual at the four corners of the larger quadrant. Similarly, the residual at a node on an edge that is not hanging contributes half of its value to both nodes at the ends of the edge. 
 
 \subsubsection{Formalization of the algorithm}
 
@@ -213,7 +213,7 @@ In this last part, we will give the pseudo-code for the geometric multigrid solv
 \end{algorithm}
 
 
-Algorithm \ref{mu_cycle} describe what is called a $\mu$-cycle scheme. We can see several parameters in this algorithm. First, the number of times we recursively use the function, $\mu$. In practice, only $\mu=1$ (called a V-cycle) and $\mu=2$ (called a W-cycle) are used. We also have the number of smoothing iterations we do before restricting the residual, $\nu_1$, called the pre-smoothing parameter and the number of smoothing iterations we do after the correction, $\nu_2$, called the post-smoothing parameter. 
+Algorithm \ref{mu_cycle} describes what is called a $\mu$-cycle scheme. We can see several parameters in this algorithm. First, the number of times we recursively use the function, $\mu$. In practice, only $\mu=1$ (called a V-cycle) and $\mu=2$ (called a W-cycle) are used. We also have the number of smoothing iterations we do before restricting the residual, $\nu_1$, called the pre-smoothing parameter and the number of smoothing iterations we do after the correction, $\nu_2$, called the post-smoothing parameter. 
 
 The last thing to say is that we can use the $\mu$-cycle scheme as an iterative process, each iteration being one $\mu$-cycle. Algorithm \ref{multi_algo} describe how the procedure works to solve the problem defined by $Au=b$.
 
@@ -232,7 +232,7 @@ The last thing to say is that we can use the $\mu$-cycle scheme as an iterative 
 \label{multi_algo}
 \end{algorithm}
 
-An important characteristic of geometric multigrid methods to note is the h-independent convergence. To obtain a given tolerance of the norm of the residual $r$, the number of iterations needed in algorithm \ref{multi_algo} remains constant for any number of levels. Of course, the time needed to perform an iteration increases if we have more levels but the number of iterations remains identical. 
+An important characteristic of geometric multigrid methods is the h-independent convergence. To obtain a given tolerance of the norm of the residual $r$, the number of iterations needed in algorithm \ref{multi_algo} remains constant for any number of levels. Of course, the time needed to perform an iteration increases if we have more levels but the number of iterations remains identical. 
 
 
 

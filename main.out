@@ -23,15 +23,18 @@
 \BOOKMARK [1][-]{section.2.2}{Multigrid structure}{chapter.2}% 23
 \BOOKMARK [2][-]{subsection.2.2.1}{Filling the highest level}{section.2.2}% 24
 \BOOKMARK [2][-]{subsection.2.2.2}{Recursively filling the lower levels}{section.2.2}% 25
-\BOOKMARK [0][-]{chapter.3}{Results and discussion}{}% 26
-\BOOKMARK [1][-]{section.3.1}{Multigrid}{chapter.3}% 27
-\BOOKMARK [2][-]{subsection.3.1.1}{H-independent convergence}{section.3.1}% 28
-\BOOKMARK [2][-]{subsection.3.1.2}{Influence of hanging nodes}{section.3.1}% 29
-\BOOKMARK [1][-]{section.3.2}{Fine preconditioner}{chapter.3}% 30
-\BOOKMARK [2][-]{subsection.3.2.1}{No hanging nodes}{section.3.2}% 31
-\BOOKMARK [2][-]{subsection.3.2.2}{Influence of hanging nodes}{section.3.2}% 32
-\BOOKMARK [1][-]{section.3.3}{Two scale preconditioner}{chapter.3}% 33
-\BOOKMARK [2][-]{subsection.3.3.1}{No hanging nodes}{section.3.3}% 34
-\BOOKMARK [2][-]{subsection.3.3.2}{Influence of hanging nodes}{section.3.3}% 35
-\BOOKMARK [2][-]{subsection.3.3.3}{Most efficient degree to obtain a given accuracy}{section.3.3}% 36
-\BOOKMARK [1][-]{section.3.4}{Conclusion}{chapter.3}% 37
+\BOOKMARK [1][-]{section.2.3}{Fine preconditioner}{chapter.2}% 26
+\BOOKMARK [2][-]{subsection.2.3.1}{Building neighbors}{section.2.3}% 27
+\BOOKMARK [2][-]{subsection.2.3.2}{Computing the local residual}{section.2.3}% 28
+\BOOKMARK [0][-]{chapter.3}{Results and discussion}{}% 29
+\BOOKMARK [1][-]{section.3.1}{Multigrid}{chapter.3}% 30
+\BOOKMARK [2][-]{subsection.3.1.1}{H-independent convergence}{section.3.1}% 31
+\BOOKMARK [2][-]{subsection.3.1.2}{Influence of hanging nodes}{section.3.1}% 32
+\BOOKMARK [1][-]{section.3.2}{Fine preconditioner}{chapter.3}% 33
+\BOOKMARK [2][-]{subsection.3.2.1}{No hanging nodes}{section.3.2}% 34
+\BOOKMARK [2][-]{subsection.3.2.2}{Influence of hanging nodes}{section.3.2}% 35
+\BOOKMARK [1][-]{section.3.3}{Two scale preconditioner}{chapter.3}% 36
+\BOOKMARK [2][-]{subsection.3.3.1}{No hanging nodes}{section.3.3}% 37
+\BOOKMARK [2][-]{subsection.3.3.2}{Influence of hanging nodes}{section.3.3}% 38
+\BOOKMARK [2][-]{subsection.3.3.3}{Most efficient degree to obtain a given accuracy}{section.3.3}% 39
+\BOOKMARK [1][-]{section.3.4}{Conclusion}{chapter.3}% 40

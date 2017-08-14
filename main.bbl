@@ -42,12 +42,30 @@ William~L Briggs, Van~Emden Henson, and Steve~F McCormick.
 \newblock {\em A multigrid tutorial}.
 \newblock SIAM, 2000.
 
+\bibitem{condNumb}
+Alexandre Ern and Jean-Luc Guermond.
+\newblock Evaluation of the condition number in linear systems arising in
+  finite element approximations.
+\newblock {\em ESAIM: Mathematical Modelling and Numerical Analysis},
+  40(1):29--48, 2006.
+
+\bibitem{smoothing}
+Wolfgang Hackbusch.
+\newblock {\em Multi-grid methods and applications}, volume~4.
+\newblock Springer Science \& Business Media, 2013.
+
 \bibitem{fine_book}
 Tarek Mathew.
 \newblock {\em Domain Decomposition Methods for the Numerical Solution of
   Partial Differential Equations (Lecture Notes in Computational Science and
   Engineering)}.
 \newblock Springer Publishing Company, Incorporated, 1 edition, 2008.
+
+\bibitem{over_acc}
+X~Cai.
+\newblock Overlapping domain decomposition methods.
+\newblock {\em Advanced Topics in Computational Partial Differential
+  Equations}, pages 57--95, 2003.
 
 \bibitem{p4est}
 Carsten Burstedde, Lucas~C Wilcox, and Omar Ghattas.

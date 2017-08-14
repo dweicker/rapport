@@ -57,7 +57,7 @@ hang\_info^{maxlev}_{i;k} &= -1 &\text{if corner $i$ in quadrant $k$ is not hang
 \label{multi_ex}
 \end{figure}
 
-Let us remind that the mesh at level $lev$ is the mesh at level $lev+1$ where all quadrants with level of refinement $lev+1$ have been replaced by their parent. We can see an example in figure \ref{multi_ex}. At level 1, all quadrants with level 2 have been replaced by their parent.
+Let us remember that the mesh at level $lev$ is the mesh at level $lev+1$ where all quadrants with level of refinement $lev+1$ have been replaced by their parent. We can see an example in figure \ref{multi_ex}. At level 1, all quadrants with level 2 have been replaced by their parent.
 
 An important thing to note here is that if a quadrant with level of refinement $lev+1$ is hanging at level $lev+1$, then the corresponding parent at level $lev$ is not hanging. This is a direct consequence of the fact that two neighboring quadrants differ by at most one level in their refinement levels. In the example in figure \ref{multi_ex}, we can indeed see that the parent of the quadrants that were hanging at level 2 is not hanging at level 1.
 
@@ -71,7 +71,7 @@ $$up^1_0 = \begin{bmatrix}
 0 & 1 & 2 & 3
 \end{bmatrix}$$
 
-The $up$ array for the other quadrants are filled with -1 since they do not have children. We can also use the fact that the children are placed consecutively and the fact that when we coarsen we are sure that no node are hanging to easily fill the $nodes$ array. In our example this yields : 
+The $up$ array for the other quadrants are filled with -1 since they do not have children. We can also use the fact that the children are placed consecutively and the fact that when we coarsen we are sure that no node is hanging to easily fill the $nodes$ array. In our example this yields : 
 
 \begin{align*}
 nodes^1_0 &= \begin{bmatrix}
@@ -84,7 +84,7 @@ nodes^2_{0;0} & nodes^2_{1;1} & nodes^2_{2;2} & nodes^2_{3;3}
 
 The last thing to handle for that set of quadrants is the hanging information. Since we coarsen, the parent is not hanging. In our example, that just means setting $hang^1_0 = 0$. 
 
-After having gone through all the quadrants, we still need to compute the number of global nodes at level $lev$. The idea is to fill an array with all the nodes we see when we go through the quadrants (which is therefore of length $4Q^{lev}$), then to sort this array and count the number of different global nodes we have. That also allows us to set up a mapping between a numbering of the nodes at level $lev$ and the global numbering given in $lnodes1$. That mapping is very useful when we have to perform an operation on the nodes at a given level (for example, during the smoothing). 
+After having gone through all the quadrants, we still need to compute the number of global nodes at level $lev$. The idea is to fill an array with all the nodes we see when we go through the quadrants (which is therefore of length $4Q^{lev}$), then to sort this array and count the number of different global nodes we have. That also allows us to set up a mapping between the numbering of the nodes at level $lev$ and the global numbering given in $lnodes1$. That mapping is very useful when we have to perform an operation on the nodes at a given level (for example, during the smoothing). 
  
 Let us finally say that the minimum level ($lev = 0$) is the macro-mesh. It is a conforming mesh and on it, we solve the linear system of equation exactly using the Lapack library (see \cite{lapack} for information).  
  

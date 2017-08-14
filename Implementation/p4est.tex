@@ -12,7 +12,7 @@ In the second part, we will describe how, in our program, we handle hanging node
 
 Different approaches exists for handling non conforming meshes. One strategy consists of splitting the computational domain into several unstructured macro-elements and then to refine them uniformly. The adaptivity is therefore only present at the coarse level. On the other hand, completely unstructured AMR yields more flexibility in the geometry but at a greater cost since there is no structure to rely on. Between the two are three-based methods, where each node is a quadrant that can have four children (which in turn can have children,...) or none at all. That recursive definition provides both simplicity and efficiency.
 
-One downside is that the domain represented by a quadtree (a tree where a node is a leaf or has four children, as presented above) is always cubed shaped. We can circumvent this problem by using a forest of quadtrees to represent a large range of geometrical shapes. 
+One downside is that the domain represented by a quadtree (a tree where a node is a leaf or has four children, as presented above) is always cube shaped. We can circumvent this problem by using a forest of quadtrees to represent a large range of geometrical shapes. 
 
 The approach favored by $p4est$ is the latter : it handles the dynamic management of a collection of adaptive quadtrees, later called a forest of quadtrees. 
 
@@ -31,18 +31,18 @@ Let us also note that the macro-mesh cannot be changed dynamically and is shared
 Let us now turn to the micro-mesh. Based on a user-defined criterion, the refinement of the quadtree is often defined recursively. This creates a quadtree with the quadrants as leaves. Each quadrant of a given quadtree is then uniquely defined by the integer coordinates of its lower left corner $x,y \in \{0,1,2,...,2^b-1\}$ on the referent element and its level of refinement, i.e. the level of the leaf corresponding to that quadrant in the quadtree. In the reference element, a quadrant of level $l$ is a square of length $2^{b-l}$.
 
 
-The details of the refine algorithm used in $p4est$ are not given here but can be found in \cite{p4est}. Here, non conforming edges are allowed. As mentioned in the theory chapter, our application only allows $1$-irregular meshes, i.e. two neighboring quadrants differ by at most one level of refinement. However, the refine function in $p4est$ does not constraint the size relations for neighboring quadrants (leading possibly to $k$-irregular meshes with $k>1$). Fortunately, the library also contains a balance function that we can use to guarantee a $1$-irregular mesh. Of course, the balance function acts both on quadrants in the same quadtree and on quadrants in different quadtrees and connect through an edge of the macro-mesh. 
+The details of the refine algorithm used in $p4est$ are not given here but can be found in \cite{p4est}. Here, non conforming edges are allowed. As mentioned in the theory chapter, our application only allows $1$-irregular meshes, i.e. two neighboring quadrants differ by at most one level of refinement. However, the refine function in $p4est$ does not constraint the size relations for neighboring quadrants (leading possibly to $k$-irregular meshes with $k>1$). Fortunately, the library also contains a balance function that we can use to guarantee a $1$-irregular mesh. Of course, the balance function acts both on quadrants in the same quadtree and on quadrants in different quadtrees that connect through an edge of the macro-mesh. 
 
 The micro-mesh, i.e. the collection of quadrants, can be dynamically changed (with the refine and coarsen functions) and is shared between all processes. 
 
 \begin{figure}
 \centering
 \includegraphics[scale=1.0]{Implementation/filling_curve.png}
-\caption{One-to-one correspondence between a forest of quadtrees (left) and a computational domain (right). There are two quadtrees $k_0$ and $k_1$ (corresponding to two elements in the macro-mesh). Going through the leaves of the forest from left to right creates a space filling curve (in black) and thus a total ordering of the quadrants. }
+\caption{One-to-one correspondence between a forest of quadtrees (left) and a computational domain (right). There are two quadtrees $k_0$ and $k_1$ (corresponding to two elements in the macro-mesh). Going through the leaves of the forest from left to right creates a space filling curve (in black) and thus a total ordering of the quadrants. Source : \cite{p4est}. }
 \label{filling_curve}
 \end{figure}
 
-Tree-based AMR methods naturally lead to space filling curves. Indeed, if the global index of a quadrant is given by its order of apparition when looking at the forest of quatrees left to right, then going quadrant by quadrant creates a curves that tends to fill the domain. An example of this is given in figure \ref{filling_curve}. On the left, we can see the forest which contains two quadtree ($k_0$ and $k_1$), distributed between three processes. We can also see that the refinement process has lead to quadrants with level 1, 2 and 3. On the right, the corresponding mesh is shown. Because we have different levels of refinement, the mesh is non conforming but it is still acceptable for our application since it is $1$-irregular. Inspecting the leaves in the forest of quadtrees from left to right creates a space filling curve that can be used to define a global index for the quadrants. We can see that, within one quadtree, the space filling curve follows the orientation of its coordinate axes.
+Tree-based AMR methods naturally lead to space filling curves. Indeed, if the global index of a quadrant is given by its order of appearance when looking at the forest of quatrees from left to right, then going quadrant by quadrant creates a curves that tends to fill the domain. An example of this is given in figure \ref{filling_curve}. On the left, we can see the forest which contains two quadtree ($k_0$ and $k_1$), distributed between three processes. We can also see that the refinement process has lead to quadrants with level 1, 2 and 3. On the right, the corresponding mesh is shown. Because we have different levels of refinement, the mesh is non conforming but it is still acceptable for our application since it is $1$-irregular. Inspecting the leaves in the forest of quadtrees from left to right creates a space filling curve that can be used to define a global index for the quadrants. We can see that, within one quadtree, the space filling curve follows the orientation of its coordinate axes.
 
 There are still three things we want to point out in this part : how to tell if a quadrant is touching the boundary of the computational domain, how to obtain the physical coordinates of the corners of any quadrant and give some explanation about the global numbering of nodes used in the spectral elements method. 
 
@@ -61,7 +61,7 @@ NO(k,f) &= k\\
 NF(k,f) &= f
 \end{align*}
 
-This convention only prevent the (pathological!) configuration where a quadtree connects to itself periodically through a face that is rotated against itself and that never happens in our application. That enables us to tell which quadrants have a face on the boundary. 
+This convention only prevents the (pathological!) configuration where a quadtree connects to itself periodically through a face that is rotated against itself and that never happens in our application. That enables us to tell which quadrants have a face on the boundary. 
 
 \subsubsection{Physical coordinates of the corners}
 
@@ -84,7 +84,7 @@ Y_{i+2j} &= \sum_{i=0}^1\sum_{j=0}^1 y^k_{i+2j} \phi_i(\frac{x+ih}{2^b})\phi_j(\
 \end{align*}
 
 
-Once, we have the physical coordinates of any quadrants of our mesh, we can compute easily quantities as the physical coordinates of the different local GLL nodes, or the value of the jacobian,...
+Once we have the physical coordinates of any quadrants of our mesh, we can compute easily quantities such as the physical coordinates of the different local GLL nodes, the value of the jacobian,...
 
 \subsubsection{Global unique node numbering}
 
@@ -97,13 +97,13 @@ Let us finally give some explanation about the globally unique numbering of the 
 \label{nodes_ex}
 \end{figure}
 
-All this information is contained in a large array called $element\_nodes$ in $lnodes$. Let us give an example for the sake of clarity. Figure \ref{nodes_ex} shows a mesh for an degree of interpolation $p=2$ where we see in red the global nodes having an influence in the small quadrant close to the center. We can see that this quadrant has two hanging edges. The $element\_nodes$ array for this example is given by : 
+All this information is contained in a large array called $element\_nodes$ in $lnodes$. Let us give an example for the sake of clarity. Figure \ref{nodes_ex} shows a mesh for a degree of interpolation $p=2$ where we see in red the global nodes having an influence in the small quadrant close to the center. We can see that this quadrant has two hanging edges. The $element\_nodes$ array for this example is given by : 
 
 $$element\_nodes = \begin{bmatrix}
 8 &13& 10& 16 &19& 12 &17& 18& 20
 \end{bmatrix}$$
 
-We can see that is numbers the global GLL nodes first in the $x$ direction, then in the $y$ direction and uses the global numbering to refer to hanging nodes. It is possible to do this since hanging nodes are always located on edges. 
+We can see that it numbers the global GLL nodes first in the $x$ direction, then in the $y$ direction and uses the global numbering to refer to hanging nodes. It is possible to do this since hanging nodes are always located on edges. 
 
 \subsection{Handling the hanging nodes}
 
@@ -111,7 +111,7 @@ Let us now look at how to practically handle hanging nodes. As presented before,
 
 \subsubsection{Decoding the face code}
 
-The function that we build to decode $face\_code$ returns $false$ if no edge if hanging while it returns $true$ and fill an array of length 4 called $hanging\_corner$ if there are at least one hanging edge where : 
+The function that we built to decode $face\_code$ returns $false$ if no edge is hanging while it returns $true$ and fill an array of length 4 called $hanging\_corner$ if there are at least one hanging edge where : 
 
 \begin{align*}
 hanging\_corner_i &= -1 &\text{if corner $i$ is not hanging}\\
@@ -147,7 +147,7 @@ u^{loc}_j &= \sum_{k=0}^p l_k\left(\frac{\xi_j}{2}-\frac{1}{2}\right) u_k^{glob}
 u^{loc}_j &= \sum_{k=0}^p l_k\left(\frac{\xi_j}{2}+\frac{1}{2}\right) u_k^{glob} &\text{if the hanging edge constitutes the second part}
 \end{align*}
 
-Where $l_k$ denotes the Lagrangian polynomial associated with the $k$-th 1D GLL node. Since it is always the same interpolation (i.e. the coefficients of the linear combination do not depend on the quadrant) for all hanging edges, we built two matrices that perform the interpolation (one when the edge is the first part, $D^1$, and the other when the edge is the second part, $D^2$) and we use them every time we have an hanging edge. 
+Where $l_k$ denotes the Lagrangian polynomial associated with the $k$-th 1D GLL node. Since it is always the same interpolation (i.e. the coefficients of the linear combination do not depend on the quadrant) for all hanging edges, we built two matrices that perform the interpolation (one when the edge is the first part, $D^1$, and the other when the edge is the second part, $D^2$) and we use them every time we have a hanging edge. 
 
 \begin{align*}
 D^1_{ij} &= l_j\left(\frac{\xi_i}{2}-\frac{1}{2}\right)\\
@@ -166,7 +166,7 @@ u_{12} \\ u_b \\ u_{20}
 u_{10} \\ u_{12} \\ u_{20}
 \end{pmatrix}$$
 
-Here we can also do the corners and we mark them as visited.
+Here we can also do the corners and mark them as visited.
 
 The third step is to look at all four corners and check whether we have visited them or not. Those we have not yet visited are not hanging and we can therefore load them. In figure \ref{nodes_ex}, this corresponds to node 8. 
 

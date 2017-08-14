@@ -1,5 +1,13 @@
 \chapter{Implementation}
 
-This is the intro. Tell that 8000 lines of C code and major part of work.
+The most important part of the work done in realizing this thesis was the implementation, from scratch, of the different methods presented in the theory chapter. It resulted in a code written in plain C and consisting of more than 8000 lines. 
 
-\textcolor{red}{terminer par le fait qu'on peut faire de la 3D et du parallele}
+Although it is impossible to present every part of the code here due to its shear volume, some parts are worth explaining. In this chapter, we will look into different the aspects of the implementation that are not immediately obvious.   
+
+The first section of this chapter presents the $p4est$ library. It is an essential part of the implementation and it interacts with our application at all times. This is why we spend some time showing the components and the philosophy behind $p4est$. It is also important to understand the library to understand how we handle the mesh and its hanging nodes throughout the application.
+
+The implementation of the spectral element method is quite straightforward. The only thing we present here is how to compute the $R_{ij}^e$ operator. 
+
+The second section looks at the geometric multigrid method. The essential ingredient is a structure that handles all levels and the information needed on each. The building of such structure is presented here. 
+
+The last section focuses on the implementation of the fine preconditioner. We show the different possible configurations as far as neighbors are concerned and we present how to compute the local residual in every case.  
