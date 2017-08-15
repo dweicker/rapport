@@ -1,8 +1,8 @@
 \section{Two scale preconditioner}
 
-Let us finally move on to the two-scale preconditioner. We showed in the previous part that using only the fine scale preconditioner was not a good idea when the number of quadrants increased (the number of iterations roughly doubles when the mesh size is divided by two). As explained in the theory chapter, the idea is to add a coarse part in the preconditioner (i.e. $P = P^f + P^c$), consisting mainly of solving a problem with an interpolation degree $p=1$ with a geometric multigrid method, so that the number of iterations stays constant when we increase the number of quandrants.  
+Let us finally move on to the two-scale preconditioner. We showed in the previous part that using only the fine scale preconditioner was not a good idea when the number of quadrants increased (the number of iterations roughly doubles when the mesh size is divided by two). As explained in the theory chapter, the idea is to add a coarse part in the preconditioner (i.e. $P = P^f + P^c$), consisting mainly of solving a problem with an interpolation degree $p=1$ with a geometric multigrid method, so that the number of iterations stays constant when we increase the number of quadrants.  
 
-As in the previous section, the tests will be performed in two parts : first, we will analyse the performances of the two-scale preconditioner when there are no hanging nodes (but for both regular and distorted meshes) and then we will look at what happens when the forest of quadtrees is refined recursively and therefore the mesh is not conforming anymore. 
+As in the previous section, the tests will be performed in two parts : first, we will analyze the performances of the two-scale preconditioner when there are no hanging nodes (but for both regular and distorted meshes) and then we will look at what happens when the forest of quadtrees is refined recursively and therefore the mesh is not conforming anymore. 
 
 In the last subsection, we will also motivate the choice of using higher order degrees of interpolation. We will indeed look at the best degree to obtain a given accuracy in the solution, i.e. the degree for which we have the solution to a given problem on a given mesh in the shortest amount of time and that is accurate enough. 
 
@@ -45,7 +45,7 @@ $p=6$ & $5.9\:10^5$ & $2.4\:10^6$ & $9.4\:10^6$ & $3.8\:10^7$ \\
 $p=8$ & $1.1\:10^6$ & $4.2\:10^6$ & $1.7\:10^7$ & $6.7\:10^7$ \\
 \hline
 \end{tabular}
-\caption{Number of degrees of freedom for a regular mesh with different number of quadrants and for different degrees of interpolation.}
+\caption{Number of degrees of freedom for a regular mesh with different numbers of quadrants and for different degrees of interpolation.}
 \label{two_table_reg}
 \end{table}
 
@@ -60,7 +60,7 @@ For the following tests, we also have tighten the tolerance on the norm of the r
 
 $$\frac{||r_k||_2}{||r_0||_2} < 10^{-5}$$
 
-Figure \ref{two_reg_iter} shows the number of iterations needed to reach that tolerance of the norm of the residual when we use our two scale preconditioner for different degrees of interpolation. The first remark we can make is that the number of iterations does not increase with the number of quandrants (as it was the case when we only had the fine preconditioner). So we can conclude that the coarse preconditioner does the job it was designed to do. We can even note that the number of iterations slightly decreases. For example, for $p=6$, we need 12 iterations for $128^2$ quadrants but we only do 11 iterations for $1024^2$. An explanation for this phenomenon might be that when we increase the number of quadrants, we actually better separate the actions of the fine and coarse preconditioners and therefore the sum of the two is a better approximation of $A^{-1}$. We can mention that for $p=8$, we only need 11 iterations to solve a system that has more than 67 millions unknowns. 
+Figure \ref{two_reg_iter} shows the number of iterations needed to reach that tolerance of the norm of the residual when we use our two scale preconditioner for different degrees of interpolation. The first remark we can make is that the number of iterations does not increase with the number of quadrants (as it was the case when we only had the fine preconditioner). So we can conclude that the coarse preconditioner does the job it was designed to do. We can even note that the number of iterations slightly decreases. For example, for $p=6$, we need 12 iterations for $128^2$ quadrants but we only do 11 iterations for $1024^2$. An explanation for this phenomenon might be that when we increase the number of quadrants, we actually better separate the actions of the fine and coarse preconditioners and therefore the sum of the two is a better approximation of $A^{-1}$. We can mention that for $p=8$, we only need 11 iterations to solve a system that has more than 67 millions unknowns. 
 
 A second remark we can make, as already observed when we only had the fine preconditioner, is that the number of iterations grows with the degree of the interpolation. For example, with $1024^2$ quadrants, we need 8 iterations when $p=2$ but we need to do 11 iterations when $p=8$. As before, this can be explained by the fact that as the degree of the interpolation increases, the size of the overlap decreases. A fixed sized overlap would fix this issue. 
 
@@ -75,14 +75,14 @@ We will now look at what happens when the mesh is not regular but we have quadra
 \label{two_irreg_iter}
 \end{figure}
 
-For an interpolation of degree $p=2$, we looked at the number of iterations needed to reach the given tolerance as we increase the number of quadrants and for elements more and more distorted. Figure \ref{two_irreg_iter} shows the results. We can see that the number of iterations stays roughly the same when we increase the number of quadrants so once again the coarse part of the preconditioner does the job it is designed to do. 
+For an interpolation of degree $p=2$, we looked at the number of iterations needed to reach the given tolerance as we increased the number of quadrants and for elements more and more distorted. Figure \ref{two_irreg_iter} shows the results. We can see that the number of iterations stays roughly the same when we increase the number of quadrants so once again the coarse part of the preconditioner does the job it is designed to do. 
 
-We can also node that when the more we distort the quadrants the more iterations we need to reach the given tolerance. This is to be expected since we developed the fine preconditioner to work optimally on quadrants aligned with the axis. This means that the more a quadrant is distorted the less accurate is the fine preconditioner part and therefore the more iterations we need. However, even with the most distorted mesh, the number of iterations stays acceptable and as explained in the previous section, the gain of not having to solve exactly on every quadrant is huge. We also have to say that the meshes presented here have an intrinsic structure since they are generated using the progression tool in GMSH. Therefore, the errors we make with our approximation are always in the same direction and the number of iterations needed increases. We might not have such an increase with a random mesh containing quadrants with the same quality measure. 
+We can also node that the more we distort the quadrants the more iterations we need to reach the given tolerance. This is to be expected since we developed the fine preconditioner to work optimally on quadrants aligned with the axis. This means that the more a quadrant is distorted the less accurate is the fine preconditioner part and therefore the more iterations we need. However, even with the most distorted mesh, the number of iterations stays acceptable and as explained in the previous section, the gain of not having to solve exactly on every quadrant is huge. We also have to say that the meshes presented here have an intrinsic structure since they are generated using the progression tool in GMSH. Therefore, the errors we make with our approximation are always in the same direction and the number of iterations needed increases. We might not have such an increase with a random mesh containing quadrants with the same quality measure. 
 
 
 \subsection{Influence of hanging nodes}
 
-Let us now move on to the cases when we have hanging nodes. As in the part with only the fine preconditioner, we will look at a problem where the solution has a jump so that we create hanging nodes when we use a recursive refine function in p4est. In addition to the hyperbolic tangent already presented in the previous subsection, we will include a high frequency sine wave to see how the grid adapts to capture it and how the two scale preconditioner performs in its presence. 
+Let us now move on to the cases where we have hanging nodes. As in the part with only the fine preconditioner, we will look at a problem where the solution has a jump so that we create hanging nodes when we use a recursive refine function in p4est. In addition to the hyperbolic tangent already presented in the previous subsection, we will include a high frequency sine wave to see how the grid adapts to capture it and how the two scale preconditioner performs in its presence. 
 
 The problem we will solve is : 
 
@@ -134,7 +134,7 @@ We can see that, as expected, when we decrease the parameter $tol$, we have more
 \end{figure}
 
 
-Figure \ref{two_hang_iter} shows the number of iterations needed to reach the given tolerance with an interpolation degree $p=2$ on the different meshes presented in table \ref{two_hang_table}. We can see that the number of iterations stays roughly the same (it is either 30 or 31) for all meshes, however the number of hanging nodes and the value of the ratio $hang$. So we can conclude that the coarse preconditioner once again guaranties the h-independent convergence and that the number of hanging nodes does not have a great influence on the number of iterations. 
+Figure \ref{two_hang_iter} shows the number of iterations needed to reach the given tolerance with an interpolation degree $p=2$ on the different meshes presented in table \ref{two_hang_table}. We can see that the number of iterations stays roughly the same (it is either 30 or 31) for all meshes, whatever the number of hanging nodes and the value of the ratio $hang$. So we can conclude that the coarse preconditioner once again guaranties the h-independent convergence and that the number of hanging nodes does not have a great influence on the number of iterations. 
 
 We also have to note that, for the same problem, if we use a conforming mesh, the number of iterations needed drops to 16. So even if the number of hanging nodes (absolute or relative) does not greatly influence the number of iterations, just adding one non conforming quadrant does a lot to decrease the performance of the preconditioner. We can point the fact that, as mentioned earlier, when we have hanging quadrants, we do not handle every possibilities to compute the residuals in the overlaps. We can thus see how that affects the number of iterations. 
 
@@ -154,7 +154,7 @@ We can see that as we increase the degree of the interpolation, the number of it
 
 As in the case when we only had the fine preconditioner, several factors can be put forward to explain the increase in the number of iterations. First, when we increase the degree, the size of the overlap decreases and therefore the fine preconditioner is less effective. As mentioned in \cite{overlap_constant}, a fixed sized overlap would fix the issue. 
 
-Second, we can say that the number of hanging nodes in the overlaps increases with the degree of the interpolation. Since we do not treat all possibilities when handling hanging quadrants, the error made is more important when we have a lot of nodes in the overlap.
+Second, we can say that the number of hanging nodes in the overlaps increases with the degree of the interpolation. Since we do not treat all possibilities when handling hanging quadrants, the error made is more important when we have a lot of nodes in the overlaps.
 
 
 \subsection{Most efficient degree to obtain a given accuracy}

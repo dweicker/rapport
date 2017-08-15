@@ -30,7 +30,7 @@ e^1 &= \max_i |u^1_i - u(x_i,y_i)| = 5.02\: 10^{-5}\\
 e^2 & = \max_i |u^2_i - u(x_i,y_i)| = 1.01 \: 10^{-9}
 \end{align*}
 
-We can see that with the same number of degrees of freedom, an approximation using $p=2$ is much more accurate. This is because the solution is really smooth and is better approximated using a higher order interpolation than a bilinear interpolation on smaller quadrants. This is one example of the reasons we want to use higher order interpolations. 
+We can see that with the same number of degrees of freedom, an approximation using $p=2$ is much more accurate. This is because the solution is really smooth and is better approximated using a higher order interpolation than a bilinear interpolation on smaller quadrants. This is one example of why we want to use higher order interpolations. 
 
 \subsubsection{Regular meshes}
 
@@ -59,7 +59,7 @@ $p=8$ & $1.7\:10^4$ & $6.6\:10^4$ & $2.6\:10^5$ & $1.1\:10^6$ & $4.2\:10^6$\\
 \begin{figure}
 \centering
 \includegraphics[scale=0.35]{Results/fine_reg_iter.eps}
-\caption{Number of iterations of PCG with only the fine preconditioner for different degree $p$ of interpolation as a function of the number of quadrants in a regular mesh.}
+\caption{Number of iterations of PCG with only the fine preconditioner for different degrees $p$ of interpolation as a function of the number of quadrants in a regular mesh.}
 \label{fine_reg_iter} 
 \end{figure}
 
@@ -90,11 +90,11 @@ Let us now move on to meshes that are not regular anymore. Let us remember that 
 \label{fine_mesh_deform}
 \end{figure}
 
-To control the deformation, we will continually deform the regular mesh using the progression tool of GMSH (information about GMSH can be found in \cite{gmsh}). The deformation is performed using a geometric progression, using the common ratio $a$ as the parameter. Obviously, the higher the parameter $a$, the more distorted the mesh is. It is clear that for $a=1$, we have a regular mesh. Figure \ref{fine_mesh_deform} presents three meshes of obtained with the progression with GMSH. On the left we used $a = 1.1$ and on the right we used $a=1.4$. 
+To control the deformation, we will continually deform the regular mesh using the progression tool of GMSH (information about GMSH can be found in \cite{gmsh}, or in \cite{gmshPaper}). The deformation is performed using a geometric progression, with the common ratio $a$ as the parameter. Obviously, the higher the parameter $a$, the more distorted the mesh is. It is clear that for $a=1$, we have a regular mesh. Figure \ref{fine_mesh_deform} presents two meshes of obtained with the progression with GMSH. On the left we used $a = 1.1$ and on the right we used $a=1.4$. 
 
 Using the same tolerance as in the previous part, we ran the preconditioned conjugate gradients with the fine preconditioner for those new meshes. The order of the interpolation used is $p=2$. The results are given in figure \ref{fine_dist_iter}.
 
-We can see, as it was expected, that the more we deform the mesh, the more iterations we need to do in order to obtain the wanted accuracy. The fact that, for distorted elements, we do not invert exactly the system but use an approximation allows us to compute the fine preconditioner efficiently even when we have a lot of elements but we can see here that it also costs more iterations of the preconditioned conjugate gradients. However, the gain is still huge. Indeed, for a degree of interpolation $p$, we have $(p+3)^2$ nodes per overlapping subdomain. This means a complexity of $\mathcal{O}((p+3)^6)$ to solve the system exactly. Instead, with the method we use, the only need to do a few matrix multiplications where the matrices have $(p+3)$ rows and columns. This means a complexity of $\mathcal{O}((p+3)^2)$. Even with $p=2$, the results shows that it is much faster to not take geometric factors into account. 
+We can see, as it was expected, that the more we deform the mesh, the more iterations we need to do in order to obtain the wanted accuracy. The fact that, for distorted elements, we do not invert exactly the system but use an approximation allows us to compute the fine preconditioner efficiently even when we have a lot of elements but we can see here that it also costs more iterations of the preconditioned conjugate gradients. However, the gain is still huge. Indeed, for a degree of interpolation $p$, we have $(p+3)^2$ nodes per overlapping subdomain. This means a complexity of $\mathcal{O}((p+3)^6)$ to solve the system exactly. Instead, with the method we use, we only need to do a few matrix multiplications where the matrices have $(p+3)$ rows and columns. This means a complexity of $\mathcal{O}((p+3)^3)$. Even with $p=2$, the results show that it is much faster to not take geometric factors into account. 
 
 We can also note that the effect of increasing the number of elements (i.e. reducing the mesh size) on the number of iterations is clearer here. For example, for the mesh with $a = 1.15$, we need 10 iterations for $8^2$ elements, 18 iterations for $16^2$ elements and 39 iterations for $32^2$ elements. The same explanation applies here : when we multiply the number of elements by four, we roughly multiply the number of quadrants in each direction by two and therefore the information needs twice as many iterations to propagate to the domain. 
 
@@ -121,12 +121,12 @@ u &= \tanh(nx)\tanh(my)  &\text{on $\Gamma$}
  
  $$u(x,y) = \tanh(nx)\tanh(my)$$
  
- The parameters $n$ and $m$ can be adjusted to make the jump in the hyperbolic tangent more steep. An example of a numerical solution with $p=1$ and obtained by our multigrid solver has already been shown on figure \ref{multi_simple_sol} for $n=3$ and $m=3$. 
+ The parameters $n$ and $m$ can be adjusted to make the jump in the hyperbolic tangent steeper. An example of a numerical solution with $p=1$ and obtained by our multigrid solver has already been shown on figure \ref{multi_simple_sol} for $n=3$ and $m=3$. 
  
  As explained before, we will use a recursive refine function when we build the forest. Since we know the analytic solution, we can cheat a little and use it for the refinement process. We will ask that the absolute value of the difference between the value of $u$ in the center of the quadrant and the mean of the values of $u$ at the four corners of the quadrant is less than a fixed tolerance multiplied by the maximum value of the function. So, if the four corners have coordinates $(x_i , y_i)$ for $i=0,1,2,3$, and that $u_{max} = max_{x,y \in \Omega} \left| u \right|$, we impose the following rule :
  
 \begin{align}  
-  \left| u(\frac{1}{4}\sum_{i=0}^3 x_i , \frac{1}{4}\sum_{i=0}^3 y_i) - \frac{1}{4}\sum_{i=0}^3 u(x_i,y_i) < u_{max} tol\right|
+  \left| u(\frac{1}{4}\sum_{i=0}^3 x_i , \frac{1}{4}\sum_{i=0}^3 y_i) - \frac{1}{4}\sum_{i=0}^3 u(x_i,y_i)\right| < u_{max} tol
   \label{hang_rel}
 \end{align}
   
@@ -169,7 +169,7 @@ Table \ref{fine_hanging_ratio} shows this number for different values of the tol
 Let us now see how the number of iterations varies for the different meshes. Figure \ref{fine_hang_plot} shows the number of iterations needed to reach the same norm on the residual as before for the three different meshes obtained with the tolerances presented in table \ref{fine_hanging_ratio}. We can see on the graph that the number of iterations increases when we have relatively more hanging nodes. We have to be careful since this phenomenon can also be explained by the fact that we have more quadrants when the tolerance gets tighter and that also causes an increase in the number of iterations as showed earlier in this section. However, it is observed that we need less iterations when we do not have hanging nodes and for a similar number of quadrants (for example, for 1024 quadrants without hanging nodes, we need 18 iterations whereas we need 38 for 1276 quadrants). 
 
 
-As explained in the theory chapter, when we have hanging nodes, we do not treat all hanging possibilities and therefore we have an error when we compute the local residual. This explains why we need more iterations in presence of hanging nodes and the fact that we converge less quickly the more hanging nodes we have in the mesh. However, the number of iterations is still acceptable.
+As explained in the implementation chapter, when we have hanging nodes, we do not treat all hanging possibilities and therefore we have an error when we compute the local residual. This explains why we need more iterations in presence of hanging nodes and the fact that we converge less quickly the more hanging nodes we have in the mesh. However, the number of iterations is still acceptable.
 
 \subsubsection{Increasing the degree of the interpolation} 
 
@@ -180,7 +180,7 @@ As explained in the theory chapter, when we have hanging nodes, we do not treat 
 \label{fine_hang_deg}
 \end{figure}
 
-Let us finally look at what happens when we increase the degree of the interpolation. We tried different degrees of interpolation ($p=2,4,6,8$) and look at the number of iterations needed to obtain the numerical solution. Figure \ref{fine_hang_deg} shows the results.  
+Let us finally look at what happens when we increase the degree of the interpolation. We tried different degrees of interpolation ($p=2,4,6,8$) and looked at the number of iterations needed to obtain the numerical solution. Figure \ref{fine_hang_deg} shows the results.  
 
 We can see that the number of iterations increases with the degree. We need 38 iterations for $p=2$ but 58 for $p=8$. As already explained in the case with no hanging nodes, this is in part due to the fact that when we increase the degree of the interpolation, the size of the overlap decreases and therefore we need more iterations.
 

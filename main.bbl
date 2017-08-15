@@ -1,5 +1,39 @@
 \begin{thebibliography}{10}
 
+\bibitem{banded}
+Jeff Thorson.
+\newblock Gaussian elimination on a banded matrix, 1982.
+
+\bibitem{fft}
+Leslie Greengard and June-Yub Lee.
+\newblock Accelerating the nonuniform fast fourier transform.
+\newblock {\em SIAM review}, 46(3):443--454, 2004.
+
+\bibitem{multi_high}
+Markus Geveler, Dirk Ribbrock, Dominik G{\"o}ddeke, Peter Zajac, and Stefan
+  Turek.
+\newblock Efficient finite element geometric multigrid solvers for unstructured
+  grids on gpus.
+\newblock In {\em Second Int. Conf. on Parallel, Distributed, Grid and Cloud
+  Computing for Engineering}, page~22, 2011.
+
+\bibitem{fmm1}
+Frank Ethridge and Leslie Greengard.
+\newblock A new fast-multipole accelerated poisson solver in two dimensions.
+\newblock {\em SIAM Journal on Scientific Computing}, 23(3):741--760, 2001.
+
+\bibitem{fmm2}
+Harper Langston, Leslie Greengard, and Denis Zorin.
+\newblock A free-space adaptive fmm-based pde solver in three dimensions.
+\newblock {\em Communications in Applied Mathematics and Computational
+  Science}, 6(1):79--122, 2011.
+
+\bibitem{compa}
+Amir Gholami, Dhairya Malhotra, Hari Sundar, and George Biros.
+\newblock Fft, fmm, or multigrid? a comparative study of state-of-the-art
+  poisson solvers for uniform and nonuniform grids in the unit cube.
+\newblock {\em SIAM Journal on Scientific Computing}, 38(3):C280--C306, 2016.
+
 \bibitem{gll_nodes}
 Seymour~V. Parter.
 \newblock On the legendre--gauss--lobatto points and weights.
@@ -93,5 +127,12 @@ Luca~F Pavarino.
 {GMSH}.
 \newblock \url{http://gmsh.info/}.
 \newblock Accessed: 2017-04.
+
+\bibitem{gmshPaper}
+Christophe Geuzaine and Jean-Fran{\c{c}}ois Remacle.
+\newblock Gmsh: A 3-d finite element mesh generator with built-in pre-and
+  post-processing facilities.
+\newblock {\em International journal for numerical methods in engineering},
+  79(11):1309--1331, 2009.
 
 \end{thebibliography}

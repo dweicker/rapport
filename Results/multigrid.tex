@@ -1,7 +1,7 @@
 \section{Multigrid}
-In this section, we will test the coarse part of the preconditioner : the multigrid solver. This will be done in two steps. First, we will verify a well known property of the multigrid solvers : the h-independent convergence. We will also compare the number and iterations needed while varying key parameters of the model. Those tests will be performed on various meshes. The second part will focus on the influence of hanging nodes on the numerical solution. 
+In this section, we will test the coarse part of the preconditioner : the multigrid solver. This will be done in two steps. First, we will verify a well known property of the multigrid solvers : the h-independent convergence. We will also compare the number of iterations needed while varying key parameters of the model. Those tests will be performed on various meshes. The second part will focus on the influence of hanging nodes on the numerical solution. 
 
-Let us before all present a type of numerical solution that can be obtained using the multigrid solver. Figure \ref{multi_simple_sol} shows an example of the numerical solution computed. We can see that even with $p=1$, we have a good approximation. This is because the forcing term is not at all oscillatory.
+Let us before all present a type of numerical solution that can be obtained using the multigrid solver. Figure \ref{multi_simple_sol} shows an example of the numerical solution computed. We can see that even with $p=1$, we have a good approximation. 
 
 \begin{figure}
 \centering
@@ -10,7 +10,7 @@ Let us before all present a type of numerical solution that can be obtained usin
 \label{multi_simple_sol}
 \end{figure}
 
-\subsection{H-independent convergence}
+\subsection{h-independent convergence}
 Let us first verify that our geometric multigrid solver has the required property and that the same number of iterations is needed to obtain a given accuracy, however small the elements. We will use the model problem throughout this section with the same right hand side. For all the tests below, the domain  will be : $\Omega = [-1;1]^2$. We will solve : 
 
 \begin{align}
@@ -28,7 +28,7 @@ $$e_k = \max_i |u(x_i,y_i) - u_i^k|$$
 
 Where $u_i^k$ is the value of our approximation at the global node $i$ after iteration $k$. Since $u_i^0 = 0$ for all $i$, it is clear that $e_0 = 1$.
 
-Figure \ref{multi_mesh} shows the two "supra meshes" that we will refine during the tests. Some refinements will be uniform and some will be so that we have the presence of hanging nodes. We can note that even for the crooked mesh, the elements are not really distorted. It does not matter since we are only testing the h-independent convergence. Having a mesh with elements that are more distorted will only influence the accuracy of the approximation and not how the algorithm solve the linear system we want to solve. 
+Figure \ref{multi_mesh} shows the two macro-meshes that we will refine during the tests. Some refinements will be uniform and some will be so that we have the presence of hanging nodes. We can note that even for the crooked mesh, the elements are not really distorted. It does not matter since we are only testing the h-independent convergence. Having a mesh with elements that are more distorted will only influence the accuracy of the approximation and not how the algorithm solve the linear system we want to solve. 
 
 \begin{figure}
 \centering
@@ -44,7 +44,7 @@ Figure \ref{multi_mesh} shows the two "supra meshes" that we will refine during 
   \caption{Crooked mesh}
   \label{multi_mesh_2}
 \end{subfigure}
-\caption{The two "supra meshes" that will be refined during the tests for the multigrid solver. We have one regular mesh (left) where the elements are squares and one crooked mesh (right) where the elements are slightly distorted.}
+\caption{The two macro-meshes that will be refined during the tests for the multigrid solver. We have one regular mesh (left) where the elements are squares and one crooked mesh (right) where the elements are slightly distorted.}
 \label{multi_mesh}
 \end{figure}
 
@@ -111,7 +111,7 @@ Let us start with a simple V-cycle on the regular mesh (figure \ref{multi_mesh_1
 
 The results are shown in table \ref{multi_err_nu}. We can see that we indeed have an h-independent convergence of the solver. For every pair of the smoothing parameters, at least for the first few iterations, the error $e_k$ is identical for all values of $N$. Except for the pair $\nu_1 = 4$ and $\nu_2 = 0$, each iteration roughly decrease the error by one decimal point.
 
-We can also note that the values of the parameters influence the convergence. For this particular problem and this particular mesh, the values $\nu_1 = 0$ and  $\nu_2 = 4$ seem to be the best as the error is smaller after the same number of iterations than for the other pairs. The less post smoothing iterations ($\nu_2$) we do, the slower the convergence. This is true for $\nu_2 = 1$ where the error on the finest mesh after six iterations is a hundred times larger than on the same mesh after the same number of iterations for $\nu_2=4$, and it is clearer still for $\nu_2=0$ where the error is a thousand times larger after six iterations on the finest mesh.
+We can also note that the values of the parameters influence the convergence. For this particular problem and this particular mesh, the values $\nu_1 = 0$ and  $\nu_2 = 4$ seem to be the best as the error is smaller after the same number of iterations than for the other pairs. The fewer post smoothing iterations ($\nu_2$) we do, the slower the convergence. This is true for $\nu_2 = 1$ where the error on the finest mesh after six iterations is a hundred times larger than on the same mesh after the same number of iterations for $\nu_2=4$, and it is clearer still for $\nu_2=0$ where the error is a thousand times larger after six iterations on the finest mesh.
 
 We have to note that even tough the errors are identical for all meshes at first, we have a difference after a few iterations. This can be explained by the fact that our geometric multigrid algorithm actually solves a linear system whereas the error is measured as the difference between the analytic solution and the solution of the linear system. Thus, even if we solved the linear system exactly, we would still have an error and that error should decrease as the number of degrees of freedom increases. This is indeed what we observe here. For example, for the mesh with $N=2.6\:10^5$, we can see that after six iterations, we have almost converged and that the error stays around $3.14\:10^{-6}$. Even if we did several more iterations, the error would not decrease significantly. That is because we have the solution of the linear system and the error is only due to the discretization. If we refine the mesh and go to $N=6.7\:10^7$, then we can get smaller errors (of the order of $10^{-8}$).
 
