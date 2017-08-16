@@ -1,10 +1,13 @@
 \chapter*{Introduction}
+\markboth{INTRODUCTION}{}
+\pagenumbering{arabic}
+\addcontentsline{toc}{chapter}{Introduction}
 
-Elliptic problems are found in a wide range of different domains. We can find an application for them in astrophysics, chemistry, mechanics, electromagnetics, statistic, image processing, just to name a few. The most common elliptic problem is Poisson's equation with constant coefficients. It is usually stated as :
+Elliptic problems are found in a wide range of different domains. We can find an application for them in astrophysics, chemistry, mechanics, electromagnetics, statistics, image processing, just to name a few. The most common elliptic problem is Poisson's equation with constant coefficients. It is usually stated as :
 
 $$\nabla^2 u = f$$
 
-Where $u$ is a smooth function we want to solve for and $f$ is a known function and is called the source term or the forcing term. Suitable boundary conditions also have to be provided to guarantee the unicity of the solution. Other formulations might include non constant coefficients. Poisson's equation encapsulate many of the problems we can encounter while solving elliptic partial differential equations and that is why it is often used to develop and test algorithms attempting to solve elliptic problems.   
+Where $u$ is a smooth function we want to solve for and $f$ is a known function and is called the source term or the forcing term. Suitable boundary conditions also have to be provided to guarantee the unicity of the solution. Other formulations might include non constant coefficients. Poisson's equation encapsulates many of the problems we can encounter while solving elliptic partial differential equations and that is why it is often used to develop and test algorithms attempting to solve elliptic problems.   
 
 In addition to being present in a lot of domains, Poisson's equation can also be used as a building block for other numerical methods. An example of this is the numerical solution for incompressible flows. Indeed, most numerical methods solving Navier-Stoke equations for incompressible flows require to solve Poisson's equation at each time step (to project the velocity field onto the divergence-free space for example). 
 
@@ -12,7 +15,7 @@ All those considerations lead to the need of fast and robust algorithms to compu
 
 Let us also mention that the increase of the accuracy requirements leads to the growth of the typical problem sizes. The methods developed have to have an efficient memory management and a good scalability to a lot of degrees of freedom. Several research groups are working on algorithms that have to be able to scale well up to trillions of unknowns. That is why high-order methods are often used in practice.  
 
-Because the number of unknowns is so high, parallel computing has become a necessity. Some computations are performed on millions (or even billions) of CPU cores. That is why any algorithm has to be developed while keeping in mind that it must be able to scale well to such a number of processors. 
+Because the number of unknowns is so high, parallel computing has become a necessity. Some computations are performed on millions of CPU cores. That is why any algorithm has to be developed while keeping in mind that it must be able to scale well to such a number of processors. 
 
 There exists several algorithms that meet the requirement presented above. The work of this thesis is to present one of such algorithms and the theory that supports its choice. The chosen algorithm has then been implemented, from scratch, in order to test its performances and compare them with the theoretical results. That resulted in a code written in plain C of more than 8000 lines, leveraging the $p4est$ library to handle the adaptive mesh and the $Lapack$ library to perform some linear algebra (such as the diagonalization of a matrix). Some technical details of the implementation are also presented. 
 
@@ -34,9 +37,9 @@ For the remaining of this introduction chapter, let us present the different par
 
 Let us start by saying that the meshes used in our applications contain only quadrilateral elements. Such meshes are usually considered to be better than triangular meshes. Examples of the reasons for that are given in \cite{hexes}. Meshes composed by quadrilaterals also contain fewer elements than those composed by triangles for the same number of vertices. Therefore, those meshes require less memory and the assembly procedure is faster. That is especially true for high-order spectral elements.
 
-Another advantage of quadrilateral meshes is that we can define one basis function (of the spectral element method) as tensor-products of the one dimensional shape functions. We will see that this property allows us to perform a matrix-vector product very efficiently.  
+Another advantage of quadrilateral meshes is that we can define the basis functions (of the spectral element method) as tensor-products of the one dimensional shape functions. We will see that this property allows us to perform a matrix-vector product very efficiently.  
 
-We also want to be able to handle in practice both case when $f$ is a superposition of oscillatory modes (where a regular grid is the best choice) and when $f$ has very localized features (where the grid should be able to capture the local features while the number of degrees of freedom is not overwhelming). In practice, in order to have an accurate solution, a high resolution is needed in some parts of the computational domain while in large other parts, high levels of refinement is not necessary.  That naturally leads to adaptive mesh refinement (AMR) and therefore to non conforming meshes. Example of the different ways to define the criterion used to decide if a given quadrilateral must be refined are given in \cite{refine}.
+We also want to be able to handle in practice both case when $f$ is a superposition of oscillatory modes (where a regular grid is the best choice) and when $f$ has very localized features (where the grid should be able to capture the local features while the number of degrees of freedom is not overwhelming). In practice, in order to have an accurate solution, a high resolution is needed in some parts of the computational domain while in large other parts, high levels of refinement is not necessary.  That naturally leads to adaptive mesh refinement (AMR) and therefore to non conforming meshes. Examples of the different ways to define the criterion used to decide if a given quadrilateral must be refined are given in \cite{refine}.
 
 A non conforming mesh is one that contains hanging nodes. A hanging node can be defined by a node that is not shared by all its neighboring elements. They are inevitable when using tree-based AMR methods and must be treated carefully. Examples of meshes containing hanging nodes can be found later in this thesis. 
 
@@ -59,7 +62,7 @@ Our implementation supports any degree of interpolation $p$. However, in the res
 
 \subsection*{The preconditioned conjugate gradients}
 
-From the spectral element method arises a large system of linear equations. Direct methods are impossible due to its size and therefore we favor an iterative method, namely the conjugate gradients. Since it is rather slow because the matrix defining (let us call it $A$) the linear system is badly conditioned, we use a preconditioner. 
+From the spectral element method arises a large system of linear equations. Direct methods are impossible due to its size and therefore we favor an iterative method, namely the conjugate gradients. Since it is rather slow because the matrix defining the linear system (let us call it $A$) is badly conditioned, we use a preconditioner. 
 
 This conditioner is composed by two parts and we want one part to act on a large scale and the other to act on a fine scale. Our hope is that the sum of the two parts of the preconditioner is a good approximation of $A^{-1}$ so that the preconditioned conjugate gradients converge in only a few iterations. That is why we call it a two-scale preconditioner.    
 
