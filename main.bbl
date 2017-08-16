@@ -1,5 +1,27 @@
 \begin{thebibliography}{10}
 
+\bibitem{hexes}
+Steven~E. Benzley, Ernest Perry, Karl Merkley, Brett Clark, and Greg Sjaardema.
+\newblock A comparison of all hexagonal and all tetrahedral finite element
+  meshes for elastic and elasto-plastic analysis.
+\newblock In {\em In Proceedings, 4th International Meshing Roundtable}, pages
+  179--191, 1995.
+
+\bibitem{refine}
+David~F Martin and Kelley~L Cartwright.
+\newblock {\em Solving Poisson's equation using adaptive mesh refinement}.
+\newblock Citeseer, 1996.
+
+\bibitem{p4est}
+Carsten Burstedde, Lucas~C Wilcox, and Omar Ghattas.
+\newblock p4est: Scalable algorithms for parallel adaptive mesh refinement on
+  forests of octrees.
+\newblock {\em SIAM Journal on Scientific Computing}, 33(3):1103--1133, 2011.
+
+\bibitem{expConv}
+Philipp Schlatter.
+\newblock Spectral methods.
+
 \bibitem{banded}
 Jeff Thorson.
 \newblock Gaussian elimination on a banded matrix, 1982.
@@ -33,6 +55,13 @@ Amir Gholami, Dhairya Malhotra, Hari Sundar, and George Biros.
 \newblock Fft, fmm, or multigrid? a comparative study of state-of-the-art
   poisson solvers for uniform and nonuniform grids in the unit cube.
 \newblock {\em SIAM Journal on Scientific Computing}, 38(3):C280--C306, 2016.
+
+\bibitem{amrError}
+R{\"u}diger Verf{\"u}rth.
+\newblock A posteriori error estimation and adaptive mesh-refinement
+  techniques.
+\newblock {\em Journal of Computational and Applied Mathematics},
+  50(1-3):67--83, 1994.
 
 \bibitem{gll_nodes}
 Seymour~V. Parter.
@@ -101,12 +130,6 @@ X~Cai.
 \newblock {\em Advanced Topics in Computational Partial Differential
   Equations}, pages 57--95, 2003.
 
-\bibitem{p4est}
-Carsten Burstedde, Lucas~C Wilcox, and Omar Ghattas.
-\newblock p4est: Scalable algorithms for parallel adaptive mesh refinement on
-  forests of octrees.
-\newblock {\em SIAM Journal on Scientific Computing}, 33(3):1103--1133, 2011.
-
 \bibitem{p4est2}
 Tobin Isaac, Carsten Burstedde, Lucas~C. Wilcox, and Omar Ghattas.
 \newblock Recursive algorithms for distributed forests of octrees.
@@ -115,7 +138,6 @@ Tobin Isaac, Carsten Burstedde, Lucas~C. Wilcox, and Omar Ghattas.
 \bibitem{lapack}
 {LAPACK} - {L}inear {A}lgebra {PACK}age.
 \newblock \url{http://www.netlib.org/lapack/}.
-\newblock Accessed: 2017-04.
 
 \bibitem{overlap_constant}
 Luca~F Pavarino.
@@ -126,7 +148,6 @@ Luca~F Pavarino.
 \bibitem{gmsh}
 {GMSH}.
 \newblock \url{http://gmsh.info/}.
-\newblock Accessed: 2017-04.
 
 \bibitem{gmshPaper}
 Christophe Geuzaine and Jean-Fran{\c{c}}ois Remacle.

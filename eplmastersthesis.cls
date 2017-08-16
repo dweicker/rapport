@@ -13,6 +13,11 @@
 \usepackage{algorithm}
 \usepackage[noend]{algpseudocode}
 
+% Glossary
+\newcommand{\abbrlabel}[1]{\makebox[3cm][l]{\textbf{#1}\ \dotfill}}
+\newenvironment{abbreviations}{\begin{list}{}{\renewcommand{\makelabel}{\abbrlabel}}}{\end{list}}
+
+
 % Bibliography
 \usepackage{hyperref}
 \usepackage{cite} % Mets les ref dans l'ordre d'apparence mais perturbe un peu la mise en page de tableoffigure/table

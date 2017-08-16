@@ -1,0 +1,100 @@
+\chapter*{Introduction}
+
+Elliptic problems are found in a wide range of different domains. We can find an application for them in astrophysics, chemistry, mechanics, electromagnetics, statistic, image processing, just to name a few. The most common elliptic problem is Poisson's equation with constant coefficients. It is usually stated as :
+
+$$\nabla^2 u = f$$
+
+Where $u$ is a smooth function we want to solve for and $f$ is a known function and is called the source term or the forcing term. Suitable boundary conditions also have to be provided to guarantee the unicity of the solution. Other formulations might include non constant coefficients. Poisson's equation encapsulate many of the problems we can encounter while solving elliptic partial differential equations and that is why it is often used to develop and test algorithms attempting to solve elliptic problems.   
+
+In addition to being present in a lot of domains, Poisson's equation can also be used as a building block for other numerical methods. An example of this is the numerical solution for incompressible flows. Indeed, most numerical methods solving Navier-Stoke equations for incompressible flows require to solve Poisson's equation at each time step (to project the velocity field onto the divergence-free space for example). 
+
+All those considerations lead to the need of fast and robust algorithms to compute the solution of Poisson's equation. Those algorithms are often called \textit{Poisson solvers}. For simple geometries and regular grids, there exists well-known direct solvers, usually based on the Fast Fourier Transform, that are well suited to the task. However, if we relax one of those restrictions, it is no longer possible to use such solvers. Because most practical problems involve complex computational domains, or a function $f$ that is very localized or has different scales of resolution (and therefore the use of a regular grid is no longer appropriate), or both, there has been a lot of work done into developing other approaches. 
+
+Let us also mention that the increase of the accuracy requirements leads to the growth of the typical problem sizes. The methods developed have to have an efficient memory management and a good scalability to a lot of degrees of freedom. Several research groups are working on algorithms that have to be able to scale well up to trillions of unknowns. That is why high-order methods are often used in practice.  
+
+Because the number of unknowns is so high, parallel computing has become a necessity. Some computations are performed on millions (or even billions) of CPU cores. That is why any algorithm has to be developed while keeping in mind that it must be able to scale well to such a number of processors. 
+
+There exists several algorithms that meet the requirement presented above. The work of this thesis is to present one of such algorithms and the theory that supports its choice. The chosen algorithm has then been implemented, from scratch, in order to test its performances and compare them with the theoretical results. That resulted in a code written in plain C of more than 8000 lines, leveraging the $p4est$ library to handle the adaptive mesh and the $Lapack$ library to perform some linear algebra (such as the diagonalization of a matrix). Some technical details of the implementation are also presented. 
+
+The chosen algorithm is the spectral element method on an non conforming mesh (that arises from adaptive refinement) consisting of quadrilateral elements. To solve the linear system obtained with the discretization, the preconditioned conjugate gradients are used with a two-scale preconditioner. The first part of the preconditioner, called the coarse scale, consists of a geometric multigrid method. The second part, called the fine scale, is constituted by an overlapping additive Schwarz preconditioner. Currently, the implementation only supports two dimensional problems and has not been parallelized. However, let us stress the fact that the objective is to verify important properties of the algorithm used.
+
+The work presented here targets specifically the following objectives : 
+\begin{itemize}
+\item Investigate the properties of the chosen algorithm and their theoretical basis.
+\item Implement, from scratch, the algorithm to obtain an efficient two dimensional \textit{Poisson solver} that handles non conforming meshes and uses a high-order method.
+\item Discuss the performances of the \textit{Poisson solver} and compare them with the theoretical results. 
+\end{itemize}
+
+
+For the remaining of this introduction chapter, let us present the different parts of the numerical scheme that has been chosen as well as the reasons for using those parts. We will start by the type of mesh used, then move on to the spectral element method. We will afterwards give a brief overview of the preconditioned conjugate gradients and the two preconditioners. The end of this chapter gives a general outline of this thesis. 
+
+
+
+\subsection*{Non conforming meshes and p4est}
+
+Let us start by saying that the meshes used in our applications contain only quadrilateral elements. Such meshes are usually considered to be better than triangular meshes. Examples of the reasons for that are given in \cite{hexes}. Meshes composed by quadrilaterals also contain fewer elements than those composed by triangles for the same number of vertices. Therefore, those meshes require less memory and the assembly procedure is faster. That is especially true for high-order spectral elements.
+
+Another advantage of quadrilateral meshes is that we can define one basis function (of the spectral element method) as tensor-products of the one dimensional shape functions. We will see that this property allows us to perform a matrix-vector product very efficiently.  
+
+We also want to be able to handle in practice both case when $f$ is a superposition of oscillatory modes (where a regular grid is the best choice) and when $f$ has very localized features (where the grid should be able to capture the local features while the number of degrees of freedom is not overwhelming). In practice, in order to have an accurate solution, a high resolution is needed in some parts of the computational domain while in large other parts, high levels of refinement is not necessary.  That naturally leads to adaptive mesh refinement (AMR) and therefore to non conforming meshes. Example of the different ways to define the criterion used to decide if a given quadrilateral must be refined are given in \cite{refine}.
+
+A non conforming mesh is one that contains hanging nodes. A hanging node can be defined by a node that is not shared by all its neighboring elements. They are inevitable when using tree-based AMR methods and must be treated carefully. Examples of meshes containing hanging nodes can be found later in this thesis. 
+
+The library used here to generate and handle the mesh is $p4est$. Its founding paper is \cite{p4est}. It bases its AMR process on a forest of quadtrees (it is therefore a tree-basd AMR). Each quadrant can be refined in an adaptive manner using a user-supplied criterion. The inherent structure of the meshes produced using this forest of quadtrees allows us to easily define an hierarchy of grids for the geometric multigrid method.  
+
+
+\subsection*{The spectral element method}
+
+Let us now turn to the discretization method. The spectral element method consists of approximating the solution $u$ with continuous piece-wise polynomials of degree $p$. It is the fact that the approximation is continuous that forces us to take special care of hanging nodes. 
+
+More precisely, on each quadrant, the interpolation bases consist of a tensor product of one dimensional shape functions. Those shape functions are the Lagrangian polynomials associated with the Gauss-Lobatto-Legendre (GLL) quadrature points. 
+
+As stated above, we will use a high-order method, i.e. a large degree $p$. This is because high-order interpolations can better approximate a smooth function than piece-wise (bi-)linear ones. Let us think about a one dimensional example to grasp this intuitively. With three points, an interpolation of half a period of a sine wave using a quadratic function will be better than a continuous piece-wise linear interpolation. 
+
+This intuition has been formalized into a really important result. If the forcing term is infinitely smooth, we have the \textit{spectral convergence} property : the discretization error decays faster than any power law for sufficiently large $p$. That means that we have an exponential convergence of our solution. Our course, that requires that $f$  is smooth enough. This result is for example given in \cite{expConv}.
+
+That is why it is often a good idea to use high-order methods. It allows us to obtain a very high accuracy while keeping the number of degrees of freedom reasonable. In practice, high-order methods almost always perform better than their low-order counterparts when the accuracy requirements are high.   
+
+Our implementation supports any degree of interpolation $p$. However, in the results chapter, we only present cases for $p=2,4,6,8$. 
+
+\subsection*{The preconditioned conjugate gradients}
+
+From the spectral element method arises a large system of linear equations. Direct methods are impossible due to its size and therefore we favor an iterative method, namely the conjugate gradients. Since it is rather slow because the matrix defining (let us call it $A$) the linear system is badly conditioned, we use a preconditioner. 
+
+This conditioner is composed by two parts and we want one part to act on a large scale and the other to act on a fine scale. Our hope is that the sum of the two parts of the preconditioner is a good approximation of $A^{-1}$ so that the preconditioned conjugate gradients converge in only a few iterations. That is why we call it a two-scale preconditioner.    
+
+The first part of the preconditioner, called the coarse preconditioner, consists of solving a low-order problem on the mesh. To solve this coarse problem, we will use a geometric multigrid solver. It is one of the fastest method available. This algorithm has multiple advantages but the main one is called the h-independent convergence. The number of iterations of the geometric multigrid method is independent of the number of quadrant. As we will see in the results chapter, it is this part of the preconditioner that allows us to have a constant number of iterations whatever the level of refinement in our mesh. The hierarchy of meshes needed for the geometric multigrid method derives naturally from the tree-based AMR process : the mesh at a given level $k$ contains only quadrants that have a level of refinement inferior or equal to $k$.   
+
+The second part of the preconditioner, called the fine preconditioner, is constituted by an ovarlapping additive Schwarz preconditioner. It is a domain decomposition method. The principle is to solve the problem on several subdomains with Dirichlet boundary conditions and then to sum the contributions of the different subdomains. We will see that our quadrilateral mesh provides us with an easy way to define those subdomains. We will also make some assumptions that will allow us to compute the fine preconditioner efficiently.   
+
+\subsection*{Outline of the thesis}
+
+Let us end this introduction chapter with an outline of the contents of this thesis. 
+
+\textit{Poisson solvers} are intensively studied and the algorithm for this thesis is not the only one available. The first chapter therefore presents several other algorithms to solve elliptic problems and tries to give a snapshot of the different methods used in practice. 
+
+The second chapter refocuses on the chosen algorithm. In it, we present in detail the different methods that constitute our \textit{Poisson solver}. The theoretical reasons behind the choices made are also laid out.
+
+As a large part of this thesis was the implementation, with $p4est$, of the method presented in chapter 2, the third chapter spends some time explaining the different design choices that were made and how the algorithm is implemented in practice. 
+
+The fourth chapter puts the implementation to the test. We test the algorithm against several examples and quantify its performances. The number of iterations needed to reach a given tolerance is compared for the different cases and we compare the observations with the theoretical results. 
+
+We end this thesis by a conclusion that summarizes all the work done and the important results. We also check the fulfillment of the objectives presented earlier in this chapter.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

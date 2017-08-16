@@ -7,7 +7,7 @@ The second part of the task is the discretization of equation \ref{eq:weakform}.
 
 \subsection{Discretization of the domain}
 
-Let us first tackle the discretization of the domain. In classical AMR, the mesh depends on the problem to solve and the refinement is performed to obtain the fact that the error committed on each quadrant is roughly the same (\textcolor{red}{ref here}). But that is not the focus of the work done here. Instead, let us assume that we already have a mesh $G$ consisting of unstructured quadrilaterals (denoted $\Omega_e$) and that might be non conforming, i.e. where we have the presence of hanging nodes. As always, we have : 
+Let us first tackle the discretization of the domain. In classical AMR, the mesh depends on the problem to solve and the refinement is performed to obtain the fact that the error committed on each quadrant is roughly the same (see \cite{amrError}). But that is not the focus of the work done here. Instead, let us assume that we already have a mesh $G$ consisting of unstructured quadrilaterals (denoted $\Omega_e$) and that might be non conforming, i.e. where we have the presence of hanging nodes. As always, we have : 
 
 \begin{align*}
 G &= \bigcup\limits_{e} \Omega_e\\

@@ -1,0 +1,64 @@
+\select@language {english}
+\contentsline {chapter}{\numberline {1}State of the art}{11}{chapter.1}
+\contentsline {chapter}{\numberline {2}Theory}{13}{chapter.2}
+\contentsline {section}{\numberline {2.1}Presentation of the problem}{13}{section.2.1}
+\contentsline {section}{\numberline {2.2}Spectral element method on non conforming meshes}{14}{section.2.2}
+\contentsline {subsection}{\numberline {2.2.1}Discretization of the domain}{14}{subsection.2.2.1}
+\contentsline {subsection}{\numberline {2.2.2}Discretization of equation \ref {eq:weakform}}{15}{subsection.2.2.2}
+\contentsline {subsection}{\numberline {2.2.3}Basis functions on the reference element and Gauss-Lobatto-Legendre nodes}{16}{subsection.2.2.3}
+\contentsline {subsection}{\numberline {2.2.4}Global basis function}{18}{subsection.2.2.4}
+\contentsline {subsection}{\numberline {2.2.5}Computing the right-hand side}{19}{subsection.2.2.5}
+\contentsline {subsection}{\numberline {2.2.6}Computing a matrix-vector product}{20}{subsection.2.2.6}
+\contentsline {section}{\numberline {2.3}Preconditioned conjugate gradients}{22}{section.2.3}
+\contentsline {section}{\numberline {2.4}Coarse preconditioner : the multigrid solver}{24}{section.2.4}
+\contentsline {subsection}{\numberline {2.4.1}Restriction of $r$ from a high degree to $p=1$}{24}{subsection.2.4.1}
+\contentsline {subsection}{\numberline {2.4.2}Prolongation of the solution from $p=1$ to a high degree}{25}{subsection.2.4.2}
+\contentsline {subsection}{\numberline {2.4.3}The geometric multigrid solver}{26}{subsection.2.4.3}
+\contentsline {subsubsection}{Motivation}{26}{section*.13}
+\contentsline {subsubsection}{The smoother : damped Jacobi method}{27}{section*.14}
+\contentsline {subsubsection}{Prolongation operator}{28}{section*.15}
+\contentsline {subsubsection}{Restriction operator}{28}{section*.17}
+\contentsline {subsubsection}{Formalization of the algorithm}{29}{section*.18}
+\contentsline {section}{\numberline {2.5}Fine preconditioner : overlapping additive Schwarz}{30}{section.2.5}
+\contentsline {subsection}{\numberline {2.5.1}Overlapping subdomains}{30}{subsection.2.5.1}
+\contentsline {subsection}{\numberline {2.5.2}Additive Schwarz method}{31}{subsection.2.5.2}
+\contentsline {subsection}{\numberline {2.5.3}Managing the actual boundary}{32}{subsection.2.5.3}
+\contentsline {chapter}{\numberline {3}Implementation}{35}{chapter.3}
+\contentsline {section}{\numberline {3.1}The p4est library}{35}{section.3.1}
+\contentsline {subsection}{\numberline {3.1.1}AMR for p4est}{36}{subsection.3.1.1}
+\contentsline {subsubsection}{Quadrants on the boundary}{37}{section*.21}
+\contentsline {subsubsection}{Physical coordinates of the corners}{38}{section*.22}
+\contentsline {subsubsection}{Global unique node numbering}{38}{section*.23}
+\contentsline {subsection}{\numberline {3.1.2}Handling the hanging nodes}{39}{subsection.3.1.2}
+\contentsline {subsubsection}{Decoding the face code}{39}{section*.25}
+\contentsline {subsubsection}{Computing $R_{ij}^e$}{40}{section*.26}
+\contentsline {section}{\numberline {3.2}Multigrid structure}{41}{section.3.2}
+\contentsline {subsection}{\numberline {3.2.1}Filling the highest level}{41}{subsection.3.2.1}
+\contentsline {subsection}{\numberline {3.2.2}Recursively filling the lower levels}{42}{subsection.3.2.2}
+\contentsline {section}{\numberline {3.3}Fine preconditioner}{43}{section.3.3}
+\contentsline {subsection}{\numberline {3.3.1}Building $neighbors$}{44}{subsection.3.3.1}
+\contentsline {subsection}{\numberline {3.3.2}Computing the local residual}{45}{subsection.3.3.2}
+\contentsline {subsubsection}{The neighbor is the boundary}{45}{section*.29}
+\contentsline {subsubsection}{One neighbor through a non hanging edge}{46}{section*.30}
+\contentsline {subsubsection}{Two neighbors through a non hanging edge}{46}{section*.31}
+\contentsline {subsubsection}{One neighbor through a hanging edge}{46}{section*.32}
+\contentsline {chapter}{\numberline {4}Results and discussion}{47}{chapter.4}
+\contentsline {section}{\numberline {4.1}Multigrid}{48}{section.4.1}
+\contentsline {subsection}{\numberline {4.1.1}h-independent convergence}{48}{subsection.4.1.1}
+\contentsline {subsection}{\numberline {4.1.2}Influence of hanging nodes}{51}{subsection.4.1.2}
+\contentsline {section}{\numberline {4.2}Fine preconditioner}{52}{section.4.2}
+\contentsline {subsection}{\numberline {4.2.1}No hanging nodes}{52}{subsection.4.2.1}
+\contentsline {subsubsection}{Regular meshes}{53}{section*.40}
+\contentsline {subsubsection}{Meshes with distorted elements}{55}{section*.43}
+\contentsline {subsection}{\numberline {4.2.2}Influence of hanging nodes}{56}{subsection.4.2.2}
+\contentsline {subsubsection}{Increasing the relative number of hanging nodes}{57}{section*.46}
+\contentsline {subsubsection}{Increasing the degree of the interpolation}{59}{section*.49}
+\contentsline {section}{\numberline {4.3}Two scale preconditioner}{59}{section.4.3}
+\contentsline {subsection}{\numberline {4.3.1}No hanging nodes}{59}{subsection.4.3.1}
+\contentsline {subsubsection}{Regular meshes}{60}{section*.52}
+\contentsline {subsubsection}{Meshes with distorted elements}{61}{section*.55}
+\contentsline {subsection}{\numberline {4.3.2}Influence of hanging nodes}{62}{subsection.4.3.2}
+\contentsline {subsubsection}{Increasing the relative number of hanging nodes}{62}{section*.58}
+\contentsline {subsubsection}{Increasing the degree of the interpolation}{64}{section*.61}
+\contentsline {subsection}{\numberline {4.3.3}Most efficient degree to obtain a given accuracy}{65}{subsection.4.3.3}
+\contentsline {section}{\numberline {4.4}Conclusion}{66}{section.4.4}
