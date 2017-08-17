@@ -16,7 +16,7 @@ G &= \bigcup\limits_{e} \Omega_e\\
 
 \begin{figure}
 \centering
-\includegraphics[scale=0.45]{Theory/hang_ex.png}
+\includegraphics[scale=0.30]{Theory/hang_ex.png}
 \caption{Example of a legal non conforming mesh (it is 1-irregular). We can see that we have two hanging nodes in red since they are not vertices of the bigger quadrants neighboring them.}
 \label{hang_ex}
 \end{figure}
@@ -25,7 +25,7 @@ We can define a hanging node as being a node that is not shared between all its 
 
 \begin{figure}
 \centering
-\includegraphics[scale=0.45]{Theory/hang_illegal.png}
+\includegraphics[scale=0.30]{Theory/hang_illegal.png}
 \caption{Example of an illegal non conforming mesh (it is 2-irregular). We can see that the top left quadrant has four neighbors through its south edge while we imposed a maximum of two. }
 \label{hang_illegal}
 \end{figure}
@@ -140,7 +140,7 @@ The last thing we need is a global to local operator that gives for local node $
 R^e_{pj}(I) &= l_k \left(\frac{\xi_j}{2}\pm \frac{1}{2}\right) &\text{if $I$ is the $k$-th global node on the non hanging east edge}
 \end{align*} 
 
-More explanation about how to compute the operator $R^e_{ij}(I)$ can be found in \cite{hang_handle}. The plus or minus sign in the above formula comes from the fact that a hanging edge can be the first or the second part of the larger non hanging edge. This is why we accept only 1-irregular meshes : because we only have to handle two cases when we compute $R^e_{ij}(I)$. If we accepted $k$-irregular meshes with $k>1$, we would have too many different cases to look at. 
+More explanation about how to compute the operator $R^e_{ij}(I)$ can be found in \cite{hang_handle} or in \cite{hang_easy}. The plus or minus sign in the above formula comes from the fact that a hanging edge can be the first or the second part of the larger non hanging edge. This is why we accept only 1-irregular meshes : because we only have to handle two cases when we compute $R^e_{ij}(I)$. If we accepted $k$-irregular meshes with $k>1$, we would have too many different cases to look at. 
 
 With this operator and our mapping, it is then possible to compute the value of the basis function associated with node $I$ inside any element $e$. It is given by : 
 
@@ -150,7 +150,7 @@ With this operator and our mapping, it is then possible to compute the value of 
 
 \begin{figure}
 \centering
-\includegraphics[scale=0.35]{Theory/global_basis_func.eps}
+\includegraphics[scale=0.25]{Theory/global_basis_func.eps}
 \caption{Global basis function associated with the global GLL node located in the center of the mesh presented in figure \ref{hang_ex} for $p=1$.}
 \label{global_basis_func}
 \end{figure}

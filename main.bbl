@@ -7,6 +7,12 @@ Steven~E. Benzley, Ernest Perry, Karl Merkley, Brett Clark, and Greg Sjaardema.
 \newblock In {\em In Proceedings, 4th International Meshing Roundtable}, pages
   179--191, 1995.
 
+\bibitem{semTri}
+Richard Pasquetti and Francesca Rapetti.
+\newblock Spectral element methods on triangles and quadrilaterals: comparisons
+  and applications.
+\newblock {\em Journal of Computational Physics}, 198(1):349--362, 2004.
+
 \bibitem{refine}
 David~F Martin and Kelley~L Cartwright.
 \newblock {\em Solving Poisson's equation using adaptive mesh refinement}.
@@ -18,9 +24,20 @@ Carsten Burstedde, Lucas~C Wilcox, and Omar Ghattas.
   forests of octrees.
 \newblock {\em SIAM Journal on Scientific Computing}, 33(3):1103--1133, 2011.
 
+\bibitem{specEff}
+Michel~O Deville, Paul~F Fischer, and Ernest~H Mund.
+\newblock {\em High-order methods for incompressible fluid flow}, volume~9.
+\newblock Cambridge university press, 2002.
+
 \bibitem{expConv}
 Philipp Schlatter.
 \newblock Spectral methods.
+
+\bibitem{specConv}
+FN~Van~de Vosse and PD~Minev.
+\newblock Spectral elements methods: Theory and applications.
+\newblock Technical report, EUT Report 96-W-001 ISBN 90-236-0318-5, Eindhoven
+  University of Technology, 1996.
 
 \bibitem{banded}
 Jeff Thorson.
@@ -38,6 +55,20 @@ Markus Geveler, Dirk Ribbrock, Dominik G{\"o}ddeke, Peter Zajac, and Stefan
   grids on gpus.
 \newblock In {\em Second Int. Conf. on Parallel, Distributed, Grid and Cloud
   Computing for Engineering}, page~22, 2011.
+
+\bibitem{flexiAlg}
+Raymond~S Tuminaro, Erik~G Boman, Jonathan~Joseph Hu, Andrey Prokopenko,
+  Christopher Siefert, Paul~H Tsuji, Jeremie Gaidamour, Luke Olson, Jacob
+  Schroder, Badri Hiriyur, et~al.
+\newblock Toward flexible scalable algebraic multigrid solvers.
+\newblock Technical report, Sandia National Laboratories (SNL-CA), Livermore,
+  CA (United States); Sandia National Laboratories, Albuquerque, NM, 2013.
+
+\bibitem{amg}
+Klaus St{\"u}ben.
+\newblock A review of algebraic multigrid.
+\newblock {\em Journal of Computational and Applied Mathematics},
+  128(1):281--309, 2001.
 
 \bibitem{fmm1}
 Frank Ethridge and Leslie Greengard.
@@ -82,6 +113,11 @@ Jan~S Hesthaven and Einar~M Ronquist.
   Trondheim, Norway}, volume~76.
 \newblock Springer Science \& Business Media, 2010.
 
+\bibitem{hang_easy}
+Paolo Di~Stolfo, Andreas Schr{\"o}der, Nils Zander, and Stefan Kollmannsberger.
+\newblock An easy treatment of hanging nodes in hp-finite elements.
+\newblock {\em Finite Elements in Analysis and Design}, 121:101--117, 2016.
+
 \bibitem{conj_grad}
 Jonathan~Richard Shewchuk et~al.
 \newblock An introduction to the conjugate gradient method without the
@@ -116,6 +152,12 @@ Alexandre Ern and Jean-Luc Guermond.
 Wolfgang Hackbusch.
 \newblock {\em Multi-grid methods and applications}, volume~4.
 \newblock Springer Science \& Business Media, 2013.
+
+\bibitem{levelMulti}
+B{\"a}rbel Janssen and Guido Kanschat.
+\newblock Adaptive multilevel methods with local smoothing for h\^{}1-and
+  h\^{}curl-conforming high order finite element methods.
+\newblock {\em SIAM Journal on Scientific Computing}, 33(4):2095--2114, 2011.
 
 \bibitem{fine_book}
 Tarek Mathew.
@@ -155,5 +197,11 @@ Christophe Geuzaine and Jean-Fran{\c{c}}ois Remacle.
   post-processing facilities.
 \newblock {\em International journal for numerical methods in engineering},
   79(11):1309--1331, 2009.
+
+\bibitem{multi_impl}
+Rahul~S Sampath and George Biros.
+\newblock A parallel geometric multigrid method for finite elements on octree
+  meshes.
+\newblock {\em SIAM Journal on Scientific Computing}, 32(3):1361--1392, 2010.
 
 \end{thebibliography}

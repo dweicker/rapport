@@ -4,7 +4,7 @@ Now that we have our right hand side vector $b$ and that we are able to compute 
 
 Since the number of degrees of freedom is huge, it is impossible to use a direct method to solve the linear system. Instead, we will turn ourselves to iterative methods. 
 
-The matrix $A$ arises from the discretization of an Poisson equation using finite elements and therefore it is sparse, symmetric and positive-definite (see \textcolor{red}{ref here}). The conjugate gradients method is therefore well suited to solve the linear system. We have to note however that the convergence speed of the conjugate gradients depends on the condition number of the matrix $A$, $\kappa(A)$. Indeed, as given in \cite{conj_grad}, if we denote $e_i = u-u_i$ where u is the solution of the linear system and $u_i$ is our approximation after the $i$-th iteration, then : 
+The matrix $A$ arises from the discretization of an Poisson equation using finite elements and therefore it is sparse, symmetric and positive-definite. The conjugate gradients method is therefore well suited to solve the linear system. We have to note however that the convergence speed of the conjugate gradients depends on the condition number of the matrix $A$, $\kappa(A)$. Indeed, as given in \cite{conj_grad}, if we denote $e_i = u-u_i$ where u is the solution of the linear system and $u_i$ is our approximation after the $i$-th iteration, then : 
 
 \begin{align}
 ||e_i||_A \leq 2 \left(\frac{\sqrt{\kappa(A)}-1}{\sqrt{\kappa(A)}+1}\right)^i ||e_0||_A \label{eq:cg_conv}

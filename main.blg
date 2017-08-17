@@ -5,45 +5,45 @@ The style file: unsrt.bst
 Database file #1: sample.bib
 Warning--empty journal in expConv
 Warning--empty year in expConv
-You've used 27 entries,
+You've used 35 entries,
             1791 wiz_defined-function locations,
-            612 strings with 7909 characters,
-and the built_in function-call counts, 5882 in all, are:
-= -- 531
-> -- 227
-< -- 5
-+ -- 88
-- -- 61
-* -- 392
-:= -- 897
-add.period$ -- 76
-call.type$ -- 27
-change.case$ -- 23
+            656 strings with 9358 characters,
+and the built_in function-call counts, 7703 in all, are:
+= -- 694
+> -- 323
+< -- 6
++ -- 123
+- -- 88
+* -- 528
+:= -- 1202
+add.period$ -- 100
+call.type$ -- 35
+change.case$ -- 32
 chr.to.int$ -- 0
-cite$ -- 29
-duplicate$ -- 258
-empty$ -- 614
-format.name$ -- 61
-if$ -- 1314
+cite$ -- 37
+duplicate$ -- 325
+empty$ -- 780
+format.name$ -- 88
+if$ -- 1702
 int.to.chr$ -- 0
-int.to.str$ -- 27
-missing$ -- 28
-newline$ -- 133
-num.names$ -- 25
-pop$ -- 94
+int.to.str$ -- 35
+missing$ -- 35
+newline$ -- 173
+num.names$ -- 33
+pop$ -- 109
 preamble$ -- 1
 purify$ -- 0
 quote$ -- 0
-skip$ -- 120
+skip$ -- 144
 stack$ -- 0
-substring$ -- 425
-swap$ -- 51
-text.length$ -- 5
+substring$ -- 562
+swap$ -- 58
+text.length$ -- 6
 text.prefix$ -- 0
 top$ -- 0
 type$ -- 0
 warning$ -- 2
-while$ -- 60
-width$ -- 29
-write$ -- 279
+while$ -- 78
+width$ -- 37
+write$ -- 367
 (There were 2 warnings)

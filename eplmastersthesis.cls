@@ -86,14 +86,14 @@
 		\\
 		\vspace*{12pt}
 		Reader(s) \\
-		\textbf{\@readerone, \@readertwo}
+		\textbf{\@readerone}
         \ifdef{\@readerthree}{\textbf{, \@readerthree}}{}
 		\\
 		\vspace*{12pt}
 		Academic year \@years \\
 	\end{flushright}
 	\vspace*{6pt}
-	\color{EPLblue}{\rule{18.5cm}{8.25cm}}
+	\color{EPLblue}{\rule{18.5cm}{6.75cm}}
   \end{titlepage}
 }
 

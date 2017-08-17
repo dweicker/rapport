@@ -35,7 +35,7 @@ For the remaining of this introduction chapter, let us present the different par
 
 \subsection*{Non conforming meshes and p4est}
 
-Let us start by saying that the meshes used in our applications contain only quadrilateral elements. Such meshes are usually considered to be better than triangular meshes. Examples of the reasons for that are given in \cite{hexes}. Meshes composed by quadrilaterals also contain fewer elements than those composed by triangles for the same number of vertices. Therefore, those meshes require less memory and the assembly procedure is faster. That is especially true for high-order spectral elements.
+Let us start by saying that the meshes used in our applications contain only quadrilateral elements. Such meshes are usually considered to be better than triangular meshes. Examples of the reasons for that are given in \cite{hexes} or in \cite{semTri}. Meshes composed by quadrilaterals also contain fewer elements than those composed by triangles for the same number of vertices. Therefore, those meshes require less memory and the assembly procedure is faster. That is especially true for high-order spectral elements.
 
 Another advantage of quadrilateral meshes is that we can define the basis functions (of the spectral element method) as tensor-products of the one dimensional shape functions. We will see that this property allows us to perform a matrix-vector product very efficiently.  
 
@@ -50,11 +50,11 @@ The library used here to generate and handle the mesh is $p4est$. Its founding p
 
 Let us now turn to the discretization method. The spectral element method consists of approximating the solution $u$ with continuous piece-wise polynomials of degree $p$. It is the fact that the approximation is continuous that forces us to take special care of hanging nodes. 
 
-More precisely, on each quadrant, the interpolation bases consist of a tensor product of one dimensional shape functions. Those shape functions are the Lagrangian polynomials associated with the Gauss-Lobatto-Legendre (GLL) quadrature points. 
+More precisely, on each quadrant, the interpolation bases consist of a tensor product of one dimensional shape functions (as explained in \cite{specEff}). Those shape functions are the Lagrangian polynomials associated with the Gauss-Lobatto-Legendre (GLL) quadrature points. 
 
 As stated above, we will use a high-order method, i.e. a large degree $p$. This is because high-order interpolations can better approximate a smooth function than piece-wise (bi-)linear ones. Let us think about a one dimensional example to grasp this intuitively. With three points, an interpolation of half a period of a sine wave using a quadratic function will be better than a continuous piece-wise linear interpolation. 
 
-This intuition has been formalized into a really important result. If the forcing term is infinitely smooth, we have the \textit{spectral convergence} property : the discretization error decays faster than any power law for sufficiently large $p$. That means that we have an exponential convergence of our solution. Our course, that requires that $f$  is smooth enough. This result is for example given in \cite{expConv}.
+This intuition has been formalized into a really important result. If the forcing term is infinitely smooth, we have the \textit{spectral convergence} property : the discretization error decays faster than any power law for sufficiently large $p$. That means that we have an exponential convergence of our solution. Our course, that requires that $f$  is smooth enough. This result is for example given in \cite{expConv} or in \cite{specConv}.
 
 That is why it is often a good idea to use high-order methods. It allows us to obtain a very high accuracy while keeping the number of degrees of freedom reasonable. In practice, high-order methods almost always perform better than their low-order counterparts when the accuracy requirements are high.   
 
