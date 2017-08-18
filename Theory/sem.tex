@@ -3,7 +3,7 @@ Equation \ref{eq:weakform} is the problem we will be attempting to solve. Howeve
 
 The first part of the task is the discretization of the domain $\Omega$. As explained in the introduction, we will use non conforming meshes. So we will present such meshes, present their particularities and explain how we will handle them.   
 
-The second part of the task is the discretization of equation \ref{eq:weakform}. The method here presented is the spectral element method, which consists of using high degree piece-wise polynomials as basis functions. We will first show how to obtain the linear system of equation ($Au=b$) that arises with this method. We will afterwards present the one dimensional basis functions used and the location of the nodes on the 1D reference element. We will then explain how to construct the global basis functions in the presence of hanging nodes. We will finally show how to compute the right hand side of the linear system and how to perform an efficient matrix-vector product without having to explicitly construct the matrix $A$.
+The second part of the task is the discretization of equation \ref{eq:weakform}. The method here presented is the spectral element method, which consists of using high degree piece-wise polynomials as basis functions. We will first show how to obtain the linear system of equation ($Au=b$) that arises from this method. We will afterwards present the one dimensional basis functions used and the location of the nodes on the 1D reference element. We will then explain how to construct the global basis functions in the presence of hanging nodes. We will finally show how to compute the right hand side of the linear system and how to perform an efficient matrix-vector product without having to explicitly construct the matrix $A$.
 
 \subsection{Discretization of the domain}
 
@@ -158,7 +158,7 @@ With this operator and our mapping, it is then possible to compute the value of 
 
 Figure \ref{global_basis_func} shows a global basis function on the mesh presented in figure \ref{hang_ex} for $p=1$. We can see that it is not entirely trivial since the global node associated with the basis function has a influence in quadrants where we have hanging nodes. We can also see that it is indeed a continuous function that is a piece-wise bilinear polynomial. 
 
-Let us also note that there is no global basis function associated with a hanging node. 
+Let us note that there is no global basis function associated with a hanging node. 
 
 In practice, we do not build the operator $R^e_{ij}(I)$ explicitly since only nodes located on edges can be hanging and the p4est library helps us to treat hanging nodes (see the implementation chapter for more details).  
 
@@ -248,12 +248,12 @@ W_{ij;e}^{\xi\eta} =& w_i w_j |J^e(\xi_i,\eta_j)| \left(\frac{\partial \xi}{\par
 W_{ij;e}^{\eta\eta} =& w_i w_j |J^e(\xi_i,\eta_j)| \left(\frac{\partial \eta}{\partial x}\frac{\partial \eta}{\partial x}+\frac{\partial \eta}{\partial y}\frac{\partial \eta}{\partial y}\right)(\xi_i,\eta_j)
 \end{align*}
 
-The derivatives that appear in the expression above do not need an analytic expression for the inverse mapping to be available. We can compute them using the inverse of the jacobian matrix to obtain the values of $\frac{\partial xi}{\partial x}(\xi_i,\eta_j)$,...
+The derivatives that appear in the expression above do not need an analytic expression for the inverse mapping to be available. We can compute them using the inverse of the jacobian matrix to obtain the values of $\frac{\partial \xi}{\partial x}(\xi_i,\eta_j)$,...
 
 Let us also remind the definition of the derivation matrix $H$ given by equation \ref{eq:derivation_matrix}. Using the quadrature, we have : 
 
 \begin{align*}
-F^{\xi\xi}_{mn;e} =& \sum_{a=0}^p\sum_{b=0}^p W^{\xi\xi}_{ab;e} l'_m(\xi_a)l_n(\eta_b)\left( \sum_{c=0}^p\sum_{d=0}^p u^e_{cd}l'_c(\xi_a)l_d(\eta_b)\right) \\
+F^{\xi\xi}_{mn;e} \approx& \sum_{a=0}^p\sum_{b=0}^p W^{\xi\xi}_{ab;e} l'_m(\xi_a)l_n(\eta_b)\left( \sum_{c=0}^p\sum_{d=0}^p u^e_{cd}l'_c(\xi_a)l_d(\eta_b)\right) \\
 =& \sum_{a=0}^p\sum_{b=0}^p W^{\xi\xi}_{ab;e} H_{ma} \delta_{nb} \left( \sum_{c=0}^p\sum_{d=0}^p u^e_{cd}H_{ca}\delta_{db}\right) \\
 =& \sum_{a=0}^p W_{an;e}^{\xi\xi}H_{ma}\left(\sum_{c=0}^p u^e_{cn}H_{ca}\right)
 \end{align*}
@@ -261,15 +261,15 @@ F^{\xi\xi}_{mn;e} =& \sum_{a=0}^p\sum_{b=0}^p W^{\xi\xi}_{ab;e} l'_m(\xi_a)l_n(\
 If we denote $U^e$ a matrix such that $(U^e)_{ij} = u^e_{ij}$ and $W^{\xi\xi}_e$ a matrix such that $(W^{\xi\xi}_e)_{ij} = W^{\xi\xi}_{ij;e}$ and if we denote the Hadamard product by $\circ$,  then we can write : 
 
 \begin{align*}
-F^{\xi\xi}_{mn;e} &= \left( H(W_e^{\xi\xi} \circ H^TU^e)\right)_{mn}
+F^{\xi\xi}_{mn;e} &\approx \left( H(W_e^{\xi\xi} \circ H^TU^e)\right)_{mn}
 \end{align*}
 
 For similar definitions, it can be showed that the order terms are given by :  
 
 \begin{align*}
-F^{\xi\eta}_{mn;e} &= \left( H(W_e^{\xi\eta} \circ U^eH)\right)_{mn}\\
-F^{\eta\xi}_{mn;e} &= \left( (W_e^{\eta\xi} \circ H^TU^e)H^T\right)_{mn}\\
-F^{\eta\eta}_{mn;e} &= \left( (W_e^{\eta\eta} \circ U^eH)H^T\right)_{mn}
+F^{\xi\eta}_{mn;e} &\approx \left( H(W_e^{\xi\eta} \circ U^eH)\right)_{mn}\\
+F^{\eta\xi}_{mn;e} &\approx \left( (W_e^{\eta\xi} \circ H^TU^e)H^T\right)_{mn}\\
+F^{\eta\eta}_{mn;e} &\approx \left( (W_e^{\eta\eta} \circ U^eH)H^T\right)_{mn}
 \end{align*}
 
 We can see that the problem reduce to computing a few matrix products. The only thing left to do is to take hanging nodes into account when we gather the results : 

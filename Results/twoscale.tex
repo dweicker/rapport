@@ -1,6 +1,6 @@
 \section{Two scale preconditioner}
 
-Let us finally move on to the two-scale preconditioner. We showed in the previous part that using only the fine scale preconditioner was not a good idea when the number of quadrants increased (the number of iterations roughly doubles when the mesh size is divided by two). As explained in the theory chapter, the idea is to add a coarse part in the preconditioner (i.e. $P = P^f + P^c$), consisting mainly of solving a problem with an interpolation degree $p=1$ with a geometric multigrid method, so that the number of iterations stays constant when we increase the number of quadrants.  
+Let us finally move on to the two-scale preconditioner. We showed in the previous part that using only the fine scale preconditioner was not a good idea when the number of quadrants increased (the number of iterations roughly doubles when the mesh size is divided by two). As explained in the theory chapter, the idea is to add a coarse part in the preconditioner (i.e. $M^{-1} = P^f + P^c$), consisting mainly of solving a problem with an interpolation degree $p=1$ with a geometric multigrid method, so that the number of iterations stays constant when we increase the number of quadrants.  
 
 As in the previous section, the tests will be performed in two parts : first, we will analyze the performances of the two-scale preconditioner when there are no hanging nodes (but for both regular and distorted meshes) and then we will look at what happens when the forest of quadtrees is refined recursively and therefore the mesh is not conforming anymore. 
 
@@ -66,7 +66,7 @@ A second remark we can make, as already observed when we only had the fine preco
 
 \subsubsection{Meshes with distorted elements}
 
-We will now look at what happens when the mesh is not regular but we have quadrants that are more and more distorted. We will use the same meshes already used in the previous section and obtained with the progression tool of GMSH (see figure \ref{fine_mesh_deform} for example of such meshes).
+We will now look at what happens when the mesh is not regular but we have quadrants that are more and more distorted. We will use the same meshes already used in the previous section and obtained with the progression tool of GMSH (see figure \ref{fine_mesh_deform} for examples of such meshes).
 
 \begin{figure}
 \centering
@@ -77,7 +77,7 @@ We will now look at what happens when the mesh is not regular but we have quadra
 
 For an interpolation of degree $p=2$, we looked at the number of iterations needed to reach the given tolerance as we increased the number of quadrants and for elements more and more distorted. Figure \ref{two_irreg_iter} shows the results. We can see that the number of iterations stays roughly the same when we increase the number of quadrants so once again the coarse part of the preconditioner does the job it is designed to do. 
 
-We can also node that the more we distort the quadrants the more iterations we need to reach the given tolerance. This is to be expected since we developed the fine preconditioner to work optimally on quadrants aligned with the axis. This means that the more a quadrant is distorted the less accurate is the fine preconditioner part and therefore the more iterations we need. However, even with the most distorted mesh, the number of iterations stays acceptable and as explained in the previous section, the gain of not having to solve exactly on every quadrant is huge. We also have to say that the meshes presented here have an intrinsic structure since they are generated using the progression tool in GMSH. Therefore, the errors we make with our approximation are always in the same direction and the number of iterations needed increases. We might not have such an increase with a random mesh containing quadrants with the same quality measure. 
+We can also note that the more we distort the quadrants the more iterations we need to reach the given tolerance. This is to be expected since we developed the fine preconditioner to work optimally on quadrants aligned with the axis. This means that the more a quadrant is distorted the less accurate is the fine preconditioner part and therefore the more iterations we need. However, even with the most distorted mesh, the number of iterations stays acceptable and as explained in the previous section, the gain of not having to solve exactly on every quadrant is huge. We also have to say that the meshes presented here have an intrinsic structure since they are generated using the progression tool in GMSH. Therefore, the errors we make with our approximation are always in the same direction and the number of iterations needed increases. We might not have such an increase with a random mesh containing quadrants with the same quality measure. 
 
 
 \subsection{Influence of hanging nodes}
@@ -124,7 +124,7 @@ $hang$ & 30.52\% & 31.57\% & 34.12\% & 28.97\% & 19.30\% & 16.19\% & 15.74\%
 
 Table \ref{two_hang_table} shows some statistics about the different meshes used for the tests regarding the influence of hanging nodes on the number of iterations. The number of global and hanging nodes are for an interpolation of degree $p=2$ and the ratio $hang$ is given in equation \ref{hang_frac}.
 
-We can see that, as expected, when we decrease the parameter $tol$, we have more hanging nodes. We can also see that, at first, tightening the parameter $tol$ increase the ratio $hang$ and we have more hanging nodes relatively to global nodes. Then, however, even tough the number of hanging nodes still grows, the number of global nodes grows faster and therefore the ratio $hang$ decreases. This can be explained by the fact that if the parameter $tol$ is very low then we start to refine all part more equally (even the ones where the function does not vary a lot) and the relative number of hanging nodes drops. 
+We can see that, as expected, when we decrease the parameter $tol$, we have more hanging nodes. We can also see that, at first, tightening the parameter $tol$ increase the ratio $hang$ and we have more hanging nodes relatively to global nodes. Then, however, even though the number of hanging nodes still grows, the number of global nodes grows faster and therefore the ratio $hang$ decreases. This can be explained by the fact that if the parameter $tol$ is very low then we start to refine all part more equally (even the ones where the function does not vary a lot) and the relative number of hanging nodes drops. 
 
 \begin{figure}
 \centering

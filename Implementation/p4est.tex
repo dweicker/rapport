@@ -6,7 +6,7 @@ The founding principles of $p4est$ are given in \cite{p4est}. In that article, t
 
 We first present the approach to AMR used by $p4est$ and how it manages the dynamic refinement process, namely the refine and coarsen operators. We also explain the different structures used to build the mesh and the inherent terminology. 
 
-In the second part, we will describe how, in our program, we handle hanging nodes leveraging $p4est$ and its structures. The way to compute the operator $R_{ij}^e$ (defined in the theory chapter) is also laid out. 
+In the second part, we will describe how, in our program, we handle hanging nodes by leveraging $p4est$ and its structures. The way to compute the operator $R_{ij}^e$ (defined in the theory chapter) is also laid out. 
 
 \subsection{AMR for p4est}
 
@@ -28,12 +28,12 @@ We have an important thing to note here. It is an important feature of $p4est$ t
 
 Let us also note that the macro-mesh cannot be changed dynamically and is shared among all processes. In practice, the number of quadtrees $K$ is thus limited by local memory. The experiments in \cite{p4est} go up to several million quadtrees.
 
-Let us now turn to the micro-mesh. Based on a user-defined criterion, the refinement of the quadtree is often defined recursively. This creates a quadtree with the quadrants as leaves. Each quadrant of a given quadtree is then uniquely defined by the integer coordinates of its lower left corner $x,y \in \{0,1,2,...,2^b-1\}$ on the referent element and its level of refinement, i.e. the level of the leaf corresponding to that quadrant in the quadtree. In the reference element, a quadrant of level $l$ is a square of length $2^{b-l}$.
+Let us now turn to the micro-mesh. Based on a user-defined criterion, the refinement of the quadtree is often defined recursively. This creates a quadtree with the quadrants as leaves. Each quadrant of a given quadtree is then uniquely defined by the integer coordinates of its lower left corner $x,y \in \{0,1,2,...,2^b-1\}$ on the reference element and its level of refinement, i.e. the level of the leaf corresponding to that quadrant in the quadtree. In the reference element, a quadrant of level $l$ is a square of length $2^{b-l}$.
 
 
 The details of the refine algorithm used in $p4est$ are not given here but can be found in \cite{p4est}. Here, non conforming edges are allowed. As mentioned in the theory chapter, our application only allows $1$-irregular meshes, i.e. two neighboring quadrants differ by at most one level of refinement. However, the refine function in $p4est$ does not constraint the size relations for neighboring quadrants (leading possibly to $k$-irregular meshes with $k>1$). Fortunately, the library also contains a balance function that we can use to guarantee a $1$-irregular mesh. Of course, the balance function acts both on quadrants in the same quadtree and on quadrants in different quadtrees that connect through an edge of the macro-mesh. 
 
-The micro-mesh, i.e. the collection of quadrants, can be dynamically changed (with the refine and coarsen functions) and is shared between all processes. 
+The micro-mesh, i.e. the collection of quadrants, can be dynamically changed (with the refine and coarsen functions) and is divided between all processes. 
 
 \begin{figure}
 \centering
@@ -48,7 +48,7 @@ There are still three things we want to point out in this part : how to tell if 
 
 \subsubsection{Quadrants on the boundary}
 
-When we solve the system arising from SEM, it is fundamental to be able to tell whether a quadrant has one of its face on the boundary of the computational domain. 
+When we solve the system arising from SEM, it is fundamental to be able to tell if a quadrant has one of its face on the boundary of the computational domain. 
 
 Let us first note that if a quadrant has a face on the boundary, then the corresponding face of the macro-mesh element is on the boundary. 
 
@@ -72,7 +72,7 @@ We are now looking at how to compute the physical coordinates of a quadrant. Let
 \phi_1(x) &= x
 \end{align*}
 
-Let us then assume that the quadrant is located in the macro-mesh element $k$. Let us also denote the physical coordinates of the corners of element $k$ by $x^k_i,y^k_i$ for $i=0,1,2,3$. Let us finally assume that the integer-based coordinate of the lower left corner of the quadrant are $x,y$ and it has a level of refinement $l$. In the reference element, the quadrant has therefore a length of :
+Let us then assume that the quadrant is located in the macro-mesh element $k$. Let us also denote the physical coordinates of the corners of element $k$ by $x^k_i,y^k_i$ for $i=0,1,2,3$. Let us finally assume that the integer-based coordinates of the lower left corner of the quadrant are $x,y$ and it has a level of refinement $l$. In the reference element, the quadrant has therefore a length of :
 
 $$ h = 2^{b-l} $$ 
 

@@ -1,5 +1,5 @@
 \section{Fine preconditioner}
-Let us now move on to the fine part of the preconditioner : the overlapping additive Schwarz preconditioner. We will test it by using the preconditioned conjugate gradients method described earlier but, for now, the preconditioner will only consist of the fine part (i.e. $P = P^f$).
+Let us now move on to the fine part of the preconditioner : the overlapping additive Schwarz preconditioner. We will test it by using the preconditioned conjugate gradients method described earlier but, for now, the preconditioner will only consist of the fine part (i.e. $M^{-1} = P^f$).
 
 As in the previous section, we will perform the tests in two parts : first, we will use meshes with elements that are distorted or not but with no hanging nodes. Then, we will see how the fine preconditioner performs in the presence of hanging nodes also for meshes that are distorted or not. Here, of course, we will use interpolations of higher degree. Typically, the tests will be performed for $p=2,4,6,8$.
 
@@ -65,7 +65,7 @@ $p=8$ & $1.7\:10^4$ & $6.6\:10^4$ & $2.6\:10^5$ & $1.1\:10^6$ & $4.2\:10^6$\\
 
 We can see that, even without the coarse preconditioner, we are solving the system in a small number of iterations compared to the number of degrees of freedom. For example, we only do about 80 iterations to solve the system with $2.4\: 10^{6}$ degrees of freedom and with interpolations of degree $p=6$. 
 
- We can also see that for every degree, the number of iterations increases when we refine the mesh. This is to be expected since the information from the boundaries has to go through more quadrant before propagate to the entire domain. Asymptotically, the number of iterations is expected to double as the number of quadrants is multiplied by four (i.e. the mesh size is divided by two). We can see that it is not yet the case here.
+ We can also see that for every degree, the number of iterations increases when we refine the mesh. This is to be expected since the information from the boundaries has to go through more quadrant before propagating to the entire domain. Asymptotically, the number of iterations is expected to double as the number of quadrants is multiplied by four (i.e. the mesh size is divided by two). We can see that it is not yet the case here.
 
 A last remark we can make is that the number of iterations tends to increase when the degree of the interpolation increases. This is especially true for the finest mesh where we need 183 iterations for $p=8$ where we only need 39 iterations for $p=2$. This can be explained by the fact that the size of the overlap decreases when $p$ grows. As mentioned in \cite{overlap_constant}, this issue would be fixed if we imposed a constant overlap.
 
@@ -101,7 +101,7 @@ We can also note that the effect of increasing the number of elements (i.e. redu
 \begin{figure}
 \centering
 \includegraphics[scale=0.35]{Results/fine_dist_iter.eps}
-\caption{bla}
+\caption{Number of iterations of PCG with only the fine preconditioner for $p=2$ and more and more distorted meshes (obtained using the progression tool of GMSH).}
 \label{fine_dist_iter}
 \end{figure}
 

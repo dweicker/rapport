@@ -4,7 +4,7 @@ Now that we have our right hand side vector $b$ and that we are able to compute 
 
 Since the number of degrees of freedom is huge, it is impossible to use a direct method to solve the linear system. Instead, we will turn ourselves to iterative methods. 
 
-The matrix $A$ arises from the discretization of an Poisson equation using finite elements and therefore it is sparse, symmetric and positive-definite. The conjugate gradients method is therefore well suited to solve the linear system. We have to note however that the convergence speed of the conjugate gradients depends on the condition number of the matrix $A$, $\kappa(A)$. Indeed, as given in \cite{conj_grad}, if we denote $e_i = u-u_i$ where u is the solution of the linear system and $u_i$ is our approximation after the $i$-th iteration, then : 
+The matrix $A$ arises from the discretization of Poisson's equation using finite elements and therefore it is sparse, symmetric and positive-definite. The conjugate gradients method is therefore well suited to solve the linear system. We have to note however that the convergence speed of the conjugate gradients depends on the condition number of the matrix $A$, $\kappa(A)$. Indeed, as given in \cite{conj_grad}, if we denote $e_i = u-u_i$ where u is the solution of the linear system and $u_i$ is our approximation after the $i$-th iteration, then : 
 
 \begin{align}
 ||e_i||_A \leq 2 \left(\frac{\sqrt{\kappa(A)}-1}{\sqrt{\kappa(A)}+1}\right)^i ||e_0||_A \label{eq:cg_conv}
@@ -65,7 +65,7 @@ The stopping criterion is defined using the norm of the residual. We want it to 
 
 The most important part in the algorithm presented is the preconditioner $M^{-1}$. Indeed, the convergence speed is a function of $\kappa(M^{-1}A)$. Therefore, we want a preconditioner that is easy to compute and such that the condition number of $M^{-1}A$ is a lot smaller than the one of $A$. Oftentimes, those two goals are contradictory. 
 
-As explained in the introduction, our preconditioner here consists of two parts. We have one coarse grid correction based on solving the problem on the mesh with an interpolation of degree $p=1$. The resolution of this coarse problem will be done using a multigrid method. Let us call this part $P^c$. The second part is the fine preconditioner where we solve the problem exactly on overlapping subdomains (this is often called an additive Schwarz preconditioner). Let us call this part $P^f$. We then add the two part of the preconditioner : 
+As explained in the introduction, our preconditioner here consists of two parts. We have one coarse grid correction based on solving the problem on the mesh with an interpolation of degree $p=1$. The resolution of this coarse problem will be done using a multigrid method. Let us call this part $P^c$. The second part is the fine preconditioner where we solve the problem exactly on overlapping subdomains (this is often called an additive Schwarz preconditioner). Let us call this part $P^f$. We then add the two parts of the preconditioner : 
 
 $$ M^{-1} = P^c + P^f$$
 
